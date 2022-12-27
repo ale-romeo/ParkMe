@@ -2,11 +2,8 @@
 $servername = "db";
 $username = "ale";
 $password = "pass";
+$dbname = "Parking MS"
 
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $dbname) or die("Error connecting to database.");
 
-if($conn->connect_error){
-    die("Connection failed: ". $conn->connect_error);
-}
-echo "Connected to ".$servername." Database";
 ?>

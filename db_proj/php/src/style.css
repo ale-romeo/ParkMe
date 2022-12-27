@@ -1,0 +1,107 @@
+:root {
+    --primary-color: #00bcd4;
+    --secondary-color: #fafafa;
+    --tertiary-color: #212121;
+}
+
+body {
+    background-image: url("img/parkback.jpg");
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header img {
+    position: absolute;
+    top: 5%;
+    left: 17%;
+    max-width: 600px;
+    transform: translate(-50%, -50%);
+}
+h1 {
+    text-align: center;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    font-family: "CustomFont", sans-serif;
+    font-size: 32px;
+    color: var(--secondary-color);
+    margin: 0;
+}
+  
+p {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    color: var(--tertiary-color);
+}
+  
+label {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    color: var(--tertiary-color);
+    display: block;
+    margin: 10px 0;
+}
+  
+input[type="text"], input[type="password"] {
+    font-family: "Helvetica Neue", sans-serif;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 10px 0;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+}
+  
+input[type="submit"] {
+    font-family: "Helvetica Neue", sans-serif;
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+input[type="submit"]:hover {
+    background-color: #0097a7;
+}
+  
+@media screen and (max-width: 600px) {
+    .container {
+        max-width: 90%;
+        padding: 10px;
+    }
+    .header img{
+        max-width: 90%;
+        padding: 10px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+  
+    p {
+        font-size: 14px;
+    }
+  
+    label {
+        font-size: 12px;
+    }
+}

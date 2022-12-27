@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Parking Lot Management System</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div class="header">
-        <img src="img/logo1.png" alt="logo" />
+        <img src="img/logo.png" alt="logo" />
     </div>
     <div class="container">
         <h2>Welcome</h2>

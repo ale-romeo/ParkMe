@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #00bcd4;
+    --primary-color: #0c1c75;
     --secondary-color: #fafafa;
     --tertiary-color: #212121;
 }
@@ -12,9 +12,10 @@ body {
 
 .header img {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    height: 40px;
+    top: 15%;
+    left: 50%;
+    height: 60px;
+    transform: translate(-50%, -50%);
 }
 
 .container {
@@ -38,7 +39,7 @@ form {
 
 h2 {
     font-family: "Roboto", sans-serif;
-    color: #0c1c75;
+    color: var(--primary-color);
     margin: 10px 0;
     text-align: center;
 }
@@ -85,9 +86,20 @@ input[type="submit"]:hover {
     background-color: #0097a7;
 }
 
-
 @media only screen and (max-width: 600px) {
     .container {
-      width: 90%;
+        top: 50%;
+    }
+    #logo {
+      height: 30px;
+    }
+}
+  
+@media only screen and (max-width: 400px) {
+    .container {
+        top: 40%;
+    }
+    #logo {
+      height: 20px;
     }
 }

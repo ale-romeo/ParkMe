@@ -4,6 +4,5 @@ $username = "ale";
 $password = "pass";
 $dbname = "Parking MS";
 
-$conn = new mysqli($servername, $username, $password, $dbname) or die("Error connecting to database.");
-
+$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Error connecting to database.");
 ?>

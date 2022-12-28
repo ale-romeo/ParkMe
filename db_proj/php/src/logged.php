@@ -8,8 +8,8 @@ if(isset($_REQUEST['login'])){
         $password = $_REQUEST["password"];
         $username = mysqli_real_escape_string($conn, $username);
         $password = mysqli_real_escape_string($conn, $password);
-        $sql1 = "SELECT * FROM users WHERE email = '$username' && password = '$password'";
-        $result = mysqli_query($sql1);
+        $query = "SELECT * FROM users WHERE email = '$username' && password = '$password'";
+        $result = mysqli_query($conn, $query) or die("Query failed: ".mysqli_error($conn));
         $num_rows = mysqli_num_rows($result);
         if($num_rows > 0){
             session_start();
@@ -18,7 +18,9 @@ if(isset($_REQUEST['login'])){
             sleep(3);
             header("location: dashboard.php"); 
         }else{
-            echo "Invalid username or password.";
+            session_start();
+            $_SESSION["error"] = "Invalid username or password.";
+            header("location: index.php");
         }
     }
 }

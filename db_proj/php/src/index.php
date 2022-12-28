@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +12,16 @@
         <img src="img/logo.png" alt="logo" />
     </div>
     <div class="container">
-        <h2>Welcome</h2>
-        <p>Please log in to access the system:</p>
+        <?php
+        if (isset($_SESSION["error"])) {
+            echo "<h2>Welcome</h2>
+            <p>" . $_SESSION["error"] . " Try again.</p>";
+            unset($_SESSION["error"]);
+        }else{
+            echo "<h2>Welcome</h2>
+            <p>Please log in to access the system:</p>";
+        }
+        ?>
         <form action="logged.php" method="post">
             <label>Username:</label><br>
             <input type="text" name="username" required><br>

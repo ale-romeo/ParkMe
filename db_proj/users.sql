@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Creato il: Dic 27, 2022 alle 23:15
--- Versione del server: 8.0.31
--- Versione PHP: 8.0.19
+-- Generation Time: Dec 28, 2022 at 12:05 AM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,26 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `ID` int NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `password` varchar(255) NOT NULL,
   `Name` varchar(255) DEFAULT NULL,
   `Surname` varchar(255) DEFAULT NULL,
-  `Phone Number` int DEFAULT NULL,
-  `E-mail` varchar(255) NOT NULL
+  `Phone Number` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD UNIQUE KEY `ID` (`ID`);
+  ADD PRIMARY KEY (`email`);
+ALTER TABLE `users` ADD FULLTEXT KEY `E-mail` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

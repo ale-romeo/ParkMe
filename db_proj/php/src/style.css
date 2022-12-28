@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #0c1c75;
+    --primary-color: #130827;
     --secondary-color: #fafafa;
-    --tertiary-color: #212121;
+    --tertiary-color: rgb(62, 61, 64);
 }
 
 body {
@@ -12,20 +12,16 @@ body {
     padding: 0;
 }
 
-.container {
+.loginbox img {
+    height: 80px;
+    padding: 10px;
+}
+
+.loginbox{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.container img {
-    height: 60px;
-    padding: 20px;
-    margin-bottom: 5%;
-}
-
-.loginbox{
     max-width: 600px;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
@@ -36,31 +32,41 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-}
-
-h2 {
-    font-family: "Roboto", sans-serif;
-    color: var(--primary-color);
-    margin: 10px 0;
-    text-align: center;
+    text-align: left;
 }
 
 p {
     font-family: "Roboto", sans-serif;
     color: var(--tertiary-color);
-    margin: 10px 0;
+    font-weight: bold;
     text-align: center;
 }
 
+p.downlogo {
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
 label {
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
     color: var(--tertiary-color);
-    margin: 10px 0;
 }
-  
+
+label, input {
+    position: relative;
+    display: block;
+}
+
+label::after {
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    display: block;
+    color: var(--tertiary-color);
+    font-weight: bold;
+}
+
 input[type="text"], input[type="password"] {
     width: 250px;
     height: 40px;
@@ -69,10 +75,10 @@ input[type="text"], input[type="password"] {
     border: 1px solid var(--primary-color);
     border-radius: 5px;
     padding: 0 10px;
-    margin: 10px 0;
+    margin: 5px 0;
 }
-  
-  input[type="submit"] {
+
+input[type="submit"] {
     width: 100px;
     height: 40px;
     font-size: 16px;
@@ -82,57 +88,37 @@ input[type="text"], input[type="password"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 input[type="submit"]:hover {
-    background-color: #0097a7;
+    background-color: #4e35c9;
+}
+
+a.signup-button {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.signup-button:hover {
+    color: #4e35c9;
 }
 
 @media only screen and (max-width: 600px) {
-    .loginbox{
-        top: 50%;
-    }
-    .container img {
-        top: 5px;
-        height: 50px;
+    .loginbox img {
+        height: 75px;
     }
 }
   
 @media only screen and (max-width: 400px) {
-    .loginbox {
-        top: 40%;
-    }
-    .container img {
-        top: 0;
-        height: 40px;
+    .loginbox img {
+        height: 70px;
     }
 }
 
 @media only screen and (max-width: 250px) {
-    .loginbox {
-        top: 20%;
-    }
-    .container img {
-        top: -5px;
-        height: 30px;
+    .loginbox img {
+        height: 65px;
     }
 }
-
-@media only screen and (max-height: 600px) {
-    .loginbox {
-      top: 30%;
-    }
-  }
-  
-  @media only screen and (max-height: 400px) {
-    .loginbox {
-      top: 20%;
-    }
-  }
-  
-  @media only screen and (max-height: 250px) {
-    .loginbox {
-      top: 10%;
-    }
-  }

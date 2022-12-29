@@ -12,6 +12,24 @@ body {
     padding: 0;
 }
 
+button.home-button {
+    width: 60px;
+    height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2px 0;
+    float: right;
+}
+
+button.home-button:hover {
+    background-color: #4e35c9;
+}
+
 .loginbox img {
     height: 80px;
     padding: 10px;
@@ -32,17 +50,20 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    text-align: left;
+    align-items: center;
 }
 
-p {
+p.belowtxt {
     font-family: "Roboto", sans-serif;
     color: var(--tertiary-color);
     font-weight: bold;
-    text-align: center;
 }
 
 p.downlogo {
+    font-family: "Roboto", sans-serif;
+    color: var(--tertiary-color);
+    text-align: center;
+    font-weight: bold;
     margin-top: -20px;
     margin-bottom: 10px;
 }
@@ -67,7 +88,7 @@ label::after {
     font-weight: bold;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"] {
     width: 250px;
     height: 40px;
     font-size: 16px;
@@ -76,6 +97,14 @@ input[type="text"], input[type="password"] {
     border-radius: 5px;
     padding: 0 10px;
     margin: 5px 0;
+}
+
+.fa-eye {
+    position: absolute;
+    top: 40%;
+    right: 4%;
+    cursor: pointer;
+    color: var(--tertiary-color);
 }
 
 input[type="submit"] {
@@ -95,6 +124,23 @@ input[type="submit"]:hover {
     background-color: #4e35c9;
 }
 
+input[type="submit"].ticket {
+    width: 200px;
+    height: 80px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+input[type="submit"].ticket:hover {
+    background-color: #4e35c9;
+}
+
 a.signup-button {
     color: var(--primary-color);
     font-weight: bold;
@@ -105,10 +151,63 @@ a.signup-button:hover {
     color: #4e35c9;
 }
 
+footer {
+    background-color: #7e7e7e16;
+    color: #fafafa;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+}
+
+footer .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+footer p.copyright {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+footer p.author {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+footer li {
+    font-family: "Roboto", sans-serif;
+    margin: 0 10px;
+}
+
+footer a {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #4e35c9;
+}
+
 @media only screen and (max-width: 600px) {
     .loginbox img {
         height: 75px;
     }
+    footer {
+        display: none;
+    }
+    
 }
   
 @media only screen and (max-width: 400px) {

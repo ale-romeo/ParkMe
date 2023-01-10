@@ -23,6 +23,10 @@ if(isset($_REQUEST['login'])){
                 $_SESSION["error"] = "Invalid username or password.";
                 header("location: login_page.php");
             }
+        }else{
+            session_start();
+            $_SESSION["error"] = "Invalid username or password.";
+            header("location: login_page.php");
         }
     }
 }

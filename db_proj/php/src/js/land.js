@@ -6,3 +6,15 @@ togglePassword.addEventListener("click", function () {
     const type = password.getAttribute("type") === "password" ? "text" : "password";
     password.setAttribute("type", type);
 })
+
+function getTicket() {
+    $.ajax({
+      url: 'guest.php',
+      type: 'POST',
+      data: {Park: true},
+      success: function(response) {
+        // Update the page with the response from the PHP script
+        alert(response);
+      }
+    });
+}

@@ -9,7 +9,7 @@ if(isset($_REQUEST['login'])){
         $username = $conn->real_escape_string($username);
         $password = $conn->real_escape_string($password);
         $sql = "SELECT * FROM admins WHERE (email = '$username' OR username = '$username')";
-        $result = $conn->query($sql) or die("Query failed: ". $conn->connect_error);
+        $result = $conn->query($sql) or die("Query failed: ". $conn ->connect_error);
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
             if (password_verify($password, $row['password'])) {

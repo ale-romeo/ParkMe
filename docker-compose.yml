@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+    php-apache-environment:
+        container_name: php-apache
+        build:
+            context: .
+            dockerfile: Dockerfile
+        depends_on:
+            - database
+        volumes:
+            - ./src:/var/www/html/
+        ports:
+            - 8000:80
+    database:
+        container_name: ${DB_HOST}
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        ports:
+            - "9906:3306"
+    phpmyadmin:
+        image: phpmyadmin
+        ports:
+            - '8080:80'
+        restart: always
+        environment:
+            PMA_HOST: ${DB_HOST}
+            PMA_USER: ${DB_USERNAME}
+            PMA_PASSWORD: ${DB_PASSWORD}
+        depends_on:
+            - database
+
+    mailhog:
+        image: mailhog/mailhog
+        logging:
+            driver: 'none'
+        ports:
+            - 1025:1025 
+            - 8025:8025 

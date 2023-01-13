@@ -16,29 +16,14 @@
         <h1>Inserire codice univoco:</h1>
     </header>
     <main>
-      <form id="qr-generation-form">
+      <form action="qrcode.php" id="qr-generation-form">
         <input type="text" id="user_id" name="user_id" placeholder="Enter user ID" autocomplete="off"/>
         <input type="submit" value="Generate QR Code"/>
       </form><br/>
       <div id="qr-code"></div>
     </main>
   </div>
-  <?php
-  require_once('vendor/autoload.php');
-  // check if the form has been submitted
-  if (isset($_GET['user_id'])) {
-    // get the user's unique identifier from the query string
-    $user_id = $_GET['user_id'];
-    // create a QR code with the user's unique identifier
-    $qrCode = new \Endroid\QrCode\QrCode($user_id);
-    // change the size and color of the QR code
-    $qrCode->setSize(300);
-    $qrCode->setForegroundColor(QrCode::COLOR_BLACK);
-
-    // display the QR code
-    echo '<img src="data:'.$qrCode->getContentType().';base64,'.$qrCode->writeString().'" />';
-  }
-  ?>
+  
 </body>
 <footer>
   <div class="footer">

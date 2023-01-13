@@ -5,22 +5,18 @@ La mia idea è la creazione di un'applicazione per parcheggiare, nei posti a pag
 La città verrà divisa in zone, in base alle tariffe.
 L'utente potrà visualizzare il numero di posti liberi all'interno dei settori, in modo da facilitare il compito dell'utente finale.
 Tale divisione dei posti per parcheggiare potrebbe essere eventualmente distribuita fra i vari competitors (easypark, etc.) in modo da sfruttare tutti un database comune da cui attingere info sul parcheggio.
-Sarà disponibile anche la possibilità di prenotazione del posto in determinate zone richieste.
+Start by creating a database to store information about parking spots, such as location, availability, and pricing.
 
-Here is a high-level overview of how you can script a mobile parking app using PHP:
+Use PHP to create a user interface that allows users to search for and reserve parking spots.
 
-    First, you need to design the user interface of your mobile app. You can use a framework like Bootstrap to create a responsive and user-friendly interface.
+Implement a payment system, such as PayPal, to allow users to pay for their parking spot reservations.
 
-    Next, you need to set up a server-side script that can handle HTTP requests from your mobile app. You can use PHP as the scripting language to create this script.
+Use geolocation to show users nearby parking spots.
 
-    Your server-side script should be able to handle various types of requests from the mobile app, such as:
-        Fetching a list of available parking spots in a particular location
-        Reserving a parking spot for a user
-        Cancelling a reservation
-        Adding a new parking spot to the list of available spots
+Use Google Maps API to show the location of parking spots on a map.
 
-    You will also need to store the data for your app in a database. You can use a database management system like MySQL to store information about parking spots, reservations, and users.
+Implement a parking spot reservation system, allowing users to reserve a spot in advance.
 
-    To secure the data and requests being sent between the mobile app and the server, you should use an authentication method like OAuth.
+Use PHP's built-in functions for handling forms, input validation and data manipulation
 
-    Finally, you will need to test your mobile app and server-side script to ensure that they are working as expected.
+Make use of frameworks like Laravel, Codeigniter, etc for building scalable and maintainable application

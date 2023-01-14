@@ -1,0 +1,24 @@
+body {
+    background-color: #95A1F1;
+}
+
+#logo {
+    width: 100px;
+}
+
+#dropdown-menu.left-to-right {
+    transform: translateX(100%);
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-top: 20px;
+}
+
+.card-title {
+    text-align: center;
+}

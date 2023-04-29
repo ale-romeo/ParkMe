@@ -1,24 +1,21 @@
-const togglePassword = document.querySelector('#togglePassword');
-const password = document.querySelector('#password');
+$("#back-btn").hide();
 
-togglePassword.addEventListener("click", function () {
-  this.classList.toggle("fa-eye-slash");
-  const type = password.getAttribute("type") === "password" ? "text" : "password";
-  password.setAttribute("type", type);
-})
-
-function getTicket() {
-  $.ajax({
-    url: 'guest.php',
-    type: 'POST',
-    data: { Park: true },
-    success: function (response) {
-      // Update the page with the response from the PHP script
-      alert(response);
-    }
+$(document).ready(function(){
+  $("#signup-btn").click(function(){
+    $("#btn-group").hide();
+    $("#back-btn").show();
+    $("#registration-form").removeClass("hidden").addClass("visible");
+    $("#login-form").addClass("hidden").removeClass("visible");
   });
-}
-
-$('.navbar-toggler').on('click', function () {
-  $('#dropdown-menu').toggleClass('dropdown-menu-right');
+  $("#login-btn").click(function(){
+    $("#btn-group").hide();
+    $("#back-btn").removeClass("hidden").addClass("visible");
+    $("#login-form").removeClass("hidden").addClass("visible");
+    $("#registration-form").addClass("hidden").removeClass("visible");
+  });
+  $('#back-btn').click(function() {
+    $("#registration-form").addClass("hidden").removeClass("visible");
+    $("#login-form").addClass("hidden").removeClass("visible");
+    $('#btn-group').show();
+  });
 });

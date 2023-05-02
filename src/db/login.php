@@ -75,7 +75,7 @@ if (isset($_REQUEST['log_agent'])) {
         if (password_verify($password, $row['password'])) {
             session_start();
             $_SESSION["username"] = $username;
-            header("location: ../emp__log_pg.php");
+            header("location: ../agent_emp_int.php");
             exit(); // Assicurati di uscire subito dopo il redirect
         } else {
             $log_agErr = "Invalid username or password";

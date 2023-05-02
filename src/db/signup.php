@@ -27,7 +27,7 @@ if (isset($_REQUEST['signup'])) {
         $nameErr = "Name is required";
     } else {
         $name = test_input($_REQUEST["name"]);
-        $name = $conn->real_escape_string($username);
+        $name = $conn->real_escape_string($name);
     }
     if (empty($_REQUEST["surname"])) {
         $surnameErr = "Surname is required";

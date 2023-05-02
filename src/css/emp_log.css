@@ -1,0 +1,52 @@
+body {
+    background-image: url("../img/log.jpg");
+    background-position-y: 30%;
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+  }
+
+  .left:not(:hover) {
+    opacity: 0.5;
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+  }
+
+  .right:not(:hover) {
+    opacity: 0.5;
+  }
+  
+  /* If you want the content centered horizontally and vertically */
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .footer-link {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    ;
+  }
+
+  .formbg {
+    background: rgb(219, 215, 215);
+  }

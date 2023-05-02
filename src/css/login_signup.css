@@ -24,22 +24,15 @@ a {
     text-decoration: unset;
 }
 
-.login-root {
+.fa-eye {
+    cursor: pointer;
+    color: lightgray;
+}
 
+.login-root {
     display: flex;
     width: 100%;
     min-height: 100vh;
-    overflow: hidden;
-}
-
-.loginbackground {
-    min-height: 692px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 0;
     overflow: hidden;
 }
 
@@ -126,13 +119,7 @@ a {
     background: white;
     border-radius: 4px;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
-}
-
-span {
-    display: block;
-    font-size: 20px;
-    line-height: 28px;
-    color: #1a1f36;
+    padding: 20px;
 }
 
 .error {
@@ -155,13 +142,7 @@ label {
 
 .reset-pass>a {
     text-align: right;
-    margin-bottom: 10px;
-}
-
-.grid--50-50 {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
+    margin-top: 10px;
 }
 
 .field input {
@@ -211,11 +192,6 @@ input[type="submit"] {
     margin: 0;
 }
 
-a.ssolink {
-    display: block;
-    text-align: center;
-    font-weight: 600;
-}
 
 .footer-link span {
     font-size: 14px;

@@ -1,16 +1,16 @@
 <?php
 $nameErr = $surnameErr = $emailErr = $passErr = "";
-if(isset($_GET["nameErr"])){
-    $nameErr = $_GET["nameErr"];
+if (isset($_GET["nameErr"])) {
+  $nameErr = $_GET["nameErr"];
 }
-if(isset($_GET["surnameErr"])){
-    $surnameErr = $_GET["surnameErr"];
+if (isset($_GET["surnameErr"])) {
+  $surnameErr = $_GET["surnameErr"];
 }
-if(isset($_GET["emailErr"])){
-    $emailErr = $_GET["emailErr"];
+if (isset($_GET["emailErr"])) {
+  $emailErr = $_GET["emailErr"];
 }
-if(isset($_GET["passErr"])){
-    $passErr = $_GET["passErr"];
+if (isset($_GET["passErr"])) {
+  $passErr = $_GET["passErr"];
 }
 ?>
 <!DOCTYPE html>
@@ -23,6 +23,16 @@ if(isset($_GET["passErr"])){
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/land.js"></script>
   <link rel="stylesheet" type="text/css" href="css/login_signup.css">
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <style>
+    span {
+      display: block;
+      font-size: 20px;
+      line-height: 28px;
+      color: #1a1f36;
+    }
+  </style>
 </head>
 
 <body>
@@ -41,26 +51,35 @@ if(isset($_GET["passErr"])){
                 <div class="row field">
                   <div class="col padding-bottom--24">
                     <label for="nome">Nome</label>
-                    <span class="error"><?php echo $nameErr;?></span>
+                    <span class="error">
+                      <?php echo $nameErr; ?>
+                    </span>
                     <input type="nome" name="name" required>
                   </div>
                   <div class="col padding-bottom--24">
                     <label for="cognome">Cognome</label>
-                    <span class="error"><?php echo $surnameErr;?></span>
+                    <span class="error">
+                      <?php echo $surnameErr; ?>
+                    </span>
                     <input type="cognome" name="surname" required>
                   </div>
                 </div>
                 <div class="field padding-bottom--24">
                   <label for="email">Email</label>
-                  <span class="error" id="emailErr"><?php echo $emailErr;?></span>
+                  <span class="error" id="emailErr">
+                    <?php echo $emailErr; ?>
+                  </span>
                   <input type="email" id="email" name="email">
                 </div>
                 <div class="field padding-bottom--24">
                   <label for="password">Password</label>
-                  <span class="error"><?php echo $passErr;?></span>
-                  <input type="password" name="password" required>
+                  <span class="error">
+                    <?php echo $passErr; ?>
+                  </span>
+                  <input type="password" name="password" id="pass" required>
+                  <button class="btn btn-outline-secondary reveal" type="button"><i class="fa fa-eye"></i></button>
                 </div>
-                <div class="field padding-bottom--24">
+                <div class="field">
                   <input type="submit" name="signup" value="Registrati">
                 </div>
               </form>
@@ -79,26 +98,26 @@ if(isset($_GET["passErr"])){
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#email").blur(function(){
-				var email = $(this).val();
-				$.ajax({
-					url: 'db/check_user_exists.php',
-					type: 'post',
-					data: {email: email},
-					success: function(response){
-						if(response == 'exists'){
-							$("#emailErr").html("This email is already registered");
+  <script>
+    $(document).ready(function () {
+      $("#email").blur(function () {
+        var email = $(this).val();
+        $.ajax({
+          url: 'db/check_user_exists.php',
+          type: 'post',
+          data: { email: email },
+          success: function (response) {
+            if (response == 'exists') {
+              $("#emailErr").html("This email is already registered");
               $("#email").val("");
-						}else{
-							$("#emailErr").html("");
-						}
-					}
-				});
-			});
-		});
-	</script>
+            } else {
+              $("#emailErr").html("");
+            }
+          }
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>

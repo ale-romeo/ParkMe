@@ -85,11 +85,11 @@ CREATE TABLE `Managing` (
 CREATE TABLE `Parking_Space` (
   `id` int NOT NULL,
   `STATUS` enum('Available','Occupied','Reserved','Out of order') NOT NULL,
-  `id_body` varchar(50) NOT NULL,
-  `id_agent` varchar(50) NOT NULL,
-  `hourly_price` decimal(10,2) NOT NULL,
-  `periodic_price` decimal(10,2) DEFAULT NULL,
-  `parking_ending_time` datetime NOT NULL,
+  `id_body` varchar(50),
+  `id_agent` varchar(50),
+  `hourly_price` decimal(10,2)
+  `periodic_price` decimal(10,2),
+  `parking_ending_time` datetime,
   `charging_station` tinyint(1) NOT NULL
 ) ;
 

@@ -14,7 +14,7 @@ if (isset($_REQUEST['log_end'])) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
             session_start();
-            $_SESSION["username"] = $username;
+            $_SESSION["username"] = explode('@', $username)[0];
             header("location: ../user_int.php");
             exit(); // Assicurati di uscire subito dopo il redirect
         } else {
@@ -36,16 +36,17 @@ if (isset($_REQUEST['log_body'])) {
     $username = $_REQUEST["username"];
     $password = $_REQUEST["password"];
     $type = 'body_emp';
+    $type_sup = 'sup_body_emp';
     $username = $conn->real_escape_string($username);
     $password = $conn->real_escape_string($password);
-    $sql = "SELECT * FROM Account WHERE (email = '$username' OR username = '$username') AND type = '$type'";
+    $sql = "SELECT * FROM Account WHERE (email = '$username' OR username = '$username') AND (type = '$type' OR type = '$type_sup')";
     $result = $conn->query($sql) or die("Query failed: " . $conn->connect_error);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
             session_start();
-            $_SESSION["username"] = $username;
-            header("location: ../user_int.php");
+            $_SESSION["username"] = explode('@', $username)[0];
+            header("location: ../emp/bd_map.php");
             exit(); // Assicurati di uscire subito dopo il redirect
         } else {
             $log_bdErr = "Invalid username or password";
@@ -66,16 +67,18 @@ if (isset($_REQUEST['log_agent'])) {
     $username = $_REQUEST["username"];
     $password = $_REQUEST["password"];
     $type = 'agent_emp';
+    $type_sup = 'sup_agent_emp';
     $username = $conn->real_escape_string($username);
     $password = $conn->real_escape_string($password);
-    $sql = "SELECT * FROM Account WHERE (email = '$username' OR username = '$username') AND type = '$type'";
+    $sql = "SELECT * FROM Account WHERE (email = '$username' OR username = '$username') AND (type = '$type' OR type = '$type_sup')";
     $result = $conn->query($sql) or die("Query failed: " . $conn->connect_error);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
             session_start();
-            $_SESSION["username"] = $username;
-            header("location: ../agent_emp_int.php");
+            $_SESSION["username"] = explode('@', $username)[0];
+            if ($type )
+            header("location: ../emp/ag_map.php");
             exit(); // Assicurati di uscire subito dopo il redirect
         } else {
             $log_agErr = "Invalid username or password";

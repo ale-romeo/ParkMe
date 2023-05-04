@@ -100,28 +100,49 @@ function initMap() {
 
     // Aggiungi listener per zona A
     google.maps.event.addListener(zoneA, 'click', function (event) {
-        console.log("Hai cliccato sulla zona A");
+        var sel_zone = 'A';
+        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
+            // Visualizza la tabella dei parcheggi nella formbg
+            $("#form-container").html(data);
+        });
     });
 
     // Aggiungi listener per zona B
     google.maps.event.addListener(zoneB, 'click', function (event) {
-        console.log("Hai cliccato sulla zona B");
+        var sel_zone = 'B';
+        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
+            // Visualizza la tabella dei parcheggi nella formbg
+            $("#form-container").html(data);
+        });
     });
 
     // Aggiungi listener per zona C
     google.maps.event.addListener(zoneC, 'click', function (event) {
-        console.log("Hai cliccato sulla zona C");
+        var sel_zone = 'C';
+        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
+            // Visualizza la tabella dei parcheggi nella formbg
+            $("#form-container").html(data);
+        });
     });
 
     // Aggiungi listener per zona D
     google.maps.event.addListener(zoneD, 'click', function (event) {
-        console.log("Hai cliccato sulla zona D");
+        var sel_zone = 'D';
+        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
+            // Visualizza la tabella dei parcheggi nella formbg
+            $("#form-container").html(data);
+        });
     });
 
     // Aggiungi listener per zona E
     google.maps.event.addListener(zoneE, 'click', function (event) {
-        console.log("Hai cliccato sulla zona E");
+        var sel_zone = 'E';
+        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
+            // Visualizza la tabella dei parcheggi nella formbg
+            $("#form-container").html(data);
+        });
     });
+
 }
 
 window.initMap = initMap;

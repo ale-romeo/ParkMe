@@ -47,9 +47,9 @@ if (isset($_REQUEST['log_body'])) {
             session_start();
             $_SESSION["username"] = explode('@', $username)[0];
             if ($row['type'] == $type_sup) {
-                header("location: ../emp/bd_sup_map.php");
+                header("location: ../emp/bd_sup/bd_sup_map.php");
             }else {
-                header("location: ../emp/bd_map.php");
+                header("location: ../emp/bd/bd_map.php");
             }
             exit(); // Assicurati di uscire subito dopo il redirect
         } else {

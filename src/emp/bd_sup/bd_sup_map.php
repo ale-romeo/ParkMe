@@ -58,15 +58,14 @@ if (isset($_SESSION["username"])) {
         <div class="formbg-inner padding-horizontal--48">
             <span class="padding-bottom--15 wtd" style="color: #4f25d6; font-weight: 400;">Clicca su una zona per
                 visualizzarne i posti auto...</span>
-            <table id="tabella-posti-auto">
+            <table id="tabella-parcheggi">
                 <thead>
                     <tr>
                         <th>Codice</th>
                         <th>Stato</th>
                     </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
     </div>

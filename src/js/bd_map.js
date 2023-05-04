@@ -1,3 +1,24 @@
+function visualizzaParcheggi(zona) {
+    // Invia una richiesta AJAX per ottenere i parcheggi della zona dal database
+    $.ajax({
+        url: "../db/get_slots.php",
+        type: "POST",
+        data: {
+            zona: zona
+        },
+        success: function (data) {
+            // Rimuovi tutte le righe della tabella
+            $("#tabella-parcheggi tbody tr").remove();
+
+            // Aggiungi le righe della tabella con i dati dei parcheggi ottenuti dal database
+            $("#tabella-parcheggi tbody").append(data);
+
+            // Visualizza la tabella
+            $("#tabella-parcheggi").show();
+        }
+    });
+}
+
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 17,
@@ -101,46 +122,36 @@ function initMap() {
     // Aggiungi listener per zona A
     google.maps.event.addListener(zoneA, 'click', function (event) {
         var sel_zone = 'A';
-        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
-            // Visualizza la tabella dei parcheggi nella formbg
-            $("#form-container").html(data);
-        });
+
+        show_parks(sel_zone);
     });
 
     // Aggiungi listener per zona B
     google.maps.event.addListener(zoneB, 'click', function (event) {
         var sel_zone = 'B';
-        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
-            // Visualizza la tabella dei parcheggi nella formbg
-            $("#form-container").html(data);
-        });
+
+        show_parks(sel_zone);
     });
 
     // Aggiungi listener per zona C
     google.maps.event.addListener(zoneC, 'click', function (event) {
         var sel_zone = 'C';
-        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
-            // Visualizza la tabella dei parcheggi nella formbg
-            $("#form-container").html(data);
-        });
+
+        show_parks(sel_zone);
     });
 
     // Aggiungi listener per zona D
     google.maps.event.addListener(zoneD, 'click', function (event) {
         var sel_zone = 'D';
-        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
-            // Visualizza la tabella dei parcheggi nella formbg
-            $("#form-container").html(data);
-        });
+
+        show_parks(sel_zone);
     });
 
     // Aggiungi listener per zona E
     google.maps.event.addListener(zoneE, 'click', function (event) {
         var sel_zone = 'E';
-        $.get("../db/rec_parks.php", { zona: sel_zone }, function (data) {
-            // Visualizza la tabella dei parcheggi nella formbg
-            $("#form-container").html(data);
-        });
+
+        show_parks(sel_zone);
     });
 
 }

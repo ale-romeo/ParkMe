@@ -73,7 +73,7 @@ function initMap() {
   });
 
   const geocoder = new google.maps.Geocoder();
-  const infowindow = new google.maps.InfoWindow(); v
+  const infowindow = new google.maps.InfoWindow();
 
   map.addListener("click", (event) => {
     // Ottieni le coordinate del punto cliccato sulla mappa

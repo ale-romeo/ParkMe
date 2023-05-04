@@ -46,7 +46,11 @@ if (isset($_REQUEST['log_body'])) {
         if (password_verify($password, $row['password'])) {
             session_start();
             $_SESSION["username"] = explode('@', $username)[0];
-            header("location: ../emp/bd_map.php");
+            if ($row['type'] == $type_sup) {
+                header("location: ../emp/bd_sup_map.php");
+            }else {
+                header("location: ../emp/bd_map.php");
+            }
             exit(); // Assicurati di uscire subito dopo il redirect
         } else {
             $log_bdErr = "Invalid username or password";

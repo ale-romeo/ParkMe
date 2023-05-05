@@ -1,20 +1,91 @@
-function visualizzaParcheggi(zona) {
+$(document).on("click", "#btn-assegna", function () {
+    // Ottieni il posto selezionato
+    var posto = $("#get-pid").text().replace("Assegna posto ", "");
+
+    // Ottieni l'id dell'operatore selezionato
+    var agent = $("#operatore option:selected").val();
+
+    // Esegui una richiesta AJAX per aggiornare il record del posto nel database
+    $.ajax({
+        type: "POST",
+        url: "../../db/slot_assign.php",
+        data: { posto: posto, agent_id: agent },
+        success: function () {
+            // Chiudi il modal e aggiorna la tabella dei posti
+            $("#myModal").modal("hide");
+            show_parks(posto.charAt(0));
+        },
+        error: function () {
+            alert('Si è verificato un errore durante l\'assegnazione del posto.');
+        }
+    });
+});
+
+
+$(document).on("click", ".assegna-operatore", function () {
+    // Ottieni il posto selezionato
+    var posto = $(this).closest("tr").find("td:first-child").text();
+
+    $.ajax({
+        url: '../../db/get_agents.php',
+        dataType: 'json',
+        success: function (operatori) {
+            // Costruisce il contenuto del modal
+            var modalContent = '';
+            modalContent += '<div class="modal-header">';
+            modalContent += '<h5 class="modal-title" id="get-pid">Assegna posto ' + posto + '</h5>';
+            modalContent += '<button type="button" class="close" data-dismiss="modal">';
+            modalContent += '<span>&times;</span>';
+            modalContent += '</button>';
+            modalContent += '</div>';
+            modalContent += '<div class="modal-body">';
+            modalContent += '<form>';
+            modalContent += '<div class="form-group">';
+            modalContent += '<label for="operatore">Seleziona l\'operatore:</label>';
+            modalContent += '<select class="form-control" id="operatore">';
+            $.each(operatori, function (index, operatore) {
+                modalContent += '<option value="' + operatore + '">' + operatore + '</option>';
+            });
+            modalContent += '</select>';
+            modalContent += '</div>';
+            modalContent += '</form>';
+            modalContent += '</div>';
+            modalContent += '<div class="modal-footer">';
+            modalContent += '<button type="button" class="btn btn-primary" id="btn-assegna">Assegna</button>';
+            modalContent += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>';
+            modalContent += '</div>';
+
+            // Inserisce il contenuto nel modal e mostra il modal
+            $('#myModal .modal-content').html(modalContent);
+            $('#myModal').modal('show');
+        },
+        error: function () {
+            alert('Si è verificato un errore durante il recupero degli operatori.');
+        }
+    });
+});
+
+
+function show_parks(zona) {
     // Invia una richiesta AJAX per ottenere i parcheggi della zona dal database
     $.ajax({
-        url: "../db/get_slots.php",
-        type: "POST",
+        url: "../../db/get_slots.php",
+        type: "GET",
         data: {
             zona: zona
         },
         success: function (data) {
-            // Rimuovi tutte le righe della tabella
-            $("#tabella-parcheggi tbody tr").remove();
-
             // Aggiungi le righe della tabella con i dati dei parcheggi ottenuti dal database
-            $("#tabella-parcheggi tbody").append(data);
+            $("#tabella-parcheggi").html(data);
 
             // Visualizza la tabella
             $("#tabella-parcheggi").show();
+
+            //Scrolla all'inizio della tabella
+            $("#table-wrapper").scrollTop(0);
+        },
+        error: function () {
+            alert('Si è verificato un errore durante la visualizzazione dei posti.');
         }
     });
 }

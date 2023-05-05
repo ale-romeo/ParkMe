@@ -15,11 +15,14 @@ if (isset($_SESSION["username"])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="../../js/bd_map.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../css/login_signup.css">
     <link rel="stylesheet" type="text/css" href="../../css/usr_int.css">
     <link rel="stylesheet" type="text/css" href="../../css/bd_dash.css">
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -34,7 +37,7 @@ if (isset($_SESSION["username"])) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link" href="#" style="color: white;">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Parcheggi</a>
@@ -58,22 +61,20 @@ if (isset($_SESSION["username"])) {
         <div class="formbg-inner padding-horizontal--48">
             <span class="padding-bottom--15 wtd" style="color: #4f25d6; font-weight: 400;">Clicca su una zona per
                 visualizzarne i posti auto...</span>
-            <table id="tabella-parcheggi">
-                <thead>
-                    <tr>
-                        <th>Codice</th>
-                        <th>Stato</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div id="table-wrapper">
+                <table id="tabella-parcheggi" style="display: none;">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
 </body>
 
 </html>

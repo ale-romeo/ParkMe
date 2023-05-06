@@ -12,19 +12,41 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "../../db/add_emp.php",
-            data: {nome: nome, cognome: cognome, data_nascita: data_nascita, id_body: bd_id},
+            data: { nome: nome, cognome: cognome, data_nascita: data_nascita, id_body: bd_id },
             success: function (response) {
-                // Se l'inserimento ha avuto successo, mostra un messaggio di conferma
-                if (response.success) {
-                    alert("Utente inserito con successo!");
-                } else {
-                    // Se c'è stato un errore, mostra un messaggio di errore
-                    alert("Si è verificato un errore: " + response.error);
-                }
+                alert("Utente inserito con successo!");
+                show_emps();
             },
             error: function () {
                 alert("Si è verificato un errore durante l'invio dei dati.");
             }
         });
     });
+});
+
+function show_emps() {
+    $.ajax({
+        url: "../../db/get_emps.php",
+        type: "GET",
+        data: {
+            bd_id: bd_id
+        },
+        success: function (data) {
+            // Aggiungi le righe della tabella con i dati dei parcheggi ottenuti dal database
+            $("#tabella-personale").html(data);
+
+            // Visualizza la tabella
+            $("#table-wrapper").show();
+
+            //Scrolla all'inizio della tabella
+            $("#table-wrapper").scrollTop(0);
+        },
+        error: function () {
+            alert('Si è verificato un errore durante la visualizzazione dei posti.');
+        }
+    });
+}
+
+$(document).ready(function () {
+    show_emps();
 });

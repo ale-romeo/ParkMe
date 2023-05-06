@@ -85,12 +85,20 @@ if (isset($_GET["adderror"])) {
             </form>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content"></div>
+
+    <div class="formbg right">
+        <div class="formbg-inner padding-horizontal--48">
+            <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Lista impiegati:
+            </span>
+            <div id="table-wrapper" style="display: none;">
+                <table id="tabella-personale">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
     </div>
+
     <script>        var bd_id = <?php echo json_encode($bd_id); ?>;
     </script>
 </body>

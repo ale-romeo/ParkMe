@@ -59,3 +59,45 @@ body {
     color: #fff;
     transition: background-color 0.3s ease;
 }
+
+.right {
+    position: fixed;
+    top: 50%;
+    right: -10%;
+    transform: translate(-50%, -50%);
+}
+
+#table-wrapper {
+    height: 250px;
+    overflow: auto;
+    margin-bottom: -20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table thead th {
+    background-color: #9376af;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+table tbody td {
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid #a995c4;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #c5a6df;
+}

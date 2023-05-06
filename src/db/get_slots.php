@@ -8,13 +8,12 @@ $zona = $_GET['zona'];
 $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
 $result = $conn->query($posti) or die("Query failed: " . $conn->connect_error);
 
-// Genera la tabella dei parcheggi
 $av_vis = '<span class="status-icon"><i class="fas fa-circle text-success"></i></span>';
 $pr_vis = '<span class="status-icon"><i class="fas fa-circle text-primary"></i></span>';
 $ofo_vis = '<span class="status-icon"><i class="fas fa-circle"></i></span>';
 $oc_vis = '<span class="status-icon"><i class="fas fa-circle text-danger"></i></span>';
 
-
+// Genera la tabella dei parcheggi
 $table_html = '<table>';
 $table_html .= '<thead><tr><th>Codice</th><th>Stato</th><th> </th><th>Operatore</th><th> </th></tr></thead>';
 $table_html .= '<tbody>';

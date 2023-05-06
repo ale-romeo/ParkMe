@@ -57,7 +57,7 @@ if (isset($_GET["adderror"])) {
     </nav>
     <!-- Main Content -->
     <div class="container-fluid">
-        <div class="row align-items-center" style="margin-top: 15%;">
+        <div class="row align-items-center">
             <div class="col-6">
                 <div class="formbg">
                     <div class="formbg-inner padding-horizontal--48">

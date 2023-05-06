@@ -1,10 +1,14 @@
+body {
+    background-image: url('../img/bg_emp.jpg');
+}
+
 .navbar {
     position: relative;
     z-index: 1;
 }
 
 #table-wrapper {
-    height: 200px;
+    height: 250px;
     overflow: auto;
     margin-bottom: -20px;
     margin-right: -40px;
@@ -21,6 +25,8 @@ table thead th {
     font-weight: bold;
     text-align: center;
     padding: 10px;
+    position: sticky;
+    top: 0;
 }
 
 table tbody td {

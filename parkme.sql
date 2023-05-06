@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Creato il: Mag 05, 2023 alle 02:47
+-- Creato il: Mag 06, 2023 alle 01:37
 -- Versione del server: 8.0.33
 -- Versione PHP: 8.1.18
 
@@ -38,6 +38,8 @@ CREATE TABLE `Account` (
   `birth_date` date DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `gender` enum('M','F','O') DEFAULT NULL,
+  `Body_id` varchar(50) DEFAULT NULL,
+  `Agent_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `priv_email_employee` varchar(255) DEFAULT NULL,
   `expiration_contract_employee` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -46,9 +48,9 @@ CREATE TABLE `Account` (
 -- Dump dei dati per la tabella `Account`
 --
 
-INSERT INTO `Account` (`username`, `email`, `password`, `reg_date`, `type`, `name`, `surname`, `birth_date`, `phone`, `gender`, `priv_email_employee`, `expiration_contract_employee`) VALUES
-('ciaoo', 'ciaoo@ciao.it', '$2y$10$RDnHeTy.57TsQrGL9GIIueE/WeTro5ys5XVi7Pnpul7kg2EVVhR3e', '2023-04-29 01:05:41', 'end_user', 'Alessandro', 'Romeo', NULL, NULL, NULL, NULL, NULL),
-('giuseppe.buonasera', 'giuseppe.buonasera@comune.messina.it', '$2y$10$vVBzzalMn6IQs2EtnnsKqeDugvmy7cCNJgSTxThGdwhRBPtwbF6i.', '2023-05-02 17:19:47', 'sup_body_emp', 'Giuseppe', 'Buonasera', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `Account` (`username`, `email`, `password`, `reg_date`, `type`, `name`, `surname`, `birth_date`, `phone`, `gender`, `Body_id`, `Agent_id`, `priv_email_employee`, `expiration_contract_employee`) VALUES
+('ciaoo', 'ciaoo@ciao.it', '$2y$10$RDnHeTy.57TsQrGL9GIIueE/WeTro5ys5XVi7Pnpul7kg2EVVhR3e', '2023-04-29 01:05:41', 'end_user', 'Alessandro', 'Romeo', NULL, NULL, NULL, '', NULL, NULL, NULL),
+('giuseppe.buonasera', 'giuseppe.buonasera@comune.messina.it', '$2y$10$vVBzzalMn6IQs2EtnnsKqeDugvmy7cCNJgSTxThGdwhRBPtwbF6i.', '2023-05-02 17:19:47', 'sup_body_emp', 'Giuseppe', 'Buonasera', NULL, NULL, NULL, 'MESSINA', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -322,7 +324,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 ('A98', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('A99', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('B0', 'Available', 'MESSINA', 'MYCICERO', NULL, NULL, NULL, 0),
-('B1', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
+('B1', 'Available', 'MESSINA', 'EASYPARK', NULL, NULL, NULL, 1),
 ('B10', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('B100', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('B101', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
@@ -721,13 +723,13 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 ('C97', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('C98', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('C99', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
-('D0', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
+('D0', 'Available', 'MESSINA', 'EASYPARK', NULL, NULL, NULL, 1),
 ('D1', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D10', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('D100', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D101', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D102', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
-('D103', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
+('D103', 'Available', 'MESSINA', 'EASYPARK', NULL, NULL, NULL, 0),
 ('D104', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('D105', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D106', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
@@ -756,7 +758,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 ('D127', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D128', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D129', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
-('D13', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
+('D13', 'Available', 'MESSINA', 'MYCICERO', NULL, NULL, NULL, 0),
 ('D130', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D131', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('D132', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
@@ -833,7 +835,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 ('D197', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('D198', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D199', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
-('D2', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
+('D2', 'Available', 'MESSINA', 'MYCICERO', NULL, NULL, NULL, 1),
 ('D20', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D21', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D22', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
@@ -846,7 +848,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 ('D29', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D3', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D30', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
-('D31', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
+('D31', 'Available', 'MESSINA', 'EASYPARK', NULL, NULL, NULL, 0),
 ('D32', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D33', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('D34', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
@@ -857,7 +859,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 ('D39', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D4', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D40', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
-('D41', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
+('D41', 'Available', 'MESSINA', 'EASYPARK', NULL, NULL, NULL, 1),
 ('D42', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('D43', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('D44', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
@@ -971,9 +973,9 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 ('E140', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('E141', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('E142', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
-('E143', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
-('E144', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0);
+('E143', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1);
 INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_price`, `periodic_price`, `parking_ending_time`, `charging_station`) VALUES
+('E144', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('E145', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('E146', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('E147', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
@@ -1042,7 +1044,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 ('E24', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('E25', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('E26', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
-('E27', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
+('E27', 'Available', 'MESSINA', 'MYCICERO', NULL, NULL, NULL, 0),
 ('E28', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('E29', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('E3', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
@@ -1082,7 +1084,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 ('E60', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('E61', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('E62', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
-('E63', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
+('E63', 'Available', 'MESSINA', 'MYCICERO', NULL, NULL, NULL, 1),
 ('E64', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('E65', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('E66', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),

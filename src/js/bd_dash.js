@@ -79,10 +79,14 @@ function show_parks(zona) {
             $("#tabella-parcheggi").html(data);
 
             // Visualizza la tabella
-            $("#tabella-parcheggi").show();
+            $("#table-wrapper").show();
 
             //Scrolla all'inizio della tabella
             $("#table-wrapper").scrollTop(0);
+
+            //Nascondi testo form
+            $("#up-text").text('Zona: '+ zona);
+            $("#up-text").css("font-weight", "600");
         },
         error: function () {
             alert('Si è verificato un errore durante la visualizzazione dei posti.');

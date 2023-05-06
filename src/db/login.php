@@ -46,8 +46,9 @@ if (isset($_REQUEST['log_body'])) {
         if (password_verify($password, $row['password'])) {
             session_start();
             $_SESSION["username"] = explode('@', $username)[0];
+            $_SESSION["id_body"] = $row['Body_id'];
             if ($row['type'] == $type_sup) {
-                header("location: ../emp/bd_sup/bd_sup_map.php");
+                header("location: ../emp/bd_s/bd_s_dash.php");
             }else {
                 header("location: ../emp/bd/bd_map.php");
             }

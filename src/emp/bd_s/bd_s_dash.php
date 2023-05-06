@@ -14,7 +14,7 @@ if (isset($_SESSION["username"])) {
     <title>ParkMe - The easy way to park.</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="../../js/bd_map.js"></script>
+    <script src="../../js/bd_dash.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../css/login_signup.css">
@@ -40,10 +40,7 @@ if (isset($_SESSION["username"])) {
                     <a class="nav-link" href="#" style="color: white;">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Parcheggi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Fruitori</a>
+                    <a class="nav-link" href="bd_s_mng.php">Impiegati</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Statistiche</a>
@@ -59,10 +56,14 @@ if (isset($_SESSION["username"])) {
 
     <div id="form-container" class="formbg">
         <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--15 wtd" style="color: #4f25d6; font-weight: 400;">Clicca su una zona per
-                visualizzarne i posti auto...</span>
-            <div id="table-wrapper">
-                <table id="tabella-parcheggi" style="display: none;">
+            <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Ciao
+                <strong style="color: #4f25d6;">
+                    <?php echo $username ?>
+                </strong>,<br>Clicca su una zona per
+                visualizzarne i posti auto...
+            </span>
+            <div id="table-wrapper" style="display: none;">
+                <table id="tabella-parcheggi">
                     <thead></thead>
                     <tbody></tbody>
                 </table>

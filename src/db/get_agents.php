@@ -3,7 +3,7 @@ include('connection.php');
 // Query per recuperare la lista degli operatori
 
 $get_ag = "SELECT NAME FROM Agent";
-$result = $conn->query($get_ag);
+$result = $conn->query($get_ag) or die('Database error'. $conn->connect_error);
 
 // Costruisce un array contenente i dati degli operatori
 $operatori = array();

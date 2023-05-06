@@ -1,0 +1,61 @@
+body {
+    background-image: url('../img/bg_emp.jpg');
+    background-size: auto;
+}
+
+.navbar {
+    position: relative;
+    z-index: 1;
+}
+
+.wtd {
+    margin-top: -30px;
+}
+
+.formbg {
+    padding: 10px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-right: -10px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #4f25d6;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+}
+
+.form-group.col-md-4 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.formbg-inner button[type="submit"] {
+    margin-top: 30px;
+    background-color: #4f25d6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.formbg-inner button[type="submit"]:hover {
+    background-color: #3e1fba;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}

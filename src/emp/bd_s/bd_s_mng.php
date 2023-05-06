@@ -28,7 +28,6 @@ if (isset($_GET["adderror"])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/login_signup.css">
-    <link rel="stylesheet" type="text/css" href="../../css/usr_int.css">
     <link rel="stylesheet" type="text/css" href="../../css/bd_mng.css">
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 </head>
@@ -57,44 +56,52 @@ if (isset($_GET["adderror"])) {
         </div>
     </nav>
     <!-- Main Content -->
-    <div id="form-container" class="formbg">
-        <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Ciao
-                <strong style="color: #4f25d6;">
-                    <?php echo $username ?>
-                </strong>,<br>Vuoi creare un nuovo account?
-            </span>
-            <form id="add-account">
-                <div class="form-group row">
-                    <div class="col-md-4">
-                        <label for="name">Nome</label>
-                        <input type="text" name="name" id="nome" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="surname">Cognome</label>
-                        <input type="text" name="surname" id="cognome" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="bdate">Data di nascita</label>
-                        <input type="date" id="bdate" name="bdate" required>
-                    </div>
-                    <div class="col-md-12 text-right">
-                        <button type="submit" class="btn btn-primary">Aggiungi</button>
+    <div class="container-fluid">
+        <div class="row align-items-center" style="margin-top: 15%;">
+            <div class="col-6">
+                <div class="formbg">
+                    <div class="formbg-inner padding-horizontal--48">
+                        <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Ciao
+                            <strong style="color: #4f25d6;">
+                                <?php echo $username ?>
+                            </strong>,<br>Vuoi creare un nuovo account?
+                        </span>
+                        <form id="add-account">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label for="name">Nome</label>
+                                    <input type="text" name="name" id="nome" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="surname">Cognome</label>
+                                    <input type="text" name="surname" id="cognome" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="bdate">Data di nascita</label>
+                                    <input type="date" id="bdate" name="bdate" required>
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" class="btn btn-primary">Aggiungi</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
+            </div>
 
-    <div class="formbg right">
-        <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Lista impiegati:
-            </span>
-            <div id="table-wrapper" style="display: none;">
-                <table id="tabella-personale">
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
+            <div class="col-6">
+                <div class="formbg">
+                    <div class="formbg-inner padding-horizontal--48">
+                        <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Lista impiegati:
+                        </span>
+                        <div id="table-wrapper" style="display: none;">
+                            <table id="tabella-personale">
+                                <thead></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -42,10 +42,10 @@ if (isset($_SESSION["id_body"])) {
                     <a class="nav-link" href="bd_s_dash.php">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white;">Impiegati</a>
+                    <a class="nav-link" href="bd_s_mng.php">Impiegati</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="bd_s_stat.php">Statistiche</a>
+                    <a class="nav-link" href="#" style="color: white;">Statistiche</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -58,51 +58,17 @@ if (isset($_SESSION["id_body"])) {
         </div>
     </nav>
     <!-- Main Content -->
-    <div class="container-fluid" style="height: 90vh;">
-        <div class="row align-items-center">
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 200px;">
             <div class="col-6">
                 <div class="box-left">
-                    <div class="box-left-inner padding-horizontal--48">
-                        <span class="wtd" id="up-text" style="font-weight: 400;">Ciao
-                            <strong style="color: #4f25d6;">
-                                <?php echo $username ?>
-                            </strong>,<br>Vuoi creare un nuovo account?
-                        </span>
-                        <form id="add-account">
-                            <div class="row form-group">
-                                <div class="col-md-4">
-                                    <label for="name">Nome</label>
-                                    <input type="text" name="name" id="nome" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="surname">Cognome</label>
-                                    <input type="text" name="surname" id="cognome" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="bdate">Data di nascita</label>
-                                    <input type="date" id="bdate" name="bdate" required>
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary">Aggiungi</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+
                 </div>
             </div>
 
             <div class="col-6">
                 <div class="box-right">
-                    <div class="formbg-inner padding-horizontal--48">
-                        <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Lista impiegati:
-                        </span>
-                        <div id="table-wrapper" style="display: none;">
-                            <table id="tabella-personale">
-                                <thead></thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

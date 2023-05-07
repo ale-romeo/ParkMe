@@ -17,8 +17,6 @@ if (isset($_SESSION["username"])) {
     <script src="../../js/bd_dash.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../css/login_signup.css">
-    <link rel="stylesheet" type="text/css" href="../../css/usr_int.css">
     <link rel="stylesheet" type="text/css" href="../../css/bd_dash.css">
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -43,7 +41,14 @@ if (isset($_SESSION["username"])) {
                     <a class="nav-link" href="bd_s_mng.php">Impiegati</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Statistiche</a>
+                    <a class="nav-link" href="bd_s_stat.php">Statistiche</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../acc.php">
+                        <i class="fas fa-user" style="color: white;"></i>&nbsp&nbspProfilo
+                    </a>
                 </li>
             </ul>
         </div>
@@ -53,10 +58,9 @@ if (isset($_SESSION["username"])) {
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbNPf97Eygay20RttKTUPcgDjcbfh8CB8&callback=initMap&v=weekly"
         defer></script>
-
-    <div id="form-container" class="formbg">
-        <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Ciao
+    <div class="park-box">
+        <div class="park-box-inner">
+            <span class="wtd" id="up-text" style="font-weight: 400;">Ciao
                 <strong style="color: #4f25d6;">
                     <?php echo $username ?>
                 </strong>,<br>Clicca su una zona per

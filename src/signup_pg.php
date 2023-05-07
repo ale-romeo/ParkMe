@@ -103,7 +103,7 @@ if (isset($_GET["passErr"])) {
       $("#email").blur(function () {
         var email = $(this).val();
         $.ajax({
-          url: 'db/check_user_exists.php',
+          url: 'db/ck_eml.php',
           type: 'post',
           data: { email: email },
           success: function (response) {

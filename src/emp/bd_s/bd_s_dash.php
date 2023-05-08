@@ -1,8 +1,12 @@
 <?php
 session_start();
 $username = "";
+$bd_id = "";
 if (isset($_SESSION["username"])) {
     $username = $_SESSION["username"];
+}
+if (isset($_SESSION["id_body"])) {
+    $bd_id = $_SESSION["id_body"];
 }
 ?>
 

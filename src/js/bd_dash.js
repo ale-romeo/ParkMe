@@ -94,6 +94,18 @@ function show_parks(zona) {
     });
 }
 
+function save_log(zona) {
+
+    $.ajax({
+        url: "../../db/view_log.php",
+        type: 'POST',
+        data: { zona: zona },
+        error: function() {
+            alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}
+
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 17,
@@ -199,6 +211,7 @@ function initMap() {
         var sel_zone = 'A';
 
         show_parks(sel_zone);
+        save_log(sel_zone);
     });
 
     // Aggiungi listener per zona B
@@ -206,6 +219,7 @@ function initMap() {
         var sel_zone = 'B';
 
         show_parks(sel_zone);
+        save_log(sel_zone);
     });
 
     // Aggiungi listener per zona C
@@ -213,6 +227,7 @@ function initMap() {
         var sel_zone = 'C';
 
         show_parks(sel_zone);
+        save_log(sel_zone);
     });
 
     // Aggiungi listener per zona D
@@ -220,6 +235,7 @@ function initMap() {
         var sel_zone = 'D';
 
         show_parks(sel_zone);
+        save_log(sel_zone);
     });
 
     // Aggiungi listener per zona E
@@ -227,6 +243,7 @@ function initMap() {
         var sel_zone = 'E';
 
         show_parks(sel_zone);
+        save_log(sel_zone);
     });
 
 }

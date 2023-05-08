@@ -82,6 +82,7 @@ if (isset($_REQUEST['log_agent'])) {
         if (password_verify($password, $row['password'])) {
             session_start();
             $_SESSION["username"] = explode('@', $username)[0];
+            $_SESSION['id_agent'] = $row['Agent_id'];
             if ($type )
             header("location: ../emp/ag_map.php");
             exit(); // Assicurati di uscire subito dopo il redirect

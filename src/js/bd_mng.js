@@ -12,8 +12,8 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "../../db/add_emp.php",
-            data: { nome: nome, cognome: cognome, data_nascita: data_nascita, id_body: bd_id },
-            success: function (response) {
+            data: { nome: nome, cognome: cognome, data_nascita: data_nascita },
+            success: function () {
                 alert("Utente inserito con successo!");
                 show_emps();
             },

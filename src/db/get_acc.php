@@ -14,13 +14,14 @@ if (isset($_SESSION["id_body"])) {
     $bd_id = $_SESSION["id_body"];
     $get_acc = "SELECT * FROM Account WHERE username = '$username' AND Body_id = '$bd_id'";
 }
-if (isset($_SESSION["id_agent"])) {
+else if (isset($_SESSION["id_agent"])) {
     $ag_id = $_SESSION["id_agent"];
     $get_acc = "SELECT * FROM Account WHERE username = '$username' AND Agent_id = '$ag_id'";
 }
+else {
+    $get_acc = "SELECT * FROM Account WHERE username = '$username'";
+}
 
-
-$get_acc = "SELECT * FROM Account WHERE username = '$username'";
 $result = $conn->query($get_acc) or die("Errore durante il caricamento dell'utente" . $conn->connect_error);
 
 if ($result->num_rows > 0){

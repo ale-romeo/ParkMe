@@ -40,7 +40,7 @@ $(document).ready(function () {
 function show_det() {
     $.ajax({
         type: 'POST',
-        url: '../../db/get_acc.php',
+        url: '../db/get_acc.php',
         dataType: 'json',
         success: function (data) {
             $('#username').val(data.username);

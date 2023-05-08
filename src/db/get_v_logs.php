@@ -1,7 +1,7 @@
 <?php
 include("connection.php");
 
-$get_logs = "SELECT * FROM Viewing_slots";
+$get_logs = "SELECT * FROM Viewing_slots ORDER BY id DESC";
 $res = $conn->query($get_logs) or die("Errore durante il caricamento dei logs: ". $conn->connect_error);
 
 $table_html = '<table>';

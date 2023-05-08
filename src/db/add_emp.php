@@ -1,10 +1,14 @@
 <?php
+session_start();
 include('connection.php');
 
 $nome = $_POST["nome"];
 $cognome = $_POST["cognome"];
 $data_nascita = $_POST["data_nascita"];
-$id_body = $_POST["id_body"];
+$id_body = "";
+if (isset($_SESSION["id_body"])) {
+    $id_body = $_SESSION["id_body"];
+}
 $username = strtolower($nome) . '.' . strtolower($cognome);
 $email = $username . '@comune.' . strtolower($id_body) . '.it';
 $type = 'body_emp';

@@ -17,9 +17,6 @@ body {
     z-index: 1;
 }
 
-.row {
-    margin-top: 15%;
-}
 
 .box {
     margin: 0px auto;
@@ -40,7 +37,8 @@ body {
 }
 
 #table-wrapper {
-    height: 250px;
+    height: auto;
+    max-height: 350px;
     overflow: auto;
 }
 

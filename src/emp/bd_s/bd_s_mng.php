@@ -58,11 +58,11 @@ if (isset($_SESSION["id_body"])) {
         </div>
     </nav>
     <!-- Main Content -->
-    <div class="container-fluid" style="height: 90vh;">
-        <div class="row align-items-center">
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-center" style="height: 90vh;">
             <div class="col-6">
                 <div class="box-left">
-                    <div class="box-left-inner padding-horizontal--48">
+                    <div class="box-left-inner">
                         <span class="wtd" id="up-text" style="font-weight: 400;">Ciao
                             <strong style="color: #4f25d6;">
                                 <?php echo $username ?>
@@ -93,7 +93,7 @@ if (isset($_SESSION["id_body"])) {
 
             <div class="col-6">
                 <div class="box-right">
-                    <div class="formbg-inner padding-horizontal--48">
+                    <div class="box-right-inner">
                         <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Lista impiegati:
                         </span>
                         <div id="table-wrapper" style="display: none;">

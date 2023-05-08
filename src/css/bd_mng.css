@@ -17,10 +17,6 @@ body {
     z-index: 1;
 }
 
-.row {
-    margin-top: 15%;
-}
-
 .box-left,
 .box-right {
     margin: 0px auto;
@@ -40,12 +36,12 @@ body {
     padding-bottom: 15px;
 }
 
-.box-left-inner {
+.box-right-inner {
     padding: 20px;
 }
 
-#add-account {
-    margin-top: -30px;
+.box-left-inner {
+    padding: 30px;
 }
 
 .form-group label {
@@ -93,9 +89,9 @@ body {
 }
 
 #table-wrapper {
-    height: 250px;
+    height: auto;
+    max-height: 200px;
     overflow: auto;
-    margin-bottom: -20px;
 }
 
 table {

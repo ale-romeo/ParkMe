@@ -27,10 +27,7 @@ $(document).ready(function () {
 function show_emps() {
     $.ajax({
         url: "../../db/get_emps.php",
-        type: "GET",
-        data: {
-            bd_id: bd_id
-        },
+        type: "POST",
         success: function (data) {
             // Aggiungi le righe della tabella con i dati dei parcheggi ottenuti dal database
             $("#tabella-personale").html(data);

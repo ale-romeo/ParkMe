@@ -45,7 +45,7 @@ if (isset($_SESSION["id_body"])) {
                     <a class="nav-link" href="#" style="color: white;">Impiegati</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="bd_s_stat.php">Statistiche</a>
+                    <a class="nav-link" href="bd_s_logs.php">Logs</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -107,9 +107,6 @@ if (isset($_SESSION["id_body"])) {
             </div>
         </div>
     </div>
-
-    <script>        var bd_id = <?php echo json_encode($bd_id); ?>;
-    </script>
 </body>
 
 

@@ -45,7 +45,7 @@ if (isset($_SESSION["id_body"])) {
                     <a class="nav-link" href="bd_s_mng.php">Impiegati</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="bd_s_stat.php">Statistiche</a>
+                    <a class="nav-link" href="bd_s_logs.php">Logs</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

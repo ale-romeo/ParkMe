@@ -40,7 +40,7 @@ $(document).ready(function () {
 function show_det() {
     $.ajax({
         type: 'POST',
-        url: '../db/get_acc.php',
+        url: '../../db/get_acc.php',
         dataType: 'json',
         success: function (data) {
             $('#username').val(data.username);
@@ -59,6 +59,9 @@ function show_det() {
                 $('#gender').value = 'Altro';
             }
             $('#priv_email').val(data.priv_email_employee);
+        },
+        error: function() {
+            alert("Errore durante il caricamento dell'account.");
         }
     });
 }

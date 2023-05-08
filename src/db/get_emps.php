@@ -1,7 +1,10 @@
 <?php
+session_start();
 include('connection.php');
-
-$bd_id = $_GET['bd_id'];
+$bd_id = "";
+if (isset($_SESSION["id_body"])) {
+    $bd_id = $_SESSION["id_body"];
+}
 
 // Query per recuperare i posti auto della zona selezionata
 $posti = "SELECT name, surname, reg_date FROM Account WHERE type = 'body_emp' AND Body_id = '$bd_id' ORDER BY name";

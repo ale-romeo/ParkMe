@@ -20,10 +20,10 @@ if (isset($_SESSION["id_body"])) {
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="../../js/bd_mng.js"></script>
+    <script src="../../js/bd_logs.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/bd_mng.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bd_logs.css">
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 </head>
 
@@ -45,7 +45,7 @@ if (isset($_SESSION["id_body"])) {
                     <a class="nav-link" href="bd_s_mng.php">Impiegati</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white;">Statistiche</a>
+                    <a class="nav-link" href="#" style="color: white;">Logs</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -58,24 +58,17 @@ if (isset($_SESSION["id_body"])) {
         </div>
     </nav>
     <!-- Main Content -->
-    <div class="container-fluid">
-        <div class="row" style="margin-top: 200px;">
-            <div class="col-6">
-                <div class="box-left">
-
-                </div>
-            </div>
-
-            <div class="col-6">
-                <div class="box-right">
-
-                </div>
+    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 90vh;">
+        <div class="box">
+            <span class="wtd" id="up-text" style="font-weight: 600;">Visualizza logs</span>
+            <div id="table-wrapper" style="display: none;">
+                <table id="tabella-logs">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </div>
-
-    <script>        var bd_id = <?php echo json_encode($bd_id); ?>;
-    </script>
 </body>
 
 

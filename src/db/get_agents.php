@@ -14,4 +14,5 @@ while ($row = $result->fetch_assoc()) {
 // Converte l'array in formato JSON e lo restituisce come response alla chiamata AJAX
 header('Content-Type: application/json');
 echo json_encode($operatori);
+
 ?>

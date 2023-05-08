@@ -6,8 +6,10 @@ if(isset($_POST['email'])){
 	$result = $conn->query($sql) or die("Query failed: ". $conn->connect_error);
 	if($result->num_rows > 0){
 		echo 'exists';
+		exit();
 	}else{
 		echo 'not_exists';
+		exit();
 	}
 }
 ?>

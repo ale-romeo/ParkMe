@@ -83,8 +83,11 @@ if (isset($_REQUEST['log_agent'])) {
             session_start();
             $_SESSION["username"] = explode('@', $username)[0];
             $_SESSION['id_agent'] = $row['Agent_id'];
-            if ($type )
-            header("location: ../emp/ag_map.php");
+            if ($row['type'] == $type_sup) {
+                header("location: ../emp/ag_s/ag_s_dash.php");
+            }else {
+                header("location: ../emp/ag/ag_dash.php");
+            }
             exit(); // Assicurati di uscire subito dopo il redirect
         } else {
             $log_agErr = "Invalid username or password";

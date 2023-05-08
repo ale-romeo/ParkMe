@@ -95,7 +95,6 @@ function show_parks(zona) {
 }
 
 function save_log(zona) {
-
     $.ajax({
         url: "../../db/view_log.php",
         type: 'POST',

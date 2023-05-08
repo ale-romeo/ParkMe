@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Creato il: Mag 06, 2023 alle 01:37
--- Versione del server: 8.0.33
--- Versione PHP: 8.1.18
+-- Generation Time: May 08, 2023 at 04:45 PM
+-- Server version: 8.0.33
+-- PHP Version: 8.1.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Account`
+-- Table structure for table `Account`
 --
 
 CREATE TABLE `Account` (
@@ -45,17 +45,20 @@ CREATE TABLE `Account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dump dei dati per la tabella `Account`
+-- Dumping data for table `Account`
 --
 
 INSERT INTO `Account` (`username`, `email`, `password`, `reg_date`, `type`, `name`, `surname`, `birth_date`, `phone`, `gender`, `Body_id`, `Agent_id`, `priv_email_employee`, `expiration_contract_employee`) VALUES
 ('ciaoo', 'ciaoo@ciao.it', '$2y$10$RDnHeTy.57TsQrGL9GIIueE/WeTro5ys5XVi7Pnpul7kg2EVVhR3e', '2023-04-29 01:05:41', 'end_user', 'Alessandro', 'Romeo', NULL, NULL, NULL, '', NULL, NULL, NULL),
-('giuseppe.buonasera', 'giuseppe.buonasera@comune.messina.it', '$2y$10$vVBzzalMn6IQs2EtnnsKqeDugvmy7cCNJgSTxThGdwhRBPtwbF6i.', '2023-05-02 17:19:47', 'sup_body_emp', 'Giuseppe', 'Buonasera', NULL, NULL, NULL, 'MESSINA', NULL, NULL, NULL);
+('giovanni.lombardo', 'giovanni.lombardo@comune.messina.it', '', '2023-05-08 12:46:17', 'body_emp', 'Giovanni', 'Lombardo', '2002-02-19', NULL, NULL, 'MESSINA', NULL, NULL, NULL),
+('giuseppe.bonasera', 'giuseppe.buonasera@comune.messina.it', '$2y$10$vVBzzalMn6IQs2EtnnsKqeDugvmy7cCNJgSTxThGdwhRBPtwbF6i.', '2023-05-02 17:19:47', 'sup_body_emp', 'Giuseppe', 'Buonasera', '2000-03-29', '', 'M', 'MESSINA', NULL, '', NULL),
+('matte.bonsi', 'matte.bonsi@comune.messina.it', '', '2023-05-08 12:47:10', 'body_emp', 'Matte', 'Bonsi', '2002-08-05', NULL, NULL, 'MESSINA', NULL, NULL, NULL),
+('matteo.bonsi', 'matteo.bonsi@comune.messina.it', '', '2023-05-08 12:46:50', 'body_emp', 'Matteo', 'Bonsi', '2002-08-05', NULL, NULL, 'MESSINA', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Agent`
+-- Table structure for table `Agent`
 --
 
 CREATE TABLE `Agent` (
@@ -64,7 +67,7 @@ CREATE TABLE `Agent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dump dei dati per la tabella `Agent`
+-- Dumping data for table `Agent`
 --
 
 INSERT INTO `Agent` (`NAME`, `balance`) VALUES
@@ -74,7 +77,7 @@ INSERT INTO `Agent` (`NAME`, `balance`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Body`
+-- Table structure for table `Body`
 --
 
 CREATE TABLE `Body` (
@@ -83,7 +86,7 @@ CREATE TABLE `Body` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dump dei dati per la tabella `Body`
+-- Dumping data for table `Body`
 --
 
 INSERT INTO `Body` (`city`, `balance`) VALUES
@@ -92,7 +95,7 @@ INSERT INTO `Body` (`city`, `balance`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Managing`
+-- Table structure for table `Managing`
 --
 
 CREATE TABLE `Managing` (
@@ -104,7 +107,7 @@ CREATE TABLE `Managing` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Parking_Space`
+-- Table structure for table `Parking_Space`
 --
 
 CREATE TABLE `Parking_Space` (
@@ -119,12 +122,12 @@ CREATE TABLE `Parking_Space` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dump dei dati per la tabella `Parking_Space`
+-- Dumping data for table `Parking_Space`
 --
 
 INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_price`, `periodic_price`, `parking_ending_time`, `charging_station`) VALUES
 ('A0', 'Available', 'MESSINA', 'EASYPARK', NULL, NULL, NULL, 0),
-('A1', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
+('A1', 'Available', 'MESSINA', 'MYCICERO', NULL, NULL, NULL, 0),
 ('A10', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('A100', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('A101', 'Available', 'MESSINA', NULL, NULL, NULL, NULL, 0),
@@ -1128,7 +1131,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Payment`
+-- Table structure for table `Payment`
 --
 
 CREATE TABLE `Payment` (
@@ -1144,7 +1147,7 @@ CREATE TABLE `Payment` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Reservation`
+-- Table structure for table `Reservation`
 --
 
 CREATE TABLE `Reservation` (
@@ -1159,7 +1162,7 @@ CREATE TABLE `Reservation` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Subscription`
+-- Table structure for table `Subscription`
 --
 
 CREATE TABLE `Subscription` (
@@ -1174,7 +1177,7 @@ CREATE TABLE `Subscription` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Ticket`
+-- Table structure for table `Ticket`
 --
 
 CREATE TABLE `Ticket` (
@@ -1187,45 +1190,59 @@ CREATE TABLE `Ticket` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Viewing_Slots`
+-- Table structure for table `Viewing_slots`
 --
 
-CREATE TABLE `Viewing_Slots` (
-  `id_body_employee` varchar(50) NOT NULL,
-  `DATE` date NOT NULL
+CREATE TABLE `Viewing_slots` (
+  `id` int NOT NULL,
+  `emp_id` varchar(50) DEFAULT NULL,
+  `slot_zone` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `viewing_time` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Indici per le tabelle scaricate
+-- Dumping data for table `Viewing_slots`
+--
+
+INSERT INTO `Viewing_slots` (`id`, `emp_id`, `slot_zone`, `viewing_time`) VALUES
+(1, 'giuseppe.buonasera', 'B', '2023-05-08 15:46:39'),
+(8, 'giuseppe.buonasera', 'C', '2023-05-08 16:23:04'),
+(9, 'giuseppe.buonasera', 'B', '2023-05-08 16:23:05'),
+(10, 'giuseppe.buonasera', 'A', '2023-05-08 16:23:06'),
+(11, 'giuseppe.buonasera', 'D', '2023-05-08 16:23:08'),
+(12, 'giuseppe.buonasera', 'E', '2023-05-08 16:23:12');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `Account`
+-- Indexes for table `Account`
 --
 ALTER TABLE `Account`
   ADD PRIMARY KEY (`username`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indici per le tabelle `Agent`
+-- Indexes for table `Agent`
 --
 ALTER TABLE `Agent`
   ADD PRIMARY KEY (`NAME`);
 
 --
--- Indici per le tabelle `Body`
+-- Indexes for table `Body`
 --
 ALTER TABLE `Body`
   ADD PRIMARY KEY (`city`);
 
 --
--- Indici per le tabelle `Managing`
+-- Indexes for table `Managing`
 --
 ALTER TABLE `Managing`
   ADD PRIMARY KEY (`id_employee`,`ACTION`);
 
 --
--- Indici per le tabelle `Parking_Space`
+-- Indexes for table `Parking_Space`
 --
 ALTER TABLE `Parking_Space`
   ADD PRIMARY KEY (`id`),
@@ -1233,7 +1250,7 @@ ALTER TABLE `Parking_Space`
   ADD KEY `id_agent` (`id_agent`);
 
 --
--- Indici per le tabelle `Payment`
+-- Indexes for table `Payment`
 --
 ALTER TABLE `Payment`
   ADD PRIMARY KEY (`id`),
@@ -1243,7 +1260,7 @@ ALTER TABLE `Payment`
   ADD KEY `id_parking` (`id_parking`);
 
 --
--- Indici per le tabelle `Reservation`
+-- Indexes for table `Reservation`
 --
 ALTER TABLE `Reservation`
   ADD PRIMARY KEY (`id`),
@@ -1251,7 +1268,7 @@ ALTER TABLE `Reservation`
   ADD KEY `id_parking` (`id_parking`);
 
 --
--- Indici per le tabelle `Subscription`
+-- Indexes for table `Subscription`
 --
 ALTER TABLE `Subscription`
   ADD PRIMARY KEY (`id`),
@@ -1259,65 +1276,71 @@ ALTER TABLE `Subscription`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indici per le tabelle `Ticket`
+-- Indexes for table `Ticket`
 --
 ALTER TABLE `Ticket`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indici per le tabelle `Viewing_Slots`
+-- Indexes for table `Viewing_slots`
 --
-ALTER TABLE `Viewing_Slots`
-  ADD PRIMARY KEY (`id_body_employee`,`DATE`);
+ALTER TABLE `Viewing_slots`
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `Payment`
+-- AUTO_INCREMENT for table `Payment`
 --
 ALTER TABLE `Payment`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `Reservation`
+-- AUTO_INCREMENT for table `Reservation`
 --
 ALTER TABLE `Reservation`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `Subscription`
+-- AUTO_INCREMENT for table `Subscription`
 --
 ALTER TABLE `Subscription`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `Ticket`
+-- AUTO_INCREMENT for table `Ticket`
 --
 ALTER TABLE `Ticket`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- Limiti per le tabelle scaricate
+-- AUTO_INCREMENT for table `Viewing_slots`
+--
+ALTER TABLE `Viewing_slots`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `Managing`
+-- Constraints for table `Managing`
 --
 ALTER TABLE `Managing`
   ADD CONSTRAINT `Managing_ibfk_1` FOREIGN KEY (`id_employee`) REFERENCES `Account` (`username`);
 
 --
--- Limiti per la tabella `Parking_Space`
+-- Constraints for table `Parking_Space`
 --
 ALTER TABLE `Parking_Space`
   ADD CONSTRAINT `Parking_Space_ibfk_1` FOREIGN KEY (`id_body`) REFERENCES `Body` (`city`),
   ADD CONSTRAINT `Parking_Space_ibfk_2` FOREIGN KEY (`id_agent`) REFERENCES `Agent` (`NAME`);
 
 --
--- Limiti per la tabella `Payment`
+-- Constraints for table `Payment`
 --
 ALTER TABLE `Payment`
   ADD CONSTRAINT `Payment_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`),
@@ -1326,30 +1349,24 @@ ALTER TABLE `Payment`
   ADD CONSTRAINT `Payment_ibfk_4` FOREIGN KEY (`id_parking`) REFERENCES `Parking_Space` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Limiti per la tabella `Reservation`
+-- Constraints for table `Reservation`
 --
 ALTER TABLE `Reservation`
   ADD CONSTRAINT `Reservation_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`),
   ADD CONSTRAINT `Reservation_ibfk_2` FOREIGN KEY (`id_parking`) REFERENCES `Parking_Space` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Limiti per la tabella `Subscription`
+-- Constraints for table `Subscription`
 --
 ALTER TABLE `Subscription`
   ADD CONSTRAINT `Subscription_ibfk_1` FOREIGN KEY (`id_agent`) REFERENCES `Agent` (`NAME`),
   ADD CONSTRAINT `Subscription_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`);
 
 --
--- Limiti per la tabella `Ticket`
+-- Constraints for table `Ticket`
 --
 ALTER TABLE `Ticket`
   ADD CONSTRAINT `Ticket_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`);
-
---
--- Limiti per la tabella `Viewing_Slots`
---
-ALTER TABLE `Viewing_Slots`
-  ADD CONSTRAINT `Viewing_Slots_ibfk_1` FOREIGN KEY (`id_body_employee`) REFERENCES `Account` (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -39,8 +39,7 @@ $(document).ready(function () {
 
 function show_det() {
     $.ajax({
-        type: 'POST',
-        url: '../db/get_acc.php',
+        url: "../db/get_acc.php",
         dataType: 'json',
         success: function (data) {
             $('#username').val(data.username);
@@ -50,13 +49,13 @@ function show_det() {
             $('#surname').val(data.surname);
             $('#phone').val(data.phone);
             if (data.gender == 'M') {
-                $('#gender').value = 'Maschio';
+                $('#gender').val('male');
             }
             if (data.gender == 'F') {
-                $('#gender').value = 'Femmina';
+                $('#gender').val('female');
             }
             if (data.gender == 'O') {
-                $('#gender').value = 'Altro';
+                $('#gender').val('other');
             }
             $('#priv_email').val(data.priv_email_employee);
         },

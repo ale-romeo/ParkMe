@@ -14,7 +14,7 @@ if (isset($_REQUEST['log_end'])) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
             session_start();
-            $_SESSION["username"] = explode('@', $username)[0];
+            $_SESSION["username"] = $row['username'];
             header("location: ../user_int.php");
             exit(); // Assicurati di uscire subito dopo il redirect
         } else {
@@ -45,7 +45,7 @@ if (isset($_REQUEST['log_body'])) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
             session_start();
-            $_SESSION["username"] = explode('@', $username)[0];
+            $_SESSION["username"] = $row['username'];
             $_SESSION["id_body"] = $row['Body_id'];
             if ($row['type'] == $type_sup) {
                 header("location: ../emp/bd_s/bd_s_dash.php");
@@ -81,7 +81,7 @@ if (isset($_REQUEST['log_agent'])) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
             session_start();
-            $_SESSION["username"] = explode('@', $username)[0];
+            $_SESSION["username"] = $row['username'];
             $_SESSION['id_agent'] = $row['Agent_id'];
             if ($row['type'] == $type_sup) {
                 header("location: ../emp/ag_s/ag_s_dash.php");

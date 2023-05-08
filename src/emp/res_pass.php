@@ -24,10 +24,10 @@ if (isset($_SESSION["id_agent"])) {
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="../../js/acc.js"></script>
+    <script src="../../js/res_pass.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/emp_acc.css">
+    <link rel="stylesheet" type="text/css" href="../css/res_pass.css">
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 </head>
 
@@ -53,57 +53,27 @@ if (isset($_SESSION["id_agent"])) {
     <!-- Main Content -->
     <div class="d-flex flex-column justify-content-center align-items-center" style="height: 90vh;">
         <div class="box">
-            <span class="wtd" id="up-text" style="font-weight: 600;">Area Personale</span>
-            <form id="edit-acc">
+            <span class="wtd" id="up-text" style="font-weight: 600;">Cambia password</span>
+            <form id="edit-pass">
                 <div class="row form-group">
-                    <div class="col-md-6">
-                        <label for="name">Nome:</label>
-                        <input type="text" id="name" name="name" readonly>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="surname">Cognome:</label>
-                        <input type="text" id="surname" name="surname" readonly>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="username">Username:</label>
-                        <span class="error" id="usrErr"></span>
-                        <input type="text" id="username" name="username">
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="date">Data di nascita:</label>
-                        <input type="date" id="bdate" name="bdate" readonly>
+                    <div class="col-md-12">
+                        <label for="password">Passowrd attuale:</label>
+                        <span class="error" id="npassErr"></span><br>
+                        <input type="password" id="password" name="password">
                     </div>
 
                     <div class="col-md-12">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" readonly>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="phone">Telefono:</label>
-                        <input type="text" id="phone" name="phone">
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="gender">Sesso:</label>
-                        <select name="gender" id="gender">
-                            <option value="male">Maschio</option>
-                            <option value="female">Femmina</option>
-                            <option value="other">Altro</option>
-                        </select>
+                        <label for="npass">Nuova password:</label>
+                        <span class="error" id="npassErr"></span><br>
+                        <input type="text" id="npass" name="npass">
                     </div>
 
                     <div class="col-md-12">
-                        <label for="priv_email">Email privata:</label>
-                        <span class="error" id="emlErr"></span>
-                        <input type="email" id="priv_email" name="priv_email">
+                        <label for="cpass">Conferma password:</label><br>
+                        <input type="text" id="cpass" name="cpass">
                     </div>
+
                     <div class="col-md-12 text-right">
-                        <button onclick="location.href = 'res_pass.php'" class="btn btn-primary">Cambia
-                            password</button>
                         <button type="submit" class="btn btn-primary">Salva</button>
                     </div>
                 </div>

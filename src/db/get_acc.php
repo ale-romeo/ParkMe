@@ -4,11 +4,11 @@ include("connection.php");
 $bd_id = "";
 $ag_id  = "";
 
-if (!isset($_SESSION['username'])){
+if (isset($_SESSION['username'])){
+    $username = $_SESSION["username"];
+} else {
     header('location: ../login_pg.php');
     exit();
-} else {
-    $username = $_SESSION["username"];
 }
 if (isset($_SESSION["id_body"])) {
     $bd_id = $_SESSION["id_body"];

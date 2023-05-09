@@ -9,6 +9,9 @@ $(document).ready(function () {
                 if (response == 'invalid') {
                     $("#passErr").html("La password è errata");
                     $("#password").val("");
+                    $("#npassErr").html("");
+                } else {
+                    $("#passErr").html("");
                 }
                 if (response == 'expired_emp') {
                     alert('Sessione scaduta.');
@@ -17,8 +20,6 @@ $(document).ready(function () {
                 if (response == 'expired_end') {
                     alert('Sessione scaduta.');
                     window.location.href('../login_pg.php');
-                } else {
-                    $("#passErr").html("");
                 }
             },
             error: function () {
@@ -37,8 +38,11 @@ $(document).ready(function () {
             data: { password: npass },
             success: function (response) {
                 if (response == 'invalid') {
-                    $("#npassErr").html("La password è troppo debole.");
+                    $("#npassErr").html("La password è troppo debole");
                     $("#npass").val("");
+                    $("#passErr").html("");
+                } else {
+                    $("#npassErr").html("");
                 }
                 if (response == 'expired_emp') {
                     alert('Sessione scaduta.');
@@ -47,9 +51,7 @@ $(document).ready(function () {
                 if (response == 'expired_end') {
                     alert('Sessione scaduta.');
                     window.location.href('../login_pg.php');
-                } else {
-                    $("#npassErr").html("");
-                }
+                } 
             },
             error: function () {
                 alert('Errore durante la verifica della nuova password.');
@@ -87,7 +89,11 @@ $(document).ready(function () {
                 } else {
                     alert('Le password non corrispondono');
                 }
+            } else {
+                alert("Inserire una nuova password.");
             }
+        } else {
+            alert('Inserire password attuale.');
         }
     });
 });

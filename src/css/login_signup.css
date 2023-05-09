@@ -178,21 +178,6 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-.field-checkbox input {
-    width: 20px;
-    height: 15px;
-    margin-right: 5px;
-    box-shadow: unset;
-    min-height: unset;
-}
-
-.field-checkbox label {
-    display: flex;
-    align-items: center;
-    margin: 0;
-}
-
-
 .footer-link span {
     font-size: 14px;
     text-align: center;

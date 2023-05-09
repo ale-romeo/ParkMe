@@ -1,28 +1,14 @@
 $(document).ready(function() {
-  $(".reveal").on('click', function () {
-    var pwdField = $("#pass");
-    var pwdFieldType = pwdField.attr('type');
-    if (pwdFieldType === 'password') {
-      pwdField.attr('type', 'text');
-      $(this).html('<i class="fa fa-eye-slash"></i>');
-    } else {
-      pwdField.attr('type', 'password');
-      $(this).html('<i class="fa fa-eye"></i>');
-    }
+  $("#eye1").on('click', function () {
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var type = $("#pass1").attr("type") === "password" ? "text" : "password";
+    $("#pass1").attr("type", type);
   });
-});
 
-$(document).ready(function() {
-  $(".reveal1").on('click', function () {
-    var pwdField = $("#pass1");
-    var pwdFieldType = pwdField.attr('type');
-    if (pwdFieldType === 'password') {
-      pwdField.attr('type', 'text');
-      $(this).html('<i class="fa fa-eye-slash"></i>');
-    } else {
-      pwdField.attr('type', 'password');
-      $(this).html('<i class="fa fa-eye"></i>');
-    }
+  $("#eye2").on('click', function () {
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var type = $("#pass2").attr("type") === "password" ? "text" : "password";
+    $("#pass2").attr("type", type);
   });
 });
 

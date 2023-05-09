@@ -18,7 +18,7 @@ if (isset($_SESSION["id_body"])) {
     <title>ParkMe - The easy way to park.</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="../../js/bd_s_dash.js"></script>
+    <script src="../../js/bd_dash.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../css/bd_dash.css">
@@ -40,12 +40,6 @@ if (isset($_SESSION["id_body"])) {
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="color: white;">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="bd_s_mng.php">Impiegati</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="bd_s_logs.php">Logs</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

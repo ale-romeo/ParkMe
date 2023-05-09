@@ -85,6 +85,9 @@ $(document).ready(function () {
             url: '../db/up_acc.php',
             data: { username: username, email: email, phone: phone, gender: gender, bdate: bdate, priv_email: priv_email },
             success: function () {
+                $("#emlErr").html("");
+                $("#usrErr").html("");
+                alert("Modifiche effettuate con successo");
                 show_det();
             },
             error: function () {

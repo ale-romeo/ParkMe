@@ -55,11 +55,6 @@ if (isset($_GET["enderror"])) {
                     <a href="#">Password dimenticata?</a>
                   </div>
                 </div>
-                <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
-                  <label for="checkbox">
-                    <input type="checkbox" name="checkbox"> Rimani collegato per una settimana
-                  </label>
-                </div>
                 <div class="field">
                   <input type="submit" name="log_end" value="Accedi">
                 </div>

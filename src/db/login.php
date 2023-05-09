@@ -50,7 +50,7 @@ if (isset($_REQUEST['log_body'])) {
             if ($row['type'] == $type_sup) {
                 header("location: ../emp/bd_s/bd_s_dash.php");
             }else {
-                header("location: ../emp/bd/bd_map.php");
+                header("location: ../emp/bd/bd_dash.php");
             }
             exit(); // Assicurati di uscire subito dopo il redirect
         } else {

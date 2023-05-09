@@ -57,14 +57,16 @@ if (isset($_SESSION["id_agent"])) {
             <form id="edit-pass">
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <label for="password">Passowrd attuale:</label>
-                        <span class="error" id="npassErr"></span><br>
+                        <span class="error" id="passErr"></span>
+                        <span class="error" id="npassErr"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="password">Passowrd attuale:</label><br>
                         <input type="password" id="password" name="password">
                     </div>
 
                     <div class="col-md-12">
-                        <label for="npass">Nuova password:</label>
-                        <span class="error" id="npassErr"></span><br>
+                        <label for="npass">Nuova password:</label><br>
                         <input type="text" id="npass" name="npass">
                     </div>
 

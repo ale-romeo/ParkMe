@@ -1,13 +1,21 @@
 <?php
 session_start();
 include('connection.php');
+
 $bd_id = "";
+$ag_id = "";
+$type = "";
 if (isset($_SESSION["id_body"])) {
     $bd_id = $_SESSION["id_body"];
+    $type = 'body_emp';
+    $posti = "SELECT name, surname, reg_date FROM Account WHERE type = '$type' AND Body_id = '$bd_id' ORDER BY name";
+}
+else if (isset($_SESSION["id_agent"])) {
+    $ag_id = $_SESSION["id_agent"];
+    $type = 'agent_emp';
+    $posti = "SELECT name, surname, reg_date FROM Account WHERE type = '$type' AND Agent_id = '$ag_id' ORDER BY name";
 }
 
-// Query per recuperare i posti auto della zona selezionata
-$posti = "SELECT name, surname, reg_date FROM Account WHERE type = 'body_emp' AND Body_id = '$bd_id' ORDER BY name";
 $result = $conn->query($posti) or die("Query failed: " . $conn->connect_error);
 
 $table_html = '<table>';

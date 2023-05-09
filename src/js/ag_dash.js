@@ -1,71 +1,3 @@
-$(document).on("click", "#btn-assegna", function () {
-    // Ottieni il posto selezionato
-    var posto = $("#get-pid").text().replace("Assegna posto ", "");
-
-    // Ottieni l'id dell'operatore selezionato
-    var agent = $("#operatore option:selected").val();
-
-    // Esegui una richiesta AJAX per aggiornare il record del posto nel database
-    $.ajax({
-        type: "POST",
-        url: "../../db/slot_assign.php",
-        data: { posto: posto, agent_id: agent },
-        success: function () {
-            // Chiudi il modal e aggiorna la tabella dei posti
-            $("#myModal").modal("hide");
-            show_parks(posto.charAt(0));
-        },
-        error: function () {
-            alert('Si è verificato un errore durante l\'assegnazione del posto.');
-        }
-    });
-});
-
-
-$(document).on("click", ".assegna-operatore", function () {
-    // Ottieni il posto selezionato
-    var posto = $(this).closest("tr").find("td:first-child").text();
-
-    $.ajax({
-        url: '../../db/get_agents.php',
-        dataType: 'json',
-        success: function (operatori) {
-            // Costruisce il contenuto del modal
-            var modalContent = '';
-            modalContent += '<div class="modal-header">';
-            modalContent += '<h5 class="modal-title" id="get-pid">Assegna posto ' + posto + '</h5>';
-            modalContent += '<button type="button" class="close" data-dismiss="modal">';
-            modalContent += '<span>&times;</span>';
-            modalContent += '</button>';
-            modalContent += '</div>';
-            modalContent += '<div class="modal-body">';
-            modalContent += '<form>';
-            modalContent += '<div class="form-group">';
-            modalContent += '<label for="operatore">Seleziona l\'operatore:</label>';
-            modalContent += '<select class="form-control" id="operatore">';
-            $.each(operatori, function (index, operatore) {
-                modalContent += '<option value="' + operatore + '">' + operatore + '</option>';
-            });
-            modalContent += '</select>';
-            modalContent += '</div>';
-            modalContent += '</form>';
-            modalContent += '</div>';
-            modalContent += '<div class="modal-footer">';
-            modalContent += '<button type="button" class="btn btn-primary" id="btn-assegna">Assegna</button>';
-            modalContent += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>';
-            modalContent += '</div>';
-
-            // Inserisce il contenuto nel modal e mostra il modal
-            $('#myModal .modal-content').html(modalContent);
-            $('#myModal').modal('show');
-        },
-        error: function () {
-            alert('Si è verificato un errore durante il recupero degli operatori.');
-        }
-    });
-});
-
-
 function show_parks(zona) {
     // Invia una richiesta AJAX per ottenere i parcheggi della zona dal database
     $.ajax({
@@ -90,17 +22,6 @@ function show_parks(zona) {
         },
         error: function () {
             alert('Si è verificato un errore durante la visualizzazione dei posti.');
-        }
-    });
-}
-
-function save_log(zona) {
-    $.ajax({
-        url: "../../db/view_log.php",
-        type: 'POST',
-        data: { zona: zona },
-        error: function() {
-            alert('Si è verficato un errore durante il salvataggio del log.');
         }
     });
 }
@@ -217,7 +138,6 @@ function initMap() {
         var sel_zone = 'A';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
     });
 
     // Aggiungi listener per zona B
@@ -225,7 +145,6 @@ function initMap() {
         var sel_zone = 'B';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
     });
 
     // Aggiungi listener per zona C
@@ -233,7 +152,6 @@ function initMap() {
         var sel_zone = 'C';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
     });
 
     // Aggiungi listener per zona D
@@ -241,7 +159,6 @@ function initMap() {
         var sel_zone = 'D';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
     });
 
     // Aggiungi listener per zona E
@@ -249,7 +166,6 @@ function initMap() {
         var sel_zone = 'E';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
     });
 
 }

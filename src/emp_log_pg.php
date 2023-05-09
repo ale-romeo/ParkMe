@@ -62,7 +62,7 @@ if (isset($_GET["bderror"])) {
                                 </div>
                             </div>
                             <div class="col-md-12 text-right">
-                                <input type="submit" name="log_body" class="btn btn-primary" value="Accedi">
+                                <input type="submit" name="log_agent" class="btn btn-primary" value="Accedi">
                             </div>
                         </div>
                     </form>

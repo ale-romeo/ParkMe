@@ -8,9 +8,7 @@
 }
 
 body {
-    background-image: url('../img/pb.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: linear-gradient(to bottom right, white, #4f25d6);
 }
 
 .navbar {
@@ -36,7 +34,7 @@ body {
 .box {
     background: white;
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
     border-radius: 4px;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
     padding: 20px;

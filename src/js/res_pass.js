@@ -13,14 +13,6 @@ $(document).ready(function () {
                 } else {
                     $("#passErr").html("");
                 }
-                if (response == 'expired_emp') {
-                    alert('Sessione scaduta.');
-                    window.location.href = '../emp_log_pg.php';
-                }
-                if (response == 'expired_end') {
-                    alert('Sessione scaduta.');
-                    window.location.href('../login_pg.php');
-                }
             },
             error: function () {
                 alert('Errore durante il controllo della password.');
@@ -44,14 +36,6 @@ $(document).ready(function () {
                 } else {
                     $("#npassErr").html("");
                 }
-                if (response == 'expired_emp') {
-                    alert('Sessione scaduta.');
-                    window.location.href = '../emp_log_pg.php';
-                }
-                if (response == 'expired_end') {
-                    alert('Sessione scaduta.');
-                    window.location.href('../login_pg.php');
-                } 
             },
             error: function () {
                 alert('Errore durante la verifica della nuova password.');
@@ -75,12 +59,8 @@ $(document).ready(function () {
                         url: '../db/up_pass.php',
                         data: { password: npass },
                         success: function (response) {
-                            if (response == 'expired_emp') {
-                                alert('Sessione scaduta');
-                                window.location.href = '../emp_log_pg.php';
-                            }
                             alert('Password modificata');
-                            window.location.href = '../emp_log_pg.php';
+                            window.location.href = '../logout_emp.php';
                         },
                         error: function () {
                             alert("Si è verificato un errore durante l'invio dei dati.");

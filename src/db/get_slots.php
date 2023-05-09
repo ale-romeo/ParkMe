@@ -60,7 +60,6 @@ $table_html = '<table>';
 $table_html .= '<thead><tr><th>Codice</th><th>Stato</th><th> </th><th>Operatore</th></tr></thead>';
 $table_html .= '<tbody>';
 while ($row = $result->fetch_assoc()) {
-    $assign = '';
     $id = $row['id'];
     $stato = $row['STATUS'];
     $ag = $row['id_agent'];
@@ -82,6 +81,36 @@ while ($row = $result->fetch_assoc()) {
         $ag = 'Vacant';
     }
     $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td><td>$ag</td></tr>";
+}
+$table_html .= '</tbody></table>';
+}
+
+else if ($type == 'agent_emp' or $type == 'sup_agent_emp') {
+    // Genera la tabella dei parcheggi
+$table_html = '<table>';
+$table_html .= '<thead><tr><th>Codice</th><th>Stato</th><th> </th></tr></thead>';
+$table_html .= '<tbody>';
+while ($row = $result->fetch_assoc()) {
+    $id = $row['id'];
+    $stato = $row['STATUS'];
+    $ag = $row['id_agent'];
+
+    if ($stato == 'Available') {
+        $vis = $av_vis;
+    }
+    if ($stato == 'Out of order') {
+        $vis = $ofo_vis;
+    }
+    if ($stato == 'Occupied') {
+        $vis = $oc_vis;
+    }
+    if ($stato == 'Reserved') {
+        $vis = $pr_vis;
+    }
+
+    if ($ag != NULL){
+        $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td></tr>";
+    }
 }
 $table_html .= '</tbody></table>';
 }

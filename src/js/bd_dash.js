@@ -37,6 +37,13 @@ function save_log(zona) {
     });
 }
 
+function logout() {
+    var confirmLogout = confirm("Sei sicuro di voler effettuare il logout?");
+    if (confirmLogout) {
+        window.location.href = "../../logout_emp.php";
+    }
+}
+
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 17,

@@ -16,6 +16,9 @@ $(document).ready(function () {
             success: function () {
                 alert("Utente inserito con successo!");
                 show_emps();
+                $("#nome").val("");
+                $("#cognome").val("");
+                $("#bdate").val("");
             },
             error: function () {
                 alert("Si è verificato un errore durante l'invio dei dati.");

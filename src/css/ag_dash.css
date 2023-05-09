@@ -23,6 +23,7 @@ body {
 .navbar {
     position: relative;
     z-index: 1;
+    background-color: #4f25d6;
 }
 
 .park-box {

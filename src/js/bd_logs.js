@@ -18,3 +18,10 @@ function show_logs() {
 $(document).ready(function () {
     show_logs();
 });
+
+function logout() {
+    var confirmLogout = confirm("Sei sicuro di voler effettuare il logout?");
+    if (confirmLogout) {
+        window.location.href = "../../logout_emp.php";
+    }
+}

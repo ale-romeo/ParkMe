@@ -87,7 +87,6 @@ $(document).ready(function () {
             success: function () {
                 $("#emlErr").html("");
                 $("#usrErr").html("");
-                alert("Modifiche effettuate con successo");
                 show_det();
             },
             error: function () {

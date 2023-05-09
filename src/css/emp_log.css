@@ -81,6 +81,14 @@ body {
   color: lightgray;
 }
 
+.fa-eye-slash {
+  position: absolute;
+  top: 28%;
+  right: 54%;
+  cursor: pointer;
+  color: lightgray;
+}
+
 .error {
   font-size: 14px;
   color: #4f25d6;

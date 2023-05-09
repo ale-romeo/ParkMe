@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Creato il: Mag 09, 2023 alle 18:26
+-- Creato il: Mag 09, 2023 alle 23:40
 -- Versione del server: 8.0.33
 -- Versione PHP: 8.1.18
 
@@ -32,7 +32,7 @@ CREATE TABLE `Account` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `reg_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `type` enum('body_emp','sup_body_emp','end_user','agent_emp','sup_agent_emp') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `surname` varchar(50) NOT NULL,
   `birth_date` date DEFAULT NULL,
@@ -41,17 +41,22 @@ CREATE TABLE `Account` (
   `Body_id` varchar(50) DEFAULT NULL,
   `Agent_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `priv_email_employee` varchar(255) DEFAULT NULL,
-  `expiration_contract_employee` date DEFAULT NULL
+  `exp_emp_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dump dei dati per la tabella `Account`
 --
 
-INSERT INTO `Account` (`username`, `email`, `password`, `reg_date`, `type`, `name`, `surname`, `birth_date`, `phone`, `gender`, `Body_id`, `Agent_id`, `priv_email_employee`, `expiration_contract_employee`) VALUES
+INSERT INTO `Account` (`username`, `email`, `password`, `reg_date`, `type`, `name`, `surname`, `birth_date`, `phone`, `gender`, `Body_id`, `Agent_id`, `priv_email_employee`, `exp_emp_date`) VALUES
+('alessandro.romeo', 'alessandro.romeo@easypark.it', '$2y$10$drvTsnlVKs2Jiv.JY4y7UO9ZxVvwsmXRyetZDH88N5XZgMSrIeRgK', '2023-05-09 20:36:47', 'sup_agent_emp', 'Alessandro', 'Romeo', '2000-12-06', '', 'M', NULL, 'EASYPARK', '', NULL),
+('andrea.spadaro', 'andrea.spadaro@.it', '$2y$10$pPoS.eDEAZ6q7Q8eR/bwZepQgnEaV5vD.JyQalebPt9CsHBK08ery', '2023-05-09 23:06:22', 'agent_emp', 'Andrea', 'Spadaro', '2000-05-16', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-09'),
 ('ciaoo', 'ciaoo@ciao.it', '$2y$10$RDnHeTy.57TsQrGL9GIIueE/WeTro5ys5XVi7Pnpul7kg2EVVhR3e', '2023-04-29 01:05:41', 'end_user', 'Alessandro', 'Romeo', NULL, NULL, NULL, '', NULL, NULL, NULL),
 ('giuseppe.buonasera', 'giuseppe.buonasera@comune.messina.it', '$2y$10$vVBzzalMn6IQs2EtnnsKqeDugvmy7cCNJgSTxThGdwhRBPtwbF6i.', '2023-05-02 17:19:47', 'sup_body_emp', 'Giuseppe', 'Buonasera', '2000-03-29', '', 'M', 'MESSINA', NULL, '', NULL),
-('manuel.fabiano', 'manuel.fabiano@comune.messina.it', '$2y$10$OwvQ9KmgiCRUO0/jxD8OlOirT7TPt0iz3CxWTVEIyvpxGPMBJogW6', '2023-05-09 17:59:26', 'body_emp', 'Manuel', 'Fabiano', '2002-10-03', NULL, NULL, 'MESSINA', NULL, NULL, NULL);
+('irene.cuscinà', 'irene.cuscinà@.it', '$2y$10$v6bk3NrNk07CErwngy4HKeLCOS1GmsuEbF3OxiKshFpqcPIg26tqi', '2023-05-09 22:56:51', 'agent_emp', 'Irene', 'Cuscinà', '2001-01-10', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-09'),
+('manuel.fabiano', 'manuel.fabiano@comune.messina.it', '$2y$10$OwvQ9KmgiCRUO0/jxD8OlOirT7TPt0iz3CxWTVEIyvpxGPMBJogW6', '2023-05-09 17:59:26', 'body_emp', 'Manuel', 'Fabiano', '2002-10-03', NULL, NULL, 'MESSINA', NULL, NULL, NULL),
+('marco.aloisi', 'marco.aloisi@.it', '$2y$10$y8j91K.o0S3qQxN0WUe6zOdth4hJfVWeS1vIQh8Rkw0UnkUHPNoL6', '2023-05-09 23:07:35', 'agent_emp', 'Marco', 'Aloisi', '2001-06-02', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-09'),
+('matteo.deluca', 'matteo.deluca@mycicero.it', '$2y$10$drvTsnlVKs2Jiv.JY4y7UO9ZxVvwsmXRyetZDH88N5XZgMSrIeRgK', '2023-05-09 23:09:59', 'sup_agent_emp', 'Matteo', 'De Luca', '2000-12-04', NULL, NULL, NULL, 'MYCICERO', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1134,7 +1139,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 
 CREATE TABLE `Payment` (
   `id` int NOT NULL,
-  `DATE` datetime NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `amount` decimal(10,2) NOT NULL,
   `id_user` varchar(50) NOT NULL,
   `id_parking` varchar(4) DEFAULT NULL,
@@ -1165,11 +1170,10 @@ CREATE TABLE `Reservation` (
 
 CREATE TABLE `Subscription` (
   `id` int NOT NULL,
-  `TYPE` varchar(255) NOT NULL,
+  `type` enum('Mensile','Trimestrale','Annuale') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `expiration_date` date NOT NULL,
-  `id_agent` varchar(50) NOT NULL,
-  `id_user` varchar(50) NOT NULL
+  `id_agent` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1212,7 +1216,60 @@ INSERT INTO `Viewing_slots` (`id`, `emp_id`, `slot_zone`, `viewing_time`) VALUES
 (13, 'manuel.fabiano', 'B', '2023-05-09 18:08:05'),
 (14, 'giuseppe.buonasera', 'B', '2023-05-09 18:19:51'),
 (15, 'manuel.fabiano', 'B', '2023-05-09 18:20:02'),
-(16, 'manuel.fabiano', 'B', '2023-05-09 18:20:48');
+(16, 'manuel.fabiano', 'B', '2023-05-09 18:20:48'),
+(17, 'alessandro.romeo', 'B', '2023-05-09 21:18:24'),
+(18, 'alessandro.romeo', 'B', '2023-05-09 21:26:05'),
+(19, 'alessandro.romeo', 'B', '2023-05-09 21:26:42'),
+(20, 'alessandro.romeo', 'B', '2023-05-09 21:29:11'),
+(21, 'alessandro.romeo', 'B', '2023-05-09 21:29:39'),
+(22, 'alessandro.romeo', 'B', '2023-05-09 21:30:18'),
+(23, 'alessandro.romeo', 'B', '2023-05-09 21:30:48'),
+(24, 'alessandro.romeo', 'B', '2023-05-09 21:32:59'),
+(25, 'alessandro.romeo', 'B', '2023-05-09 21:33:11'),
+(26, 'alessandro.romeo', 'B', '2023-05-09 21:33:39'),
+(27, 'alessandro.romeo', 'B', '2023-05-09 21:33:50'),
+(28, 'alessandro.romeo', 'B', '2023-05-09 21:33:57'),
+(29, 'alessandro.romeo', 'B', '2023-05-09 21:34:24'),
+(30, 'alessandro.romeo', 'C', '2023-05-09 21:35:09'),
+(31, 'alessandro.romeo', 'C', '2023-05-09 21:37:37'),
+(32, 'alessandro.romeo', 'B', '2023-05-09 21:38:36'),
+(33, 'alessandro.romeo', 'B', '2023-05-09 21:39:37'),
+(34, 'alessandro.romeo', 'B', '2023-05-09 21:39:47'),
+(35, 'alessandro.romeo', 'B', '2023-05-09 21:40:11'),
+(36, 'alessandro.romeo', 'B', '2023-05-09 21:41:27'),
+(37, 'alessandro.romeo', 'B', '2023-05-09 21:42:02'),
+(38, 'alessandro.romeo', 'B', '2023-05-09 21:42:40'),
+(39, 'alessandro.romeo', 'D', '2023-05-09 21:42:56'),
+(40, 'alessandro.romeo', 'C', '2023-05-09 21:47:30'),
+(41, 'alessandro.romeo', 'B', '2023-05-09 21:47:32'),
+(42, 'alessandro.romeo', 'B', '2023-05-09 21:48:15'),
+(43, 'alessandro.romeo', 'B', '2023-05-09 21:48:16'),
+(44, 'alessandro.romeo', 'B', '2023-05-09 21:48:42'),
+(45, 'alessandro.romeo', 'B', '2023-05-09 21:48:45'),
+(46, 'alessandro.romeo', 'B', '2023-05-09 21:48:46'),
+(47, 'alessandro.romeo', 'B', '2023-05-09 21:49:06'),
+(48, 'alessandro.romeo', 'B', '2023-05-09 21:49:08'),
+(49, 'alessandro.romeo', 'A', '2023-05-09 21:49:09'),
+(50, 'alessandro.romeo', 'C', '2023-05-09 21:49:12'),
+(51, 'alessandro.romeo', 'D', '2023-05-09 21:49:13'),
+(52, 'alessandro.romeo', 'E', '2023-05-09 21:49:17'),
+(53, 'alessandro.romeo', 'B', '2023-05-09 21:49:18'),
+(54, 'alessandro.romeo', 'A', '2023-05-09 21:49:23'),
+(55, 'alessandro.romeo', 'D', '2023-05-09 21:49:24'),
+(56, 'alessandro.romeo', 'E', '2023-05-09 21:49:27'),
+(57, 'alessandro.romeo', 'D', '2023-05-09 21:51:47'),
+(58, 'alessandro.romeo', 'B', '2023-05-09 21:51:49'),
+(59, 'alessandro.romeo', 'A', '2023-05-09 21:51:50'),
+(60, 'alessandro.romeo', 'A', '2023-05-09 21:51:51'),
+(61, 'alessandro.romeo', 'C', '2023-05-09 21:51:53'),
+(62, 'alessandro.romeo', 'D', '2023-05-09 21:51:55'),
+(63, 'alessandro.romeo', 'E', '2023-05-09 21:51:58'),
+(64, 'alessandro.romeo', 'B', '2023-05-09 23:14:17'),
+(65, 'alessandro.romeo', 'A', '2023-05-09 23:14:18'),
+(66, 'alessandro.romeo', 'C', '2023-05-09 23:14:20'),
+(67, 'alessandro.romeo', 'D', '2023-05-09 23:14:22'),
+(68, 'alessandro.romeo', 'B', '2023-05-09 23:17:45'),
+(69, 'alessandro.romeo', 'B', '2023-05-09 23:18:39');
 
 --
 -- Indici per le tabelle scaricate
@@ -1274,8 +1331,7 @@ ALTER TABLE `Reservation`
 --
 ALTER TABLE `Subscription`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_agent` (`id_agent`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_agent` (`id_agent`);
 
 --
 -- Indici per le tabelle `Ticket`
@@ -1322,7 +1378,7 @@ ALTER TABLE `Ticket`
 -- AUTO_INCREMENT per la tabella `Viewing_slots`
 --
 ALTER TABLE `Viewing_slots`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- Limiti per le tabelle scaricate
@@ -1361,8 +1417,7 @@ ALTER TABLE `Reservation`
 -- Limiti per la tabella `Subscription`
 --
 ALTER TABLE `Subscription`
-  ADD CONSTRAINT `Subscription_ibfk_1` FOREIGN KEY (`id_agent`) REFERENCES `Agent` (`NAME`),
-  ADD CONSTRAINT `Subscription_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`);
+  ADD CONSTRAINT `Subscription_ibfk_1` FOREIGN KEY (`id_agent`) REFERENCES `Agent` (`NAME`);
 
 --
 -- Limiti per la tabella `Ticket`

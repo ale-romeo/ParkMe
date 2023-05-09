@@ -43,13 +43,13 @@ if (isset($_SESSION["id_agent"])) {
                     <a class="nav-link" href="ag_dash.php">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ag_sub.php">Abbonamenti</a>
+                    <a class="nav-link" href="#" style="color: white;">Abbonamenti</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="ag_tar.php">Tariffe</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white;">Ticket</a>
+                    <a class="nav-link" href="ag_tkt.php">Ticket</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

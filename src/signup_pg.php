@@ -21,7 +21,7 @@ if (isset($_GET["passErr"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ParkMe - The easy way to park.</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="js/land.js"></script>
+  <script src="js/login_signup.js"></script>
   <link rel="stylesheet" type="text/css" href="css/login_signup.css">
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -76,8 +76,10 @@ if (isset($_GET["passErr"])) {
                   <span class="error">
                     <?php echo $passErr; ?>
                   </span>
-                  <input type="password" name="password" id="pass" required>
-                  <button class="btn btn-outline-secondary reveal" type="button"><i class="fa fa-eye"></i></button>
+                  <div class="pass-box">
+                    <input type="password" name="password" id="pass1" required>
+                    <i class="fa-solid fa-eye" id="eye1"></i>
+                  </div>
                 </div>
                 <div class="field">
                   <input type="submit" name="signup" value="Registrati">

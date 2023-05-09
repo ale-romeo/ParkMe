@@ -54,6 +54,11 @@ if (isset($_SESSION["id_body"])) {
                         <i class="fas fa-user" style="color: white;"></i>&nbsp&nbspProfilo
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="logout()" style="cursor: pointer;">
+                        &nbsp&nbsp<i class="fas fa-sign-out-alt" style="color: white;"></i>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

@@ -24,19 +24,19 @@ if (isset($_REQUEST['signup'])) {
     $nameErr = $surnameErr = $emailErr = $passErr = "";
     include('connection.php');
     if (empty($_REQUEST["name"])) {
-        $nameErr = "Name is required";
+        $nameErr = "Inserisci nome";
     } else {
         $name = test_input($_REQUEST["name"]);
         $name = $conn->real_escape_string($name);
     }
     if (empty($_REQUEST["surname"])) {
-        $surnameErr = "Surname is required";
+        $surnameErr = "Inserisci cognome";
     } else {
         $surname = test_input($_REQUEST["surname"]);
         $surname = $conn->real_escape_string($surname);
     }
     if (empty($_REQUEST["email"])) {
-        $emailErr = "Email is required";
+        $emailErr = "Inserisci email";
     } else {
         $email = test_input($_REQUEST["email"]);
         $email = $conn->real_escape_string($email);
@@ -45,14 +45,14 @@ if (isset($_REQUEST['signup'])) {
         }
     }
     if (empty($_REQUEST["password"])) {
-        $passErr = "Password is required";
+        $passErr = "Inserire una password";
     } else {
         $password = $_REQUEST["password"];
         $password = $conn->real_escape_string($password);
         if (check_password_strength($password)) {
             $secure_pass = password_hash($password, PASSWORD_BCRYPT);
         } else {
-            $passErr = "Password doesn't match minimum security standards";
+            $passErr = "Password troppo debole";
         }
     }
     if (empty($nameErr) && empty($surnameErr) && empty($emailErr) && empty($passErr)) {

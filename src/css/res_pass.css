@@ -27,6 +27,11 @@ body {
     margin-bottom: 20px;
 }
 
+.error {
+    font-size: 14px;
+    color: #4f25d6;
+}
+
 .box {
     background: white;
     width: 100%;

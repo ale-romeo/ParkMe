@@ -1,10 +1,10 @@
 <?php
 include("connection.php");
 
-$username = $conn->real_escape_string($_POST['username']);
-$email = $conn->real_escape_string($_POST['email']);
+$username = trim($_POST['username']);
+$email = trim($_POST['email']);
 
-$get_usrn = "SELECT name FROM Account WHERE email = '$email'";
+$get_usrn = "SELECT username FROM Account WHERE email = '$email'";
 $result = $conn->query($get_usrn) or die("Errore durante la ricerca della mail: ". $conn->connect_error);
 if ($result->fetch_assoc()['username'] == $username) {
     echo 'not_exists';

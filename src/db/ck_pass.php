@@ -12,11 +12,12 @@ if (isset($_SESSION['username'])) {
 
 $try = $_POST['password'];
 
-$get_pass = "SELECT password FROM Account WHERE username = '$username'";
-$res = $conn->query($get_pass) or die("Errore durante il recupero della password: ". $conn->connect_error);
+$sql = "SELECT * FROM Account WHERE username = '$username'";
 
-if($res->num_rows > 0) {
-    $row = $res->fetch_assoc();
+$result = $conn->query($sql) or die("Errore durante il recupero della password: ". $conn->connect_error);
+
+if($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
     if(!password_verify($try, $row['password'])) {
         echo 'invalid';
         exit();

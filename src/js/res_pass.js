@@ -32,7 +32,7 @@ $(document).ready(function () {
     $("#npass").blur(function () {
         var npass = $(this).val();
         $.ajax({
-            url: '../db/ck_pass.php',
+            url: '../db/pass_val.php',
             type: 'POST',
             data: { password: npass },
             success: function (response) {

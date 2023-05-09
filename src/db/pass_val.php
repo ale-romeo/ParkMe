@@ -14,7 +14,7 @@ function check_password_strength($password)
     }
 }
 
-$pass = $_POST['password'];
+$pass = trim($_POST['password']);
 
 if (!check_password_strength($pass)) {
     echo 'invalid';

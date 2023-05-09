@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("connection.php");
 
 $username = trim($_POST['username']);
@@ -19,5 +20,5 @@ if ($gender == 'other') {
 
 $up_acc = "UPDATE Account SET username = '$username', gender = '$gender', phone = '$phone', priv_email_employee = '$priv_email' WHERE email = '$email'";
 $res = $conn->query($up_acc) or die("Errore durante il salvataggio nel db: ". $conn->connect_error);
-
+$_SESSION['username'] = $username;
 ?>

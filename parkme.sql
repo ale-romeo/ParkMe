@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: May 08, 2023 at 04:45 PM
--- Server version: 8.0.33
--- PHP Version: 8.1.18
+-- Creato il: Mag 09, 2023 alle 18:26
+-- Versione del server: 8.0.33
+-- Versione PHP: 8.1.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Account`
+-- Struttura della tabella `Account`
 --
 
 CREATE TABLE `Account` (
@@ -45,20 +45,18 @@ CREATE TABLE `Account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `Account`
+-- Dump dei dati per la tabella `Account`
 --
 
 INSERT INTO `Account` (`username`, `email`, `password`, `reg_date`, `type`, `name`, `surname`, `birth_date`, `phone`, `gender`, `Body_id`, `Agent_id`, `priv_email_employee`, `expiration_contract_employee`) VALUES
 ('ciaoo', 'ciaoo@ciao.it', '$2y$10$RDnHeTy.57TsQrGL9GIIueE/WeTro5ys5XVi7Pnpul7kg2EVVhR3e', '2023-04-29 01:05:41', 'end_user', 'Alessandro', 'Romeo', NULL, NULL, NULL, '', NULL, NULL, NULL),
-('giovanni.lombardo', 'giovanni.lombardo@comune.messina.it', '', '2023-05-08 12:46:17', 'body_emp', 'Giovanni', 'Lombardo', '2002-02-19', NULL, NULL, 'MESSINA', NULL, NULL, NULL),
-('giuseppe.bonasera', 'giuseppe.buonasera@comune.messina.it', '$2y$10$vVBzzalMn6IQs2EtnnsKqeDugvmy7cCNJgSTxThGdwhRBPtwbF6i.', '2023-05-02 17:19:47', 'sup_body_emp', 'Giuseppe', 'Buonasera', '2000-03-29', '', 'M', 'MESSINA', NULL, '', NULL),
-('matte.bonsi', 'matte.bonsi@comune.messina.it', '', '2023-05-08 12:47:10', 'body_emp', 'Matte', 'Bonsi', '2002-08-05', NULL, NULL, 'MESSINA', NULL, NULL, NULL),
-('matteo.bonsi', 'matteo.bonsi@comune.messina.it', '', '2023-05-08 12:46:50', 'body_emp', 'Matteo', 'Bonsi', '2002-08-05', NULL, NULL, 'MESSINA', NULL, NULL, NULL);
+('giuseppe.buonasera', 'giuseppe.buonasera@comune.messina.it', '$2y$10$vVBzzalMn6IQs2EtnnsKqeDugvmy7cCNJgSTxThGdwhRBPtwbF6i.', '2023-05-02 17:19:47', 'sup_body_emp', 'Giuseppe', 'Buonasera', '2000-03-29', '', 'M', 'MESSINA', NULL, '', NULL),
+('manuel.fabiano', 'manuel.fabiano@comune.messina.it', '$2y$10$OwvQ9KmgiCRUO0/jxD8OlOirT7TPt0iz3CxWTVEIyvpxGPMBJogW6', '2023-05-09 17:59:26', 'body_emp', 'Manuel', 'Fabiano', '2002-10-03', NULL, NULL, 'MESSINA', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Agent`
+-- Struttura della tabella `Agent`
 --
 
 CREATE TABLE `Agent` (
@@ -67,7 +65,7 @@ CREATE TABLE `Agent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `Agent`
+-- Dump dei dati per la tabella `Agent`
 --
 
 INSERT INTO `Agent` (`NAME`, `balance`) VALUES
@@ -77,7 +75,7 @@ INSERT INTO `Agent` (`NAME`, `balance`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Body`
+-- Struttura della tabella `Body`
 --
 
 CREATE TABLE `Body` (
@@ -86,7 +84,7 @@ CREATE TABLE `Body` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `Body`
+-- Dump dei dati per la tabella `Body`
 --
 
 INSERT INTO `Body` (`city`, `balance`) VALUES
@@ -95,7 +93,7 @@ INSERT INTO `Body` (`city`, `balance`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Managing`
+-- Struttura della tabella `Managing`
 --
 
 CREATE TABLE `Managing` (
@@ -107,7 +105,7 @@ CREATE TABLE `Managing` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Parking_Space`
+-- Struttura della tabella `Parking_Space`
 --
 
 CREATE TABLE `Parking_Space` (
@@ -122,7 +120,7 @@ CREATE TABLE `Parking_Space` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `Parking_Space`
+-- Dump dei dati per la tabella `Parking_Space`
 --
 
 INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_price`, `periodic_price`, `parking_ending_time`, `charging_station`) VALUES
@@ -1131,7 +1129,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `id_body`, `id_agent`, `hourly_pric
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Payment`
+-- Struttura della tabella `Payment`
 --
 
 CREATE TABLE `Payment` (
@@ -1147,7 +1145,7 @@ CREATE TABLE `Payment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Reservation`
+-- Struttura della tabella `Reservation`
 --
 
 CREATE TABLE `Reservation` (
@@ -1162,7 +1160,7 @@ CREATE TABLE `Reservation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Subscription`
+-- Struttura della tabella `Subscription`
 --
 
 CREATE TABLE `Subscription` (
@@ -1177,7 +1175,7 @@ CREATE TABLE `Subscription` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Ticket`
+-- Struttura della tabella `Ticket`
 --
 
 CREATE TABLE `Ticket` (
@@ -1190,7 +1188,7 @@ CREATE TABLE `Ticket` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Viewing_slots`
+-- Struttura della tabella `Viewing_slots`
 --
 
 CREATE TABLE `Viewing_slots` (
@@ -1201,7 +1199,7 @@ CREATE TABLE `Viewing_slots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `Viewing_slots`
+-- Dump dei dati per la tabella `Viewing_slots`
 --
 
 INSERT INTO `Viewing_slots` (`id`, `emp_id`, `slot_zone`, `viewing_time`) VALUES
@@ -1210,39 +1208,43 @@ INSERT INTO `Viewing_slots` (`id`, `emp_id`, `slot_zone`, `viewing_time`) VALUES
 (9, 'giuseppe.buonasera', 'B', '2023-05-08 16:23:05'),
 (10, 'giuseppe.buonasera', 'A', '2023-05-08 16:23:06'),
 (11, 'giuseppe.buonasera', 'D', '2023-05-08 16:23:08'),
-(12, 'giuseppe.buonasera', 'E', '2023-05-08 16:23:12');
+(12, 'giuseppe.buonasera', 'E', '2023-05-08 16:23:12'),
+(13, 'manuel.fabiano', 'B', '2023-05-09 18:08:05'),
+(14, 'giuseppe.buonasera', 'B', '2023-05-09 18:19:51'),
+(15, 'manuel.fabiano', 'B', '2023-05-09 18:20:02'),
+(16, 'manuel.fabiano', 'B', '2023-05-09 18:20:48');
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `Account`
+-- Indici per le tabelle `Account`
 --
 ALTER TABLE `Account`
   ADD PRIMARY KEY (`username`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `Agent`
+-- Indici per le tabelle `Agent`
 --
 ALTER TABLE `Agent`
   ADD PRIMARY KEY (`NAME`);
 
 --
--- Indexes for table `Body`
+-- Indici per le tabelle `Body`
 --
 ALTER TABLE `Body`
   ADD PRIMARY KEY (`city`);
 
 --
--- Indexes for table `Managing`
+-- Indici per le tabelle `Managing`
 --
 ALTER TABLE `Managing`
   ADD PRIMARY KEY (`id_employee`,`ACTION`);
 
 --
--- Indexes for table `Parking_Space`
+-- Indici per le tabelle `Parking_Space`
 --
 ALTER TABLE `Parking_Space`
   ADD PRIMARY KEY (`id`),
@@ -1250,7 +1252,7 @@ ALTER TABLE `Parking_Space`
   ADD KEY `id_agent` (`id_agent`);
 
 --
--- Indexes for table `Payment`
+-- Indici per le tabelle `Payment`
 --
 ALTER TABLE `Payment`
   ADD PRIMARY KEY (`id`),
@@ -1260,7 +1262,7 @@ ALTER TABLE `Payment`
   ADD KEY `id_parking` (`id_parking`);
 
 --
--- Indexes for table `Reservation`
+-- Indici per le tabelle `Reservation`
 --
 ALTER TABLE `Reservation`
   ADD PRIMARY KEY (`id`),
@@ -1268,7 +1270,7 @@ ALTER TABLE `Reservation`
   ADD KEY `id_parking` (`id_parking`);
 
 --
--- Indexes for table `Subscription`
+-- Indici per le tabelle `Subscription`
 --
 ALTER TABLE `Subscription`
   ADD PRIMARY KEY (`id`),
@@ -1276,71 +1278,71 @@ ALTER TABLE `Subscription`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `Ticket`
+-- Indici per le tabelle `Ticket`
 --
 ALTER TABLE `Ticket`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `Viewing_slots`
+-- Indici per le tabelle `Viewing_slots`
 --
 ALTER TABLE `Viewing_slots`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `Payment`
+-- AUTO_INCREMENT per la tabella `Payment`
 --
 ALTER TABLE `Payment`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Reservation`
+-- AUTO_INCREMENT per la tabella `Reservation`
 --
 ALTER TABLE `Reservation`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Subscription`
+-- AUTO_INCREMENT per la tabella `Subscription`
 --
 ALTER TABLE `Subscription`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Ticket`
+-- AUTO_INCREMENT per la tabella `Ticket`
 --
 ALTER TABLE `Ticket`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Viewing_slots`
+-- AUTO_INCREMENT per la tabella `Viewing_slots`
 --
 ALTER TABLE `Viewing_slots`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- Constraints for dumped tables
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Constraints for table `Managing`
+-- Limiti per la tabella `Managing`
 --
 ALTER TABLE `Managing`
   ADD CONSTRAINT `Managing_ibfk_1` FOREIGN KEY (`id_employee`) REFERENCES `Account` (`username`);
 
 --
--- Constraints for table `Parking_Space`
+-- Limiti per la tabella `Parking_Space`
 --
 ALTER TABLE `Parking_Space`
   ADD CONSTRAINT `Parking_Space_ibfk_1` FOREIGN KEY (`id_body`) REFERENCES `Body` (`city`),
   ADD CONSTRAINT `Parking_Space_ibfk_2` FOREIGN KEY (`id_agent`) REFERENCES `Agent` (`NAME`);
 
 --
--- Constraints for table `Payment`
+-- Limiti per la tabella `Payment`
 --
 ALTER TABLE `Payment`
   ADD CONSTRAINT `Payment_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`),
@@ -1349,21 +1351,21 @@ ALTER TABLE `Payment`
   ADD CONSTRAINT `Payment_ibfk_4` FOREIGN KEY (`id_parking`) REFERENCES `Parking_Space` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Constraints for table `Reservation`
+-- Limiti per la tabella `Reservation`
 --
 ALTER TABLE `Reservation`
   ADD CONSTRAINT `Reservation_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`),
   ADD CONSTRAINT `Reservation_ibfk_2` FOREIGN KEY (`id_parking`) REFERENCES `Parking_Space` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Constraints for table `Subscription`
+-- Limiti per la tabella `Subscription`
 --
 ALTER TABLE `Subscription`
   ADD CONSTRAINT `Subscription_ibfk_1` FOREIGN KEY (`id_agent`) REFERENCES `Agent` (`NAME`),
   ADD CONSTRAINT `Subscription_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`);
 
 --
--- Constraints for table `Ticket`
+-- Limiti per la tabella `Ticket`
 --
 ALTER TABLE `Ticket`
   ADD CONSTRAINT `Ticket_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`);

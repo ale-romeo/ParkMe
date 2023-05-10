@@ -1,18 +1,17 @@
-$(document).on("click", "#btn-assegna", function () {
+$(document).on("click", "#btn-update-single-price", function () {
     // Ottieni il posto selezionato
-    var posto = $("#get-tar").text().replace("Assegna posto ", "");
-
-    // Ottieni l'id dell'operatore selezionato
-    var agent = $("#operatore option:selected").val();
+    var posto = $("#get-tar").text().replace("Aggiorna tariffa: posto ", "");
+    var tar_or = $("#tar_or").val();
+    var tar_per = $("#tar_per").val();
 
     // Esegui una richiesta AJAX per aggiornare il record del posto nel database
     $.ajax({
         type: "POST",
-        url: "../../db/slot_assign.php",
-        data: { posto: posto, agent_id: agent },
+        url: "../../db/up_price.php",
+        data: { posto: posto, tar_or: tar_or, tar_per: tar_per },
         success: function () {
             // Chiudi il modal e aggiorna la tabella dei posti
-            $("#myModal").modal("hide");
+            $("#single").modal("hide");
             show_parks(posto.charAt(0));
         },
         error: function () {
@@ -25,33 +24,44 @@ $(document).on("click", ".cambia-tariffa", function () {
     // Ottieni il posto selezionato
     var posto = $(this).closest("tr").find("td:first-child").text();
 
-    var modalContent = '';
-            modalContent += '<div class="modal-header">';
-            modalContent += '<h5 class="modal-title" id="get-tar">Aggiorna tariffa: posto ' + posto + '</h5>';
-            modalContent += '<button type="button" class="close" data-dismiss="modal">';
-            modalContent += '<span>&times;</span>';
-            modalContent += '</button>';
-            modalContent += '</div>';
-            modalContent += '<div class="modal-body">';
-            modalContent += '<form>';
-            modalContent += '<div class="form-group">';
-            modalContent += '<label for="tariffa_oraria">Tariffa oraria:</label>';
-            modalContent += '<input type="text" name="tariffa_oraria" id="#tar_or">';
-            modalContent += '<label for="tariffa_mensile">Tariffa mensile:</label>';
-            modalContent += '<input type="text" name="tariffa_mensile" id="#tar_mens">';
-            modalContent += '<label for="tariffa_annuale">Tariffa oraria:</label>';
-            modalContent += '<input type="text" name="tariffa_annuale" id="#tar_ann">';
-            modalContent += '</div>';
-            modalContent += '</form>';
-            modalContent += '</div>';
-            modalContent += '<div class="modal-footer">';
-            modalContent += '<button type="button" class="btn btn-primary" id="btn-assegna">Aggiorna</button>';
-            modalContent += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>';
-            modalContent += '</div>';
-
-            // Inserisce il contenuto nel modal e mostra il modal
+    $.ajax({
+        url: "../../db/get_price.php",
+        type: "POST",
+        data: { posto: posto },
+        dataType: 'json',
+        success: function (data) {
+            var modalContent = '';
+                modalContent += '<div class="modal-header">';
+                modalContent += '<h5 class="modal-title" id="get-tar">Aggiorna tariffa: posto ' + posto + '</h5>';
+                modalContent += '<button type="button" class="close" data-dismiss="modal">';
+                modalContent += '<span>&times;</span>';
+                modalContent += '</button>';
+                modalContent += '</div>';
+                modalContent += '<div class="modal-body">';
+                modalContent += '<form>';
+                modalContent += '<div class="form-group">';
+                modalContent += '<label for="tariffa_oraria">Tariffa oraria(eur/h):</label><br>';
+                modalContent += '<input type="text" name="tariffa_oraria" id="#tar_or"><br>';
+                modalContent += '<label for="tariffa_mensile">Tariffa periodica(eur/d):</label><br>';
+                modalContent += '<input type="text" name="tariffa_mensile" id="#tar_per">';
+                modalContent += '</div>';
+                modalContent += '</form>';
+                modalContent += '</div>';
+                modalContent += '<div class="modal-footer">';
+                modalContent += '<button type="button" class="btn btn-primary" id="btn-update-single-price">Aggiorna</button>';
+                modalContent += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>';
+                modalContent += '</div>';
+        
+            $('#tar_or').val(data[0]);
+            $('#tar_per').val(data[1]);
             $('#single .modal-content').html(modalContent);
             $('#single').modal('show');
+        },
+        error: function () {
+            alert("Errore nel caricamento dei prezzi.");
+        }
+
+    });
 });
 
 $(document).on("click", "#tar-zone", function () {
@@ -68,12 +78,10 @@ $(document).on("click", "#tar-zone", function () {
             modalContent += '<div class="modal-body">';
             modalContent += '<form>';
             modalContent += '<div class="form-group">';
-            modalContent += '<label for="tariffa_oraria">Tariffa oraria:</label>';
+            modalContent += '<label for="tariffa_oraria">Tariffa oraria(eur/h):</label>';
             modalContent += '<input type="text" name="tariffa_oraria" id="#tar_or">';
-            modalContent += '<label for="tariffa_mensile">Tariffa mensile:</label>';
-            modalContent += '<input type="text" name="tariffa_mensile" id="#tar_mens">';
-            modalContent += '<label for="tariffa_annuale">Tariffa oraria:</label>';
-            modalContent += '<input type="text" name="tariffa_annuale" id="#tar_ann">';
+            modalContent += '<label for="tariffa_mensile">Tariffa mensile(eur/d):</label>';
+            modalContent += '<input type="text" name="tariffa_mensile" id="#tar_per">';
             modalContent += '</div>';
             modalContent += '</form>';
             modalContent += '</div>';

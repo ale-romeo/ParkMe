@@ -106,3 +106,21 @@ table tbody tr:nth-child(even) {
 .btn-cont {
     text-align: right;
 }
+
+.modal label {
+    font-weight: bold;
+    margin-right: -10px;
+}
+
+.modal input[type="text"] {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+}
+
+.modal input[type="text"]:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #4f25d6;
+}

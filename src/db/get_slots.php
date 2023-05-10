@@ -2,19 +2,29 @@
 session_start();
 include('connection.php');
 $user = "";
-if (isset($_SESSION["username"])) {
-    $user = $_SESSION["username"];
-}
-
-$get_class = "SELECT type FROM Account WHERE username = '$user'";
-$got = $conn->query($get_class);
-$type = ($got->fetch_assoc())['type'];
 
 // Recupera il valore della zona selezionata dall'utente
 $zona = $_GET['zona'];
 
+if (isset($_SESSION["username"])) {
+    $user = $_SESSION["username"];
+}
+
+$get_class = "SELECT * FROM Account WHERE username = '$user'";
+$got = $conn->query($get_class);
+$row_user = $got->fetch_assoc();
+$type = $row_user['type'];
+if ($type == 'body_emp' or $type == 'sup_body_emp') {
+    $id_body = $row_user['Body_id'];
+    $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' AND id_body = '$id_body' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
+}
+else if ($type == 'agent_emp' or $type == 'sup_agent_emp') {
+    $id_agent = $row_user['Agent_id'];
+    $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' AND id_agent = '$id_agent' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
+
+}
+
 // Query per recuperare i posti auto della zona selezionata
-$posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
 $result = $conn->query($posti) or die("Query failed: " . $conn->connect_error);
 
 $av_vis = '<span class="status-icon"><i class="fas fa-circle text-success"></i></span>';
@@ -88,12 +98,15 @@ $table_html .= '</tbody></table>';
 else if ($type == 'agent_emp' or $type == 'sup_agent_emp') {
     // Genera la tabella dei parcheggi
 $table_html = '<table>';
-$table_html .= '<thead><tr><th>Codice</th><th>Stato</th><th> </th></tr></thead>';
+$table_html .= '<thead><tr><th>Codice</th><th>Stato</th><th> </th><th>Tar. oraria</th><th>Tar. periodica</th><th> </th></tr></thead>';
 $table_html .= '<tbody>';
 while ($row = $result->fetch_assoc()) {
+    $assign = '<a href="#" class="cambia-tariffa" data-toggle="modal" data-target="#single">Aggiorna Tariffe</a>';
     $id = $row['id'];
     $stato = $row['STATUS'];
     $ag = $row['id_agent'];
+    $tar_or = $row['hourly_price'];
+    $tar_per = $row['periodic_price'];
 
     if ($stato == 'Available') {
         $vis = $av_vis;
@@ -108,9 +121,7 @@ while ($row = $result->fetch_assoc()) {
         $vis = $pr_vis;
     }
 
-    if ($ag != NULL){
-        $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td></tr>";
-    }
+    $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td><td>$tar_or</td><td>$tar_per</td><td>$assign</td></tr>";
 }
 $table_html .= '</tbody></table>';
 }

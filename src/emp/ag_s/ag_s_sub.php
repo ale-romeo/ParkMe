@@ -40,16 +40,19 @@ if (isset($_SESSION["id_agent"])) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="ag_dash.php">Dashboard</a>
+                    <a class="nav-link" href="ag_s_dash.php">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ag_sub.php">Abbonamenti</a>
+                    <a class="nav-link" href="ag_s_mng.php">Impiegati</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white;">Tariffe</a>
+                    <a class="nav-link" href="#" style="color: white;">Abbonamenti</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ag_tkt.php">Ticket</a>
+                    <a class="nav-link" href="ag_s_logs.php">Logs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ag_s_tkt.php">Ticket</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

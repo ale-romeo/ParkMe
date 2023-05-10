@@ -29,7 +29,7 @@ if (isset($_GET["bderror"])) {
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-trasparent">
-        <h2 style="letter-spacing: -1px; font-family: Source Sans Pro Black;"><a class="navbar-brand" href="#"
+        <h2 style="letter-spacing: -1px;"><a class="navbar-brand" href="#"
                 style="color: #5469d4;">ParkMe</a></h2>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

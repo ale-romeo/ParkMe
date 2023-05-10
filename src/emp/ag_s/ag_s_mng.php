@@ -46,16 +46,13 @@ if (isset($_SESSION["id_agent"])) {
                     <a class="nav-link" href="#" style="color: white;">Impiegati</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../ag/ag_sub.php">Abbonamenti</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../ag/ag_tar.php">Tariffe</a>
+                    <a class="nav-link" href="ag_s_sub.php">Abbonamenti</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="ag_s_logs.php">Logs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../ag/ag_tkt.php">Ticket</a>
+                    <a class="nav-link" href="ag_s_tkt.php">Ticket</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

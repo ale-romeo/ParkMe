@@ -1,5 +1,5 @@
 <?php
-include('connection.php');
+include('../connection.php');
 // Query per recuperare la lista degli operatori
 
 $get_ag = "SELECT NAME FROM Agent";

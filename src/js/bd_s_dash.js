@@ -8,7 +8,7 @@ $(document).on("click", "#btn-assegna", function () {
     // Esegui una richiesta AJAX per aggiornare il record del posto nel database
     $.ajax({
         type: "POST",
-        url: "../../db/slot_assign.php",
+        url: "../../db/upload/slot_assign.php",
         data: { posto: posto, agent_id: agent },
         success: function () {
             // Chiudi il modal e aggiorna la tabella dei posti
@@ -27,7 +27,7 @@ $(document).on("click", ".assegna-operatore", function () {
     var posto = $(this).closest("tr").find("td:first-child").text();
 
     $.ajax({
-        url: '../../db/get_agents.php',
+        url: '../../db/get/get_agents.php',
         dataType: 'json',
         success: function (operatori) {
             // Costruisce il contenuto del modal
@@ -69,7 +69,7 @@ $(document).on("click", ".assegna-operatore", function () {
 function show_parks(zona) {
     // Invia una richiesta AJAX per ottenere i parcheggi della zona dal database
     $.ajax({
-        url: "../../db/get_slots.php",
+        url: "../../db/get/get_slots.php",
         type: "GET",
         data: {
             zona: zona
@@ -96,7 +96,7 @@ function show_parks(zona) {
 
 function save_log(zona) {
     $.ajax({
-        url: "../../db/view_log.php",
+        url: "../../db/upload/view_log.php",
         type: 'POST',
         data: { zona: zona },
         error: function() {

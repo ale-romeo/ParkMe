@@ -1,5 +1,5 @@
 <?php
-include("connection.php");
+include("../connection.php");
 
 $posto = $_POST['posto'];
 

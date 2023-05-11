@@ -1,7 +1,7 @@
 function show_parks(zona) {
     // Invia una richiesta AJAX per ottenere i parcheggi della zona dal database
     $.ajax({
-        url: "../../db/get_slots.php",
+        url: "../../db/get/get_slots.php",
         type: "GET",
         data: {
             zona: zona
@@ -28,7 +28,7 @@ function show_parks(zona) {
 
 function save_log(zona) {
     $.ajax({
-        url: "../../db/view_log.php",
+        url: "../../db/upload/view_log.php",
         type: 'POST',
         data: { zona: zona },
         error: function() {

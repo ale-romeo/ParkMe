@@ -1,5 +1,5 @@
 <?php
-include('connection.php');
+include('../connection.php');
 // Query per recuperare la lista degli operatori
 $slot = $_POST['posto'];
 $ag_name = $_POST['agent_id'];

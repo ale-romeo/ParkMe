@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('connection.php');
+include('../connection.php');
 $user = "";
 
 // Recupera il valore della zona selezionata dall'utente

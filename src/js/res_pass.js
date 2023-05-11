@@ -2,7 +2,7 @@ $(document).ready(function () {
     $("#password").blur(function () {
         var password = $(this).val();
         $.ajax({
-            url: '../db/ck_pass.php',
+            url: '../db/check/ck_pass.php',
             type: 'POST',
             data: { password: password },
             success: function (response) {
@@ -25,7 +25,7 @@ $(document).ready(function () {
     $("#npass").blur(function () {
         var npass = $(this).val();
         $.ajax({
-            url: '../db/pass_val.php',
+            url: '../db/check/pass_val.php',
             type: 'POST',
             data: { password: npass },
             success: function (response) {
@@ -56,7 +56,7 @@ $(document).ready(function () {
                 if (npass == cpass) {
                     $.ajax({
                         type: 'POST',
-                        url: '../db/up_pass.php',
+                        url: '../db/upload/up_pass.php',
                         data: { password: npass },
                         success: function (response) {
                             alert('Password modificata');

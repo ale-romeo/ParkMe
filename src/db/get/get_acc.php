@@ -1,14 +1,11 @@
 <?php
 session_start();
-include("connection.php");
+include("../connection.php");
 $bd_id = "";
 $ag_id  = "";
 
 if (isset($_SESSION['username'])){
     $username = $_SESSION["username"];
-} else {
-    header('location: ../login_pg.php');
-    exit();
 }
 
 $get_acc = "SELECT * FROM Account WHERE username = '$username'";

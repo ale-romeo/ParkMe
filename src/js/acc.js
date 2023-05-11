@@ -2,7 +2,7 @@ $(document).ready(function () {
     $("#priv_email").blur(function () {
         var priv_email = $(this).val();
         $.ajax({
-            url: '../db/eml_val.php',
+            url: '../db/check/eml_val.php',
             type: 'POST',
             data: { priv_email: priv_email },
             success: function (response) {
@@ -22,7 +22,7 @@ $(document).ready(function () {
         var username = $(this).val();
         var email = $("#email").val();
         $.ajax({
-            url: '../db/ck_usr.php',
+            url: '../db/check/ck_usr.php',
             type: 'POST',
             data: { username: username, email: email },
             success: function (response) {
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
 function show_det() {
     $.ajax({
-        url: "../db/get_acc.php",
+        url: "../db/get/get_acc.php",
         dataType: 'json',
         success: function (data) {
             $('#username').val(data.username);
@@ -82,7 +82,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: '../db/up_acc.php',
+            url: '../db/upload/up_acc.php',
             data: { username: username, email: email, phone: phone, gender: gender, bdate: bdate, priv_email: priv_email },
             success: function () {
                 $("#emlErr").html("");

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("connection.php");
+include("../connection.php");
 $zona = trim($_POST['zona']);
 $id_emp = "";
 if (isset($_SESSION['username'])) {

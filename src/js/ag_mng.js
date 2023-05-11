@@ -11,7 +11,7 @@ $(document).ready(function () {
         // Invia i dati via ajax al file PHP per l'inserimento nel database
         $.ajax({
             type: "POST",
-            url: "../../db/add_emp.php",
+            url: "../../db/upload/add_emp.php",
             data: { nome: nome, cognome: cognome, data_nascita: data_nascita },
             success: function () {
                 alert("Utente inserito con successo!");
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 function show_emps() {
     $.ajax({
-        url: "../../db/get_emps.php",
+        url: "../../db/get/get_emps.php",
         type: "POST",
         success: function (data) {
             // Aggiungi le righe della tabella con i dati dei parcheggi ottenuti dal database

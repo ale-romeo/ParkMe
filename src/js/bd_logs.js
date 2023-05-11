@@ -1,6 +1,6 @@
 function show_logs() {
     $.ajax({
-        url: "../../db/get_v_logs.php",
+        url: "../../db/get/get_v_logs.php",
         type: "POST",
         success: function (data) {
             $("#tabella-logs").html(data);

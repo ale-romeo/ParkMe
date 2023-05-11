@@ -1,13 +1,10 @@
 <?php
 session_start();
-include('connection.php');
+include('../connection.php');
 
 $username = "";
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
-} else {
-    echo 'expired_emp';
-    exit();
 }
 
 $pass = trim($_POST['password']);

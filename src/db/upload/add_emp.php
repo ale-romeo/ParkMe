@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('connection.php');
+include('../connection.php');
 
 $nome = $_POST["nome"];
 $cognome = $_POST["cognome"];
@@ -22,7 +22,7 @@ if (isset($_SESSION["id_body"])) {
 }
 if (isset($_SESSION["id_agent"])) {
     $id_agent = $_SESSION["id_agent"];
-    $email = $username . '@' . strtolower($id_body) . '.it';
+    $email = $username . '@' . strtolower($id_agent) . '.it';
     $type = 'agent_emp';
     $add_e = "INSERT INTO Account (username, email, password, name, surname, birth_date, Agent_id, type, exp_emp_date) VALUES ('$username', '$email', '$pass', '$nome', '$cognome', '$data_nascita', '$id_agent', '$type', '$exp_date')";
 }

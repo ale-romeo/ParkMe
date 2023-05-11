@@ -1,5 +1,5 @@
 <?php
-include("connection.php");
+include("../connection.php");
 
 $slot = $_POST['posto'];
 $tar_or = $_POST['tar_or'];

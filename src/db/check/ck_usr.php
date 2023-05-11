@@ -1,5 +1,5 @@
 <?php
-include("connection.php");
+include("../connection.php");
 
 $username = trim($_POST['username']);
 $email = trim($_POST['email']);

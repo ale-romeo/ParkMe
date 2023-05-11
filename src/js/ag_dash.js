@@ -7,7 +7,7 @@ $(document).on("click", "#btn-update-single-price", function () {
     // Esegui una richiesta AJAX per aggiornare il record del posto nel database
     $.ajax({
         type: "POST",
-        url: "../../db/up_price.php",
+        url: "../../db/upload/up_price.php",
         data: { posto: posto, tar_or: tar_or, tar_per: tar_per },
         success: function () {
             // Chiudi il modal e aggiorna la tabella dei posti
@@ -25,7 +25,7 @@ $(document).on("click", ".cambia-tariffa", function () {
     var posto = $(this).closest("tr").find("td:first-child").text();
 
     $.ajax({
-        url: "../../db/get_price.php",
+        url: "../../db/get/get_price.php",
         type: "POST",
         data: { posto: posto },
         dataType: 'json',
@@ -98,7 +98,7 @@ $(document).on("click", "#tar-zone", function () {
 function show_parks(zona) {
     // Invia una richiesta AJAX per ottenere i parcheggi della zona dal database
     $.ajax({
-        url: "../../db/get_slots.php",
+        url: "../../db/get/get_slots.php",
         type: "GET",
         data: {
             zona: zona

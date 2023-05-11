@@ -1,0 +1,73 @@
+* {
+    padding: 0;
+    margin: 0;
+    color: #1a1f36;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, sans-serif;
+}
+
+body {
+    background-image: url('../img/ag_bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    position: relative;
+    z-index: 1;
+    background-color: #aca8be;
+}
+
+.box {
+    margin: 0px auto;
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    padding: 30px;
+}
+
+.wtd {
+    display: block;
+    font-size: 20px;
+    line-height: 28px;
+    color: #1a1f36;
+    padding-bottom: 15px;
+}
+
+#table-wrapper {
+    height: auto;
+    max-height: 200px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table thead th {
+    background-color: #9690aa;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+table tbody td {
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid #aca8be;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #6a48dac0;
+}

@@ -4,10 +4,10 @@ include("../connection.php");
 $username = "";
 
 if (isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
+    $username = $conn->real_escape_string($_SESSION['username']);
 }
 
-$try = $_POST['password'];
+$try = trim($_POST['password']);
 
 $sql = "SELECT * FROM Account WHERE username = '$username'";
 

@@ -1,8 +1,8 @@
 <?php
 include("../connection.php");
 
-$username = trim($_POST['username']);
-$email = trim($_POST['email']);
+$username = $conn->real_escape_string(trim($_POST['username']));
+$email = $conn->real_escape_string(trim($_POST['email']));
 
 $get_usrn = "SELECT username FROM Account WHERE email = '$email'";
 $result = $conn->query($get_usrn) or die("Errore durante la ricerca della mail: ". $conn->connect_error);

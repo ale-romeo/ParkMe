@@ -5,7 +5,7 @@ $bd_id = "";
 $ag_id  = "";
 
 if (isset($_SESSION['username'])){
-    $username = $_SESSION["username"];
+    $username = $conn->real_escape_string($_SESSION["username"]);
 }
 
 $get_acc = "SELECT * FROM Account WHERE username = '$username'";

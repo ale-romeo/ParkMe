@@ -2,11 +2,11 @@
 session_start();
 include("../connection.php");
 
-$username = trim($_POST['username']);
-$email = trim($_POST['email']);
-$phone = trim($_POST['phone']);
-$gender = trim($_POST['gender']);
-$priv_email = trim($_POST['priv_email']);
+$username = $conn->real_escape_string(trim($_POST['username']));
+$email = $conn->real_escape_string(trim($_POST['email']));
+$phone = $conn->real_escape_string(trim($_POST['phone']));
+$gender = $conn->real_escape_string(trim($_POST['gender']));
+$priv_email = $conn->real_escape_string(trim($_POST['priv_email']));
 
 if ($gender == 'male') {
     $gender = 'M';

@@ -41,9 +41,9 @@ $(document).on("click", ".cambia-tariffa", function () {
                 modalContent += '<form>';
                 modalContent += '<div class="form-group">';
                 modalContent += '<label for="tariffa_oraria">Tariffa oraria(eur/h):</label><br>';
-                modalContent += '<input type="text" name="tariffa_oraria" id="#tar_or"><br>';
-                modalContent += '<label for="tariffa_mensile">Tariffa periodica(eur/d):</label><br>';
-                modalContent += '<input type="text" name="tariffa_mensile" id="#tar_per">';
+                modalContent += '<input type="text" name="tariffa_oraria" id="tar_or"><br>';
+                modalContent += '<label for="tariffa_periodica">Tariffa periodica(eur/d):</label><br>';
+                modalContent += '<input type="text" name="tariffa_periodica" id="tar_per">';
                 modalContent += '</div>';
                 modalContent += '</form>';
                 modalContent += '</div>';
@@ -51,10 +51,10 @@ $(document).on("click", ".cambia-tariffa", function () {
                 modalContent += '<button type="button" class="btn btn-primary" id="btn-update-single-price">Aggiorna</button>';
                 modalContent += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>';
                 modalContent += '</div>';
-        
+                
+            $('#single .modal-content').html(modalContent);
             $('#tar_or').val(data[0]);
             $('#tar_per').val(data[1]);
-            $('#single .modal-content').html(modalContent);
             $('#single').modal('show');
         },
         error: function () {
@@ -64,13 +64,36 @@ $(document).on("click", ".cambia-tariffa", function () {
     });
 });
 
-$(document).on("click", "#tar-zone", function () {
+$(document).on("click", "#btn-update-zone-price", function () {
     // Ottieni il posto selezionato
-    var zona = $("#up-text").text();
+    var zona = $("#get-tar-zone").text().replace("Aggiorna tariffa: zona ", "");
+    var tar_or = $("#tar_zone_or").val();
+    var tar_per = $("#tar_zone_per").val();
 
-    var modalContent = '';
+    // Esegui una richiesta AJAX per aggiornare il record del posto nel database
+    $.ajax({
+        type: "POST",
+        url: "../../db/upload/up_price.php",
+        data: { zona: zona, tar_or: tar_or, tar_per: tar_per },
+        success: function () {
+            // Chiudi il modal e aggiorna la tabella dei posti
+            $("#zone").modal("hide");
+            show_parks(zona);
+        },
+        error: function () {
+            alert('Si è verificato un errore durante l\'assegnazione del posto.');
+        }
+    });
+});
+
+$(document).ready(function () {
+    $(document).on("click", "#tar-zone", function () {
+        // Ottieni il posto selezionato
+        var zona = $("#up-text").text();
+    
+        var modalContent = '';
             modalContent += '<div class="modal-header">';
-            modalContent += '<h5 class="modal-title" id="get-tar">Aggiorna tariffa: zona ' + zona.charAt(zona.length-1) + '</h5>';
+            modalContent += '<h5 class="modal-title" id="get-tar-zone">Aggiorna tariffa: zona ' + zona.charAt(zona.length-1) + '</h5>';
             modalContent += '<button type="button" class="close" data-dismiss="modal">';
             modalContent += '<span>&times;</span>';
             modalContent += '</button>';
@@ -78,21 +101,22 @@ $(document).on("click", "#tar-zone", function () {
             modalContent += '<div class="modal-body">';
             modalContent += '<form>';
             modalContent += '<div class="form-group">';
-            modalContent += '<label for="tariffa_oraria">Tariffa oraria(eur/h):</label>';
-            modalContent += '<input type="text" name="tariffa_oraria" id="#tar_or">';
-            modalContent += '<label for="tariffa_mensile">Tariffa mensile(eur/d):</label>';
-            modalContent += '<input type="text" name="tariffa_mensile" id="#tar_per">';
+            modalContent += '<label for="tariffa_oraria">Tariffa oraria(eur/h):</label><br>';
+            modalContent += '<input type="text" name="tariffa_oraria" id="tar_zone_or"><br>';
+            modalContent += '<label for="tariffa_periodica">Tariffa periodica(eur/d):</label><br>';
+            modalContent += '<input type="text" name="tariffa_periodica" id="tar_zone_per">';
             modalContent += '</div>';
             modalContent += '</form>';
             modalContent += '</div>';
             modalContent += '<div class="modal-footer">';
-            modalContent += '<button type="button" class="btn btn-primary" id="btn-assegna">Aggiorna</button>';
+            modalContent += '<button type="button" class="btn btn-primary" id="btn-update-zone-price">Aggiorna</button>';
             modalContent += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>';
             modalContent += '</div>';
-
-            // Inserisce il contenuto nel modal e mostra il modal
-            $('#zone .modal-content').html(modalContent);
-            $('#zone').modal('show');
+    
+        // Inserisce il contenuto nel modal e mostra il modal
+        $('#zone .modal-content').html(modalContent);
+        $('#zone').modal('show');
+    });
 });
 
 function show_parks(zona) {
@@ -100,9 +124,7 @@ function show_parks(zona) {
     $.ajax({
         url: "../../db/get/get_slots.php",
         type: "GET",
-        data: {
-            zona: zona
-        },
+        data: { zona: zona },
         success: function (data) {
             // Aggiungi le righe della tabella con i dati dei parcheggi ottenuti dal database
             $("#tabella-parcheggi").html(data);

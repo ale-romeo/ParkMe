@@ -4,10 +4,10 @@ include('../connection.php');
 $user = "";
 
 // Recupera il valore della zona selezionata dall'utente
-$zona = $_GET['zona'];
+$zona = $conn->real_escape_string($_GET['zona']);
 
 if (isset($_SESSION["username"])) {
-    $user = $_SESSION["username"];
+    $user = $conn->real_escape_string($_SESSION["username"]);
 }
 
 $get_class = "SELECT * FROM Account WHERE username = '$user'";

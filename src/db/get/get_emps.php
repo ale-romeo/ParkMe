@@ -6,12 +6,12 @@ $bd_id = "";
 $ag_id = "";
 $type = "";
 if (isset($_SESSION["id_body"])) {
-    $bd_id = $_SESSION["id_body"];
+    $bd_id = $conn->real_escape_string($_SESSION["id_body"]);
     $type = 'body_emp';
     $posti = "SELECT name, surname, reg_date FROM Account WHERE type = '$type' AND Body_id = '$bd_id' ORDER BY name";
 }
 else if (isset($_SESSION["id_agent"])) {
-    $ag_id = $_SESSION["id_agent"];
+    $ag_id = $conn->real_escape_string($_SESSION["id_agent"]);
     $type = 'agent_emp';
     $posti = "SELECT name, surname, reg_date FROM Account WHERE type = '$type' AND Agent_id = '$ag_id' ORDER BY name";
 }

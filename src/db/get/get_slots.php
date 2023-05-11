@@ -17,8 +17,7 @@ $type = $row_user['type'];
 if ($type == 'body_emp' or $type == 'sup_body_emp') {
     $id_body = $row_user['Body_id'];
     $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' AND id_body = '$id_body' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
-}
-else if ($type == 'agent_emp' or $type == 'sup_agent_emp') {
+} else if ($type == 'agent_emp' or $type == 'sup_agent_emp') {
     $id_agent = $row_user['Agent_id'];
     $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' AND id_agent = '$id_agent' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
 
@@ -63,67 +62,65 @@ if ($type == 'sup_body_emp') {
         $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td><td>$ag</td><td>$assign</td></tr>";
     }
     $table_html .= '</tbody></table>';
-}
-else if ($type == 'body_emp') {
+} else if ($type == 'body_emp') {
     // Genera la tabella dei parcheggi
-$table_html = '<table>';
-$table_html .= '<thead><tr><th>Codice</th><th>Stato</th><th> </th><th>Operatore</th></tr></thead>';
-$table_html .= '<tbody>';
-while ($row = $result->fetch_assoc()) {
-    $id = $row['id'];
-    $stato = $row['STATUS'];
-    $ag = $row['id_agent'];
+    $table_html = '<table>';
+    $table_html .= '<thead><tr><th>Codice</th><th>Stato</th><th> </th><th>Operatore</th></tr></thead>';
+    $table_html .= '<tbody>';
+    while ($row = $result->fetch_assoc()) {
+        $id = $row['id'];
+        $stato = $row['STATUS'];
+        $ag = $row['id_agent'];
 
-    if ($stato == 'Available') {
-        $vis = $av_vis;
-    }
-    if ($stato == 'Out of order') {
-        $vis = $ofo_vis;
-    }
-    if ($stato == 'Occupied') {
-        $vis = $oc_vis;
-    }
-    if ($stato == 'Reserved') {
-        $vis = $pr_vis;
-    }
+        if ($stato == 'Available') {
+            $vis = $av_vis;
+        }
+        if ($stato == 'Out of order') {
+            $vis = $ofo_vis;
+        }
+        if ($stato == 'Occupied') {
+            $vis = $oc_vis;
+        }
+        if ($stato == 'Reserved') {
+            $vis = $pr_vis;
+        }
 
-    if ($ag == NULL){
-        $ag = 'Vacant';
+        if ($ag == NULL) {
+            $ag = 'Vacant';
+        }
+        $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td><td>$ag</td></tr>";
     }
-    $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td><td>$ag</td></tr>";
-}
-$table_html .= '</tbody></table>';
-}
-
-else if ($type == 'agent_emp' or $type == 'sup_agent_emp') {
-    // Genera la tabella dei parcheggi
-$table_html = '<table>';
-$table_html .= '<thead><tr><th>Codice</th><th>Stato</th><th> </th><th>Tar. oraria</th><th>Tar. periodica</th><th> </th></tr></thead>';
-$table_html .= '<tbody>';
-while ($row = $result->fetch_assoc()) {
+    $table_html .= '</tbody></table>';
+} else if ($type == 'agent_emp' or $type == 'sup_agent_emp') {
     $assign = '<a href="#" class="cambia-tariffa" data-toggle="modal" data-target="#single">Aggiorna Tariffe</a>';
-    $id = $row['id'];
-    $stato = $row['STATUS'];
-    $ag = $row['id_agent'];
-    $tar_or = $row['hourly_price'];
-    $tar_per = $row['periodic_price'];
 
-    if ($stato == 'Available') {
-        $vis = $av_vis;
-    }
-    if ($stato == 'Out of order') {
-        $vis = $ofo_vis;
-    }
-    if ($stato == 'Occupied') {
-        $vis = $oc_vis;
-    }
-    if ($stato == 'Reserved') {
-        $vis = $pr_vis;
-    }
+    // Genera la tabella dei parcheggi
+    $table_html = '<table>';
+    $table_html .= '<thead><tr><th>Codice</th><th>Stato</th><th> </th><th>Tar. oraria</th><th>Tar. periodica</th><th> </th></tr></thead>';
+    $table_html .= '<tbody>';
+    while ($row = $result->fetch_assoc()) {
+        $id = $row['id'];
+        $stato = $row['STATUS'];
+        $ag = $row['id_agent'];
+        $tar_or = $row['hourly_price'];
+        $tar_per = $row['periodic_price'];
 
-    $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td><td>$tar_or</td><td>$tar_per</td><td>$assign</td></tr>";
-}
-$table_html .= '</tbody></table>';
+        if ($stato == 'Available') {
+            $vis = $av_vis;
+        }
+        if ($stato == 'Out of order') {
+            $vis = $ofo_vis;
+        }
+        if ($stato == 'Occupied') {
+            $vis = $oc_vis;
+        }
+        if ($stato == 'Reserved') {
+            $vis = $pr_vis;
+        }
+
+        $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td><td>$tar_or</td><td>$tar_per</td><td>$assign</td></tr>";
+    }
+    $table_html .= '</tbody></table>';
 }
 
 // Stampa la tabella HTML dei parcheggi

@@ -71,3 +71,36 @@ table tbody tr:last-child td {
 table tbody tr:nth-child(even) {
     background-color: #aca8be;
 }
+
+.form-group label {
+    font-weight: bold;
+    margin-right: -10px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+    margin-bottom: 10px;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #aca8be;
+}
+
+.modal {
+    width: auto;
+}
+
+.form-group textarea {
+    width: 100%;
+}
+
+.form-group input[type="text"] {
+    width: auto;
+}

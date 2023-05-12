@@ -20,10 +20,10 @@ if (isset($_SESSION["id_agent"])) {
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="../../js/ag_s_sub.js"></script>
+    <script src="../../js/ag_sub.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/ag_sub.css">
+    <link rel="stylesheet" type="text/css" href="../../css/ag_s_sub.css">
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 </head>
 

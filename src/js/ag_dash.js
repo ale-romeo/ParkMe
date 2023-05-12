@@ -13,6 +13,7 @@ $(document).on("click", "#btn-update-single-price", function () {
             // Chiudi il modal e aggiorna la tabella dei posti
             $("#single").modal("hide");
             show_parks(posto.charAt(0));
+            tar_log_single(posto);
         },
         error: function () {
             alert('Si è verificato un errore durante l\'assegnazione del posto.');
@@ -41,9 +42,9 @@ $(document).on("click", ".cambia-tariffa", function () {
                 modalContent += '<form>';
                 modalContent += '<div class="form-group">';
                 modalContent += '<label for="tariffa_oraria">Tariffa oraria(eur/h):</label><br>';
-                modalContent += '<input type="text" name="tariffa_oraria" id="tar_or"><br>';
+                modalContent += '<input type="number" name="tariffa_oraria" id="tar_or"><br>';
                 modalContent += '<label for="tariffa_periodica">Tariffa periodica(eur/d):</label><br>';
-                modalContent += '<input type="text" name="tariffa_periodica" id="tar_per">';
+                modalContent += '<input type="number" name="tariffa_periodica" id="tar_per">';
                 modalContent += '</div>';
                 modalContent += '</form>';
                 modalContent += '</div>';
@@ -79,6 +80,7 @@ $(document).on("click", "#btn-update-zone-price", function () {
             // Chiudi il modal e aggiorna la tabella dei posti
             $("#zone").modal("hide");
             show_parks(zona);
+            tar_log(zona);
         },
         error: function () {
             alert('Si è verificato un errore durante l\'assegnazione del posto.');
@@ -102,9 +104,9 @@ $(document).ready(function () {
             modalContent += '<form>';
             modalContent += '<div class="form-group">';
             modalContent += '<label for="tariffa_oraria">Tariffa oraria(eur/h):</label><br>';
-            modalContent += '<input type="text" name="tariffa_oraria" id="tar_zone_or"><br>';
+            modalContent += '<input type="number" name="tariffa_oraria" id="tar_zone_or"><br>';
             modalContent += '<label for="tariffa_periodica">Tariffa periodica(eur/d):</label><br>';
-            modalContent += '<input type="text" name="tariffa_periodica" id="tar_zone_per">';
+            modalContent += '<input type="number" name="tariffa_periodica" id="tar_zone_per">';
             modalContent += '</div>';
             modalContent += '</form>';
             modalContent += '</div>';
@@ -143,6 +145,39 @@ function show_parks(zona) {
         },
         error: function () {
             alert('Si è verificato un errore durante la visualizzazione dei posti.');
+        }
+    });
+}
+
+function view_log(zona) {
+    $.ajax({
+        url: "../../db/upload/add_log.php",
+        type: 'POST',
+        data: { action: 'view', zona: zona },
+        error: function() {
+            alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}
+
+function tar_log(zona) {
+    $.ajax({
+        url: "../../db/upload/add_log.php",
+        type: 'POST',
+        data: { action: 'tar_edit', zona: zona },
+        error: function() {
+            alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}
+
+function tar_log_single(posto) {
+    $.ajax({
+        url: "../../db/upload/add_log.php",
+        type: 'POST',
+        data: { action: 'tar_edit', posto: posto },
+        error: function() {
+            alert('Si è verficato un errore durante il salvataggio del log.');
         }
     });
 }
@@ -259,6 +294,7 @@ function initMap() {
         var sel_zone = 'A';
 
         show_parks(sel_zone);
+        view_log(sel_zone);
     });
 
     // Aggiungi listener per zona B
@@ -266,6 +302,7 @@ function initMap() {
         var sel_zone = 'B';
 
         show_parks(sel_zone);
+        view_log(sel_zone);
     });
 
     // Aggiungi listener per zona C
@@ -273,6 +310,7 @@ function initMap() {
         var sel_zone = 'C';
 
         show_parks(sel_zone);
+        view_log(sel_zone);
     });
 
     // Aggiungi listener per zona D
@@ -280,6 +318,7 @@ function initMap() {
         var sel_zone = 'D';
 
         show_parks(sel_zone);
+        view_log(sel_zone);
     });
 
     // Aggiungi listener per zona E
@@ -287,6 +326,7 @@ function initMap() {
         var sel_zone = 'E';
 
         show_parks(sel_zone);
+        view_log(sel_zone);
     });
 
 }

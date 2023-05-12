@@ -69,7 +69,7 @@ if (isset($_SESSION["id_agent"])) {
                     <div class="col-md-6">
                         <label for="username">Username:</label>
                         <span class="error" id="usrErr"></span>
-                        <input type="text" id="username" name="username">
+                        <input type="text" id="username" name="username" readonly>
                     </div>
 
                     <div class="col-md-6">

@@ -18,7 +18,7 @@ if (isset($_SESSION["id_agent"])) {
     <title>ParkMe - The easy way to park.</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="../../js/bd_s_dash.js"></script>
+    <script src="../../js/ag_dash.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../css/ag_dash.css">
@@ -87,12 +87,21 @@ if (isset($_SESSION["id_agent"])) {
                     <tbody></tbody>
                 </table>
             </div>
+            <div class="btn-cont">
+                <button class="btn btn-primary" id="tar-zone" style="display: none;" data-toggle="modal"
+                    data-target="#zone">Gestisci tariffe</button>
+            </div>
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="zone" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="single" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
         </div>
     </div>
 </body>

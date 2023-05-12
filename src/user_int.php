@@ -7,7 +7,7 @@
   <title>ParkMe - The easy way to park.</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script src="js/land.js"></script>
+  <script src="js/usr_int.js"></script>
   <link rel="stylesheet" type="text/css" href="css/login_signup.css">
   <link rel="stylesheet" type="text/css" href="css/usr_int.css">
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">

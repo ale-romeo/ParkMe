@@ -36,6 +36,7 @@ $(document).on("click", "#btn-edit-sub-modal", function () {
             // Chiudi il modal e aggiorna la tabella degli abbonamenti
             $("#edit-sub-modal").modal("hide");
             show_subs();
+            sub_log(sub_id);
         },
         error: function () {
             alert('Si è verificato un errore durante la modifica dell\' abbonamento.');
@@ -139,6 +140,17 @@ function show_subs() {
 $(document).ready(function () {
     show_subs();
 });
+
+function sub_log(sub_id) {
+    $.ajax({
+        url: "../../db/upload/add_log.php",
+        type: 'POST',
+        data: { action: 'sub_edit', sub_id: sub_id },
+        error: function() {
+            alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}
 
 function logout() {
     var confirmLogout = confirm("Sei sicuro di voler effettuare il logout?");

@@ -20,10 +20,10 @@ if (isset($_SESSION["id_agent"])) {
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="../../js/ag_mng.js"></script>
+    <script src="../../js/ag_sub.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/ag_mng.css">
+    <link rel="stylesheet" type="text/css" href="../../css/ag_sub.css">
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 </head>
 
@@ -69,53 +69,21 @@ if (isset($_SESSION["id_agent"])) {
         </div>
     </nav>
     <!-- Main Content -->
-    <div class="container-fluid">
-        <div class="row align-items-center justify-content-center" style="height: 90vh;">
-            <div class="col-6">
-                <div class="box-left">
-                    <div class="box-left-inner">
-                        <span class="wtd" id="up-text" style="font-weight: 400;">Ciao
-                            <strong style="color: #4f25d6;">
-                                <?php echo $username ?>
-                            </strong>,<br>Vuoi creare un nuovo account?
-                        </span>
-                        <form id="add-account">
-                            <div class="row form-group">
-                                <div class="col-md-4">
-                                    <label for="name">Nome</label>
-                                    <input type="text" name="name" id="nome" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="surname">Cognome</label>
-                                    <input type="text" name="surname" id="cognome" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="bdate">Data di nascita</label>
-                                    <input type="date" id="bdate" name="bdate" required>
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary">Aggiungi</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 90vh;">
+        <div class="box">
+            <span class="wtd" id="up-text" style="font-weight: 600;">Visualizza abbonamenti</span>
+            <div id="table-wrapper" style="display: none;">
+                <table id="tabella-abbonamenti">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
             </div>
-
-            <div class="col-6">
-                <div class="box-right">
-                    <div class="box-right-inner">
-                        <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Lista impiegati:
-                        </span>
-                        <div id="table-wrapper" style="display: none;">
-                            <table id="tabella-personale">
-                                <thead></thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="edit-sub-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
         </div>
     </div>
 </body>

@@ -16,12 +16,12 @@ $row_user = $got->fetch_assoc();
 $type = $row_user['type'];
 if ($type == 'body_emp' or $type == 'sup_body_emp') {
     $id_body = $row_user['Body_id'];
-    $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' AND id_body = '$id_body' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
+    $posti = "SELECT * FROM Parking_Space WHERE zone_id = '$zona' AND id_body = '$id_body' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
 } else if ($type == 'agent_emp' or $type == 'sup_agent_emp') {
     $id_agent = $row_user['Agent_id'];
-    $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' AND id_agent = '$id_agent' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
+    $posti = "SELECT * FROM Parking_Space WHERE zone_id = '$zona' AND id_agent = '$id_agent' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
 } else if ($type == 'end_user') {
-    $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' AND id_agent != 'NULL' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
+    $posti = "SELECT * FROM Parking_Space WHERE zone_id = '$zona' AND id_agent != 'NULL' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
 }
 
 // Query per recuperare i posti auto della zona selezionata

@@ -20,7 +20,8 @@ if ($type == 'body_emp' or $type == 'sup_body_emp') {
 } else if ($type == 'agent_emp' or $type == 'sup_agent_emp') {
     $id_agent = $row_user['Agent_id'];
     $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' AND id_agent = '$id_agent' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
-
+} else if ($type == 'end_user') {
+    $posti = "SELECT * FROM Parking_Space WHERE id LIKE '$zona%' AND id_agent != 'NULL' ORDER BY CAST(SUBSTRING(id, 2) AS UNSIGNED)";
 }
 
 // Query per recuperare i posti auto della zona selezionata
@@ -121,6 +122,12 @@ if ($type == 'sup_body_emp') {
         $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td><td>$tar_or</td><td>$tar_per</td><td>$assign</td></tr>";
     }
     $table_html .= '</tbody></table>';
+} else if ($type == 'end_user') {
+    $table_html = '<select name="park_slot" id="park_slot_id">';
+    while ($row = $result->fetch_assoc()) {
+        $table_html .= '<option value="'.$row['id'].'">'.$row['id'].'</option>';
+    }
+    $table_html .= '</select>';
 }
 
 // Stampa la tabella HTML dei parcheggi

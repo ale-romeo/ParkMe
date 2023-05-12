@@ -1,21 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    color: #1a1f36;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, sans-serif;
+}
+
+body {
+    background-image: url('../img/ag_bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    position: relative;
+    z-index: 1;
+    background-color: #376ba7;
+}
+
 #map {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 99%;
+    height: 100%;
 }
 
-#form-container {
+.park-box {
+    margin: 0px auto;
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    padding: 10px;
     position: fixed;
     top: 50%;
     left: 20%;
     transform: translate(-50%, -50%);
 }
 
-.pac-container {
-    max-height: 200px;
-    overflow-y: auto;
+.park-box-inner {
+    padding: 20px;
 }
 
 .wtd {
@@ -23,4 +50,70 @@
     font-size: 20px;
     line-height: 28px;
     color: #1a1f36;
+    padding-bottom: 15px;
+}
+
+.btn-cont button {
+    background-color: #376ba7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 5px;
+}
+
+.btn-cont button:hover {
+    background-color: #1e589b;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cont {
+    text-align: right;
+}
+
+.modal label {
+    font-weight: bold;
+    margin-right: -10px;
+}
+
+.modal input[type="number"] {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+}
+
+.modal input[type="number"]:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #376ba7;
+}
+
+
+.form-group label {
+    font-weight: 600;
+    margin-right: -10px;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    border: none;
+    border-radius: 2px;
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #376ba7;
+}
+
+.form-group select {
+    max-height: 100px;
+    overflow-y: auto;
 }

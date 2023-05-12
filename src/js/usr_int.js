@@ -2,12 +2,13 @@ $(document).on("click", "#btn-pay", function () {
     // Ottieni il posto selezionato
     var posto = $("#get-posto").text().replace("Stai per iniziare la sosta nel posto ", "");
     var tar = $("#tar_sel option:selected").val();
+    var durata = $("#durata").val();
 
     // Esegui una richiesta AJAX per aggiornare il record del posto nel database
     $.ajax({
         type: "POST",
         url: "../../db/upload/parking.php",
-        data: { posto: posto, tar: tar },
+        data: { posto: posto, tar: tar, durata: durata },
         success: function () {
             // Chiudi il modal e aggiorna la tabella dei posti
             $("#parknow").modal("hide");
@@ -36,10 +37,12 @@ $(document).ready(function () {
             modalContent += '<form>';
             modalContent += '<div class="form-group">';
             modalContent += '<label for="sel_tar">Seleziona tariffa:</label><br>';
-            modalContent += '<select name="sel_tar" id="tar_sel">';
+            modalContent += '<select name="sel_tar" id="tar_sel" required>';
             modalContent += '<option value="tar_or">Tariffa oraria</option>';
             modalContent += '<option value="tar_per">Tariffa periodica</option>';
             modalContent += '</select><br>';
+            modalContent += '<label for="time">Durata della sosta(min):</label><br>';
+            modalContent += '<input type="number" name="time" id="durata" required><br>';
             modalContent += '</div>';
             modalContent += '</form>';
             modalContent += '</div>';
@@ -78,6 +81,7 @@ function show_parks(zona) {
         type: "GET",
         data: { zona: zona },
         success: function (data) {
+            $("#park-form").show();
             $("#park_slot_sel").html(data);
         },
         error: function () {

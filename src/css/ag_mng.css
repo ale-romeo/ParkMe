@@ -30,6 +30,10 @@ body {
     padding: 10px;
 }
 
+.box-right {
+    max-width: 480px;
+}
+
 .wtd {
     display: block;
     font-size: 20px;
@@ -114,7 +118,7 @@ table thead th {
 table tbody td {
     text-align: center;
     padding: 8px;
-    border-bottom: 1px solid #aca8be;
+    border-bottom: 1px solid #342381;
 }
 
 table tbody tr:last-child td {
@@ -122,5 +126,5 @@ table tbody tr:last-child td {
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #6a48dac0;
+    background-color: #aca8be;
 }

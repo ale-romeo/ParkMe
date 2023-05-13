@@ -11,7 +11,7 @@ $action = $conn->real_escape_string($_POST['action']);
 $zone = "";
 $sub_id = "";
 $slot = "";
-$tkt = "";
+$tkt_id = "";
 $id_emp = "";
 
 if (isset($_POST['zona'])) {
@@ -20,33 +20,31 @@ if (isset($_POST['zona'])) {
 if (isset($_POST['sub_id'])) {
     $sub_id = $conn->real_escape_string($_POST['sub_id']);
 }
-if (isset($_POST['posto'])) {
-    $slot = $conn->real_escape_string($_POST['posto']);
+if (isset($_POST['slot'])) {
+    $slot = $conn->real_escape_string($_POST['slot']);
 }
 if (isset($_POST['tkt_id'])) {
-    $tkt = $conn->real_escape_string($_POST['tkt_id']);
+    $tkt_id = $conn->real_escape_string($_POST['tkt_id']);
 }
 if (isset($_POST['emp_id'])) {
     $id_emp = $conn->real_escape_string($_POST['emp_id']);
 }
 
 if ($action == 'view') {
-    $log = "INSERT INTO Operations_Log (user_id, action, zone) VALUES ('$usr', 'Visualizzazione Zona', '$zone')";
-
-    echo $log;
+    $log = "INSERT INTO Operations_Log (user_id, action, zone_id) VALUES ('$usr', 'Visualizzazione Zona', '$zone')";
 }
 if ($action == 'sub_edit') {
     $log = "INSERT INTO Operations_Log (user_id, action, sub_id) VALUES ('$usr', 'Modifica Abbonamento', '$sub_id')";
 }
 if ($action == 'tar_edit') {
     if ($zone != ""){
-        $log = "INSERT INTO Operations_Log (user_id, action, zone) VALUES ('$usr', 'Modifica Tariffa', '$zone')";
+        $log = "INSERT INTO Operations_Log (user_id, action, zone_id) VALUES ('$usr', 'Modifica Tariffa', '$zone')";
     } else {
         $log = "INSERT INTO Operations_Log (user_id, action, slot_id) VALUES ('$usr', 'Modifica Tariffa', '$slot')";
     }
 }
 if ($action == 'tkt') {
-    $log = "INSERT INTO Operations_Log (user_id, action, tkt_id) VALUES ('$usr', 'Risoluzione Ticket', '$tkt')";
+    $log = "INSERT INTO Operations_Log (user_id, action, tkt_id) VALUES ('$usr', 'Risoluzione Ticket', '$tkt_id')";
 }
 if ($action == 'slot_ass') {
     $log = "INSERT INTO Operations_Log (user_id, action, slot_id) VALUES ('$usr', 'Assegnazione Posto', '$slot')";

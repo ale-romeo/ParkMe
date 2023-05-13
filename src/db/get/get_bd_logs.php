@@ -2,12 +2,12 @@
 session_start();
 include("../connection.php");
 
-$id_agent = "";
-if (isset($_SESSION["id_agent"])) {
-    $id_agent = $_SESSION["id_agent"];
+$id_body = "";
+if (isset($_SESSION["id_body"])) {
+    $id_body = $_SESSION["id_body"];
 }
 
-$get_logs = "SELECT Operations_Log.* FROM Operations_Log JOIN Account ON Account.username = Operations_Log.user_id WHERE Account.Agent_id = '$id_agent' ORDER BY Operations_Log.id DESC";
+$get_logs = "SELECT Operations_Log.* FROM Operations_Log JOIN Account ON Account.username = Operations_Log.user_id WHERE Account.Body_id = '$id_body' ORDER BY Operations_Log.id DESC";
 $res = $conn->query($get_logs) or die("Errore durante il caricamento dei logs: " . $conn->connect_error);
 
 $table_html = '<table>';

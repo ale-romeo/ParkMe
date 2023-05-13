@@ -17,7 +17,7 @@ $got = $conn->query($get_class);
 $row_user = $got->fetch_assoc();
 $usr_type = $row_user['type'];
 
-$subs = "SELECT * FROM Subscription WHERE id_agent = '$ag_id' ORDER BY type";
+$subs = "SELECT * FROM Subscription WHERE id_agent = '$ag_id' AND removed = 0 ORDER BY type";
 $result = $conn->query($subs) or die("Query failed: " . $conn->connect_error);
 $edit = '<a href="#" class="edit-sub" data-toggle="modal" data-target="#edit-sub-modal">Modifica</a>';
 $drop = '<a href="#" class="del-sub" style="cursor: pointer;">Rimuovi</a>';

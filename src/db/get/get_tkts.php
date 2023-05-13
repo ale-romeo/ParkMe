@@ -13,8 +13,8 @@ $row_user = $got->fetch_assoc();
 $type = $row_user['type'];
 
 $get_tkts = "SELECT * FROM Ticket ORDER BY id DESC";
-$res = $conn->query($get_tkts) or die("Errore durante il caricamento dei logs: ". $conn->connect_error);
-$show_text = '<a href="#" class="mostra-testo" data-toggle="modal" data-target="#show-text">Mostra testo</a>';
+$res = $conn->query($get_tkts) or die("Errore durante il caricamento dei tickets: ". $conn->connect_error);
+$show_text = '<a href="#" class="mostra-testo" data-toggle="modal" data-target="#show-text">Visualizza</a>';
 
 $status_open = '<span class="status-icon"><i class="fas fa-circle text-success"></i></span>';
 $status_close = '<span class="status-icon"><i class="fas fa-circle"></i></span>';

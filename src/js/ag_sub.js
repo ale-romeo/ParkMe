@@ -9,6 +9,7 @@ $(document).on("click", ".del-sub", function () {
             data: { sub_id: sub_id },
             success: function () {
                 alert("Abbonamento eliminato");
+                sub_log_rem(sub_id);
                 // Aggiorna la tabella degli abbonamenti
                 show_subs();
             },
@@ -29,7 +30,7 @@ $(document).on("click", "#btn-edit-sub-modal", function () {
 
     $.ajax({
         type: "POST",
-        url: "../../db/upload/edit-sub.php",
+        url: "../../db/upload/edit_sub.php",
         data: { sub_id: sub_id, title: title, price: price },
         success: function () {
             alert("Abbonamento modificato");
@@ -103,9 +104,10 @@ $(document).ready(function () {
             type: "POST",
             url: "../../db/upload/add_sub.php",
             data: { titolo: titolo, prezzo: prezzo, tipo: tipo },
-            success: function () {
-                alert("Nuovo abbonamento creato!");
+            success: function (r) {
+                alert(r);
                 show_subs();
+                sub_log_add(r.replace("Nuovo abbonamento creato! ID: ", ""));
                 $("#title").val("");
                 $("#sub_price").val("");
                 $("#subs-sel").val("");
@@ -140,6 +142,28 @@ function show_subs() {
 $(document).ready(function () {
     show_subs();
 });
+
+function sub_log_rem(sub_id) {
+    $.ajax({
+        url: "../../db/upload/add_log.php",
+        type: 'POST',
+        data: { action: 'sub_rem', sub_id: sub_id },
+        error: function() {
+            alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}
+
+function sub_log_add(sub_id) {
+    $.ajax({
+        url: "../../db/upload/add_log.php",
+        type: 'POST',
+        data: { action: 'sub_add', sub_id: sub_id },
+        error: function() {
+            alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}
 
 function sub_log(sub_id) {
     $.ajax({

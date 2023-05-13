@@ -59,6 +59,8 @@ if ($type == 'sup_body_emp') {
         if ($ag == NULL) {
             $ag = 'Vacant';
             $assign = '<a href="#" class="assegna-operatore" data-toggle="modal" data-target="#myModal">Assegna</a>';
+        } else {
+            $assign = '<a href="#" class="assegna-operatore" data-toggle="modal" data-target="#myModal">Riassegna</a>';
         }
         $table_html .= "<tr><td>$id</td><td>$stato</td><td>$vis</td><td>$ag</td><td>$assign</td></tr>";
     }

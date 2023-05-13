@@ -149,17 +149,6 @@ function show_parks(zona) {
     });
 }
 
-function view_log(zona) {
-    $.ajax({
-        url: "../../db/upload/add_log.php",
-        type: 'POST',
-        data: { action: 'view', zona: zona },
-        error: function() {
-            alert('Si è verficato un errore durante il salvataggio del log.');
-        }
-    });
-}
-
 function tar_log(zona) {
     $.ajax({
         url: "../../db/upload/add_log.php",
@@ -332,3 +321,15 @@ function initMap() {
 }
 
 window.initMap = initMap;
+
+
+function view_log(zona) {
+    $.ajax({
+        url: "../../db/upload/add_log.php",
+        type: 'POST',
+        data: { action: 'view', zona: zona },
+        error: function() {
+            alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}

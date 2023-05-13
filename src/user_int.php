@@ -73,7 +73,7 @@ if (isset($_SESSION["username"])) {
         </strong>,<br>Clicca sulla mappa per
         visualizzare i posti auto vicini...
       </span>
-      <form action="" id="park-form" style="display: none;">
+      <form action="" id="park-form">
         <div class="row form-group">
           <div class="col-md-6">
             <label for="ins-zona">O inserisci la zona:</label>

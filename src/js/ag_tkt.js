@@ -6,14 +6,14 @@ $(document).on("click", "#btn-ans-tkt-modal", function () {
 
     $.ajax({
         type: "POST",
-        url: "../../db/upload/edit-tkt.php",
+        url: "../../db/upload/edit_tkt.php",
         data: { tkt_id: tkt_id, answer: answer },
         success: function (r) {
             alert(r);
+            tkt_log(tkt_id);
             // Chiudi il modal e aggiorna la tabella degli abbonamenti
             $("#tkt-modal").modal("hide");
             show_tkts();
-            tkt_log(tkt_id);
         },
         error: function () {
             alert('Si è verificato un errore durante la modifica dell\' abbonamento.');
@@ -87,6 +87,17 @@ function show_tkts() {
 $(document).ready(function () {
     show_tkts();
 });
+
+function tkt_log(tkt_id) {
+    $.ajax({
+        url: "../../db/upload/add_log.php",
+        type: 'POST',
+        data: { action: 'tkt', tkt_id: tkt_id },
+        error: function() {
+            alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}
 
 function logout() {
     var confirmLogout = confirm("Sei sicuro di voler effettuare il logout?");

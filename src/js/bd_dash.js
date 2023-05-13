@@ -26,11 +26,11 @@ function show_parks(zona) {
     });
 }
 
-function save_log(zona) {
+function view_log(zona) {
     $.ajax({
-        url: "../../db/upload/view_log.php",
+        url: "../../db/upload/add_log.php",
         type: 'POST',
-        data: { zona: zona },
+        data: { action: 'view', zona: zona },
         error: function() {
             alert('Si è verficato un errore durante il salvataggio del log.');
         }
@@ -145,43 +145,43 @@ function initMap() {
     zoneE.setMap(map);
 
     // Aggiungi listener per zona A
-    google.maps.event.addListener(zoneA, 'click', function (event) {
+    google.maps.event.addListener(zoneA, 'click', function () {
         var sel_zone = 'A';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
+        view_log(sel_zone);
     });
 
     // Aggiungi listener per zona B
-    google.maps.event.addListener(zoneB, 'click', function (event) {
+    google.maps.event.addListener(zoneB, 'click', function () {
         var sel_zone = 'B';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
+        view_log(sel_zone);
     });
 
     // Aggiungi listener per zona C
-    google.maps.event.addListener(zoneC, 'click', function (event) {
+    google.maps.event.addListener(zoneC, 'click', function () {
         var sel_zone = 'C';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
+        view_log(sel_zone);
     });
 
     // Aggiungi listener per zona D
-    google.maps.event.addListener(zoneD, 'click', function (event) {
+    google.maps.event.addListener(zoneD, 'click', function () {
         var sel_zone = 'D';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
+        view_log(sel_zone);
     });
 
     // Aggiungi listener per zona E
-    google.maps.event.addListener(zoneE, 'click', function (event) {
+    google.maps.event.addListener(zoneE, 'click', function () {
         var sel_zone = 'E';
 
         show_parks(sel_zone);
-        save_log(sel_zone);
+        view_log(sel_zone);
     });
 
 }

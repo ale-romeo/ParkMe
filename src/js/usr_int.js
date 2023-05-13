@@ -81,7 +81,6 @@ function show_parks(zona) {
         type: "GET",
         data: { zona: zona },
         success: function (data) {
-            $("#park-form").show();
             $("#park_slot_sel").html(data);
         },
         error: function () {

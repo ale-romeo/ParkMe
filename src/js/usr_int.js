@@ -3,15 +3,18 @@ $(document).on("click", "#btn-pay", function () {
     var posto = $("#get-posto").text().replace("Stai per iniziare la sosta nel posto ", "");
     var tar = $("#tar_sel option:selected").val();
     var durata = $("#durata").val();
+    var zona = posto.charAt(0);
 
     // Esegui una richiesta AJAX per aggiornare il record del posto nel database
     $.ajax({
         type: "POST",
         url: "../../db/upload/parking.php",
         data: { posto: posto, tar: tar, durata: durata },
-        success: function () {
+        success: function (r) {
+            alert(r);
             // Chiudi il modal e aggiorna la tabella dei posti
             $("#parknow").modal("hide");
+            show_parks(zona);
         },
         error: function () {
             alert('Si è verificato un errore durante l\'assegnazione del posto.');
@@ -88,6 +91,13 @@ function show_parks(zona) {
             alert('Errore durante il caricamento dei posti.');
         }
     });
+}
+
+function logout() {
+    var confirmLogout = confirm("Sei sicuro di voler effettuare il logout?");
+    if (confirmLogout) {
+        window.location.href = "logout.php";
+    }
 }
 
 function initMap() {

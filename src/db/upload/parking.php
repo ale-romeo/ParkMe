@@ -8,6 +8,7 @@ if (isset($_SESSION['username'])) {
 }
 
 $amount = "";
+$reduction = "";
 // Query per recuperare la lista degli operatori
 $slot = $conn->real_escape_string($_POST['posto']);
 $tar_opt = $conn->real_escape_string($_POST['tar']);
@@ -17,22 +18,30 @@ $get_slot_info = "SELECT * FROM Parking_Space WHERE id = '$slot'";
 $res_slot = $conn->query($get_slot_info);
 $row_slot = $res_slot->fetch_assoc();
 
+$get_usr_sub = "SELECT Payment.sub_id, Payment.agent_id, Payment.date, Subscription.reduction FROM Payment JOIN Subscription ON Payment.sub_id = Subscription.id WHERE Payment.user_id = '$usr'";
+$res_usr_sub = $conn->query($get_usr_sub);
+if ($res_usr_sub->num_rows > 0) {
+    while ($row_sub = $res_usr_sub->fetch_assoc()) {
+        if (time() - strtotime($row_sub['date']) < 604800) {
+            $reduction = $row_sub['reduction'];
+            $agent = $row_sub['agent_id'];
+        }
+    }
+}
+
 if ($tar_opt == 'tar_or') {
-    $amount = $row_slot['hourly_price']*$durata/60 + 0.17;
+    $price = $row_slot['hourly_price'] - $reduction;
+    $amount = $price*$durata/60 + 0.17;
 }
 if ($tar_opt == 'tar_per') {
-    $amount = $row_slot['periodic_price']*$durata/60 + 35;
+    $price = $row_slot['periodic_price'] - $reduction;
+    $amount = $price*$durata/60 + 0.35;
 }
 
-date_default_timezone_set('Europe/Rome');
-$date = date('Y-m-d h:i:s', time());
-
-$pay = "INSERT INTO Payment (amount, id_user, id_parking, date) VALUES ('$amount', '$usr', '$slot', '$date')";
+$pay = "INSERT INTO Payment (amount, user_id, park_id, agent_id) VALUES ('$amount', '$usr', '$slot', '$agent')";
+echo $pay;
 $res_pay = $conn->query($pay) or die("Si è verificato un errore durante il pagamento: " . $conn->connect_error);
 
 $occupied = "UPDATE Parking_Space SET STATUS = 'Occupied' WHERE id = '$slot'";
 $res_occ = $conn->query($occupied);
-
-$countdown = "CREATE EVENT `aggiorna_stato_parcheggi` ON SCHEDULE EVERY 1 MINUTE STARTS CURRENT_TIMESTAMP DO UPDATE Parking_Space SET STATUS = 'Available' WHERE id = '$slot' AND NOW() > DATE_ADD('$date', INTERVAL $durata MINUTE) AND STATUS = 'Occupied'";
-$event = $conn->query($countdown);
 ?>

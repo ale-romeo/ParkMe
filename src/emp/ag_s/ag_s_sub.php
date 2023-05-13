@@ -62,7 +62,7 @@ if (isset($_SESSION["id_agent"])) {
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../acc.php">
+                    <a class="nav-link" href="../../acc.php">
                         <i class="fas fa-user" style="color: white;"></i>&nbsp&nbspProfilo
                     </a>
                 </li>
@@ -87,8 +87,8 @@ if (isset($_SESSION["id_agent"])) {
                         </span>
                         <form id="add-sub">
                             <div class="row form-group">
-                                <div class="col-md-4">
-                                    <label for="subs-types">Tipo</label>
+                                <div class="col-md-6">
+                                    <label for="subs-types">Tipo</label><br>
                                     <select name="subs-types" id="subs-sel" required>
                                         <option value="Settimanale">Settimanale</option>
                                         <option value="Mensile">Mensile</option>
@@ -97,13 +97,17 @@ if (isset($_SESSION["id_agent"])) {
                                         <option value="Annuale">Annuale</option>
                                     </select>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="title">Titolo</label>
+                                <div class="col-md-6">
+                                    <label for="title">Titolo</label><br>
                                     <input type="text" name="title" id="title" required>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="price">Prezzo</label>
-                                    <input type="number" id="sub_price" name="price" min="0" max="10000" step="0.01" required>
+                                <div class="col-md-6">
+                                    <label for="price">Prezzo</label><br>
+                                    <input type="number" id="sub_price" name="price" min="0" max="1000" step="0.01" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="reduction">Riduzione</label><br>
+                                    <input type="number" id="sub_reduction" name="reduction" min="0" max="10" step="0.01" required>
                                 </div>
                                 <div class="col-md-12 text-right">
                                     <button type="submit" class="btn btn-primary">Aggiungi</button>
@@ -117,7 +121,7 @@ if (isset($_SESSION["id_agent"])) {
             <div class="col-6">
                 <div class="box-right">
                     <div class="box-right-inner">
-                        <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Lista impiegati:
+                        <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Lista abbonamenti:
                         </span>
                         <div id="table-wrapper" style="display: none;">
                             <table id="tabella-abbonamenti">

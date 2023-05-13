@@ -98,12 +98,13 @@ $(document).ready(function () {
         var titolo = $("#title").val();
         var prezzo = $("#sub_price").val();
         var tipo = $("#subs-sel").val();
+        var reduct = $("#sub_reduction").val();
 
         // Invia i dati via ajax al file PHP per l'inserimento nel database
         $.ajax({
             type: "POST",
             url: "../../db/upload/add_sub.php",
-            data: { titolo: titolo, prezzo: prezzo, tipo: tipo },
+            data: { titolo: titolo, prezzo: prezzo, tipo: tipo, reduction: reduct },
             success: function (r) {
                 alert(r);
                 show_subs();

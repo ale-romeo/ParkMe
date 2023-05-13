@@ -127,7 +127,20 @@ if ($type == 'sup_body_emp') {
 } else if ($type == 'end_user') {
     $table_html = '<select name="park_slot" id="park_slot_id">';
     while ($row = $result->fetch_assoc()) {
-        $table_html .= '<option value="'.$row['id'].'">'.$row['id'].'</option>';
+        $stato = $row['STATUS'];
+        if ($stato == 'Available') {
+            $vis = 'L';
+        }
+        if ($stato == 'Out of order') {
+            $vis = 'Inagibile';
+        }
+        if ($stato == 'Occupied') {
+            $vis = 'O';
+        }
+        if ($stato == 'Reserved') {
+            $vis = 'R';
+        }
+        $table_html .= '<option value="'.$row['id'].'">'.$row['id'].' - '.$row['id_agent'].'&nbsp&nbsp&nbsp'.$vis.'</option>';
     }
     $table_html .= '</select>';
 }

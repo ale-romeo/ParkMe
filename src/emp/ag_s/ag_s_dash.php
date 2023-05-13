@@ -62,7 +62,7 @@ if (isset($_SESSION["id_agent"])) {
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../acc.php">
+                    <a class="nav-link" href="../../acc.php">
                         <i class="fas fa-user" style="color: white;"></i>&nbsp&nbspProfilo
                     </a>
                 </li>

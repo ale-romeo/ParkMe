@@ -82,6 +82,7 @@ function show_parks(zona) {
         data: { zona: zona },
         success: function (data) {
             $("#park_slot_sel").html(data);
+            $("#zona_input").val(zona);
         },
         error: function () {
             alert('Errore durante il caricamento dei posti.');

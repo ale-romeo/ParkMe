@@ -47,6 +47,7 @@ $(document).on("click", ".assegna-operatore", function () {
             $.each(operatori, function (index, operatore) {
                 modalContent += '<option value="' + operatore + '">' + operatore + '</option>';
             });
+            modalContent += '<option value="null"></option>';
             modalContent += '</select>';
             modalContent += '</div>';
             modalContent += '</form>';

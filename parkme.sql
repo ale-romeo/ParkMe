@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Creato il: Mag 12, 2023 alle 12:06
+-- Creato il: Mag 13, 2023 alle 02:47
 -- Versione del server: 8.0.33
 -- Versione PHP: 8.1.18
 
@@ -41,23 +41,28 @@ CREATE TABLE `Account` (
   `Body_id` varchar(50) DEFAULT NULL,
   `Agent_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `priv_email_employee` varchar(255) DEFAULT NULL,
-  `exp_emp_date` date DEFAULT NULL
+  `exp_emp_date` date DEFAULT NULL,
+  `removed` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dump dei dati per la tabella `Account`
 --
 
-INSERT INTO `Account` (`username`, `email`, `password`, `reg_date`, `type`, `name`, `surname`, `birth_date`, `phone`, `gender`, `Body_id`, `Agent_id`, `priv_email_employee`, `exp_emp_date`) VALUES
-('alessandro.romeo', 'alessandro.romeo@easypark.it', '$2y$10$drvTsnlVKs2Jiv.JY4y7UO9ZxVvwsmXRyetZDH88N5XZgMSrIeRgK', '2023-05-09 20:36:47', 'sup_agent_emp', 'Alessandro', 'Romeo', '2000-12-06', '', 'M', NULL, 'EASYPARK', '', NULL),
-('andrea.spadaro', 'andrea.spadaro@easypark.it', '$2y$10$.2hSO1MJ8ho4pDf/SU2LYuLHu9qn2zo/BdMs.D3zk3H5npaP5tFiy', '2023-05-11 22:30:49', 'agent_emp', 'Andrea', 'Spadaro', '2000-05-16', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-11'),
-('ariannacu', 'ariannacu@gmail.com', '$2y$10$BkgqjE3Idic4v560UwdduOAPeh8bIe9FLxXiYwGrg5kWRhLyZ4E8S', '2023-05-11 21:23:58', 'end_user', 'Arianna', 'Cuscinà', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('davide.ciraolo', 'davide.ciraolo@comune.messina.it', '$2y$10$g8perYhsCg7tYfWPjd3yV.IJGXP1Er46n/5.qvHjTjel36qbOjSs2', '2023-05-12 08:42:09', 'body_emp', 'Davide', 'Ciraolo', '1995-01-01', NULL, NULL, 'MESSINA', NULL, NULL, '2024-05-12'),
-('giuseppe.buonasera', 'giuseppe.buonasera@comune.messina.it', '$2y$10$FK/4MPBA6Pa6iB.hepOfnuqsKikwpKg0fj36Wl1vVVtDp42y2i/Ym', '2023-05-02 17:19:47', 'sup_body_emp', 'Giuseppe', 'Buonasera', '2000-03-29', '3330560840', 'F', 'MESSINA', NULL, 'ciao@ciao.it', NULL),
-('irene.cuscinà', 'irene.cuscinà@easypark.it', '$2y$10$whtVwwE2SY2iq/Qr2VX/X.x6nWhMOg3dcuR0xRdFihKM7mF9ittGm', '2023-05-11 16:21:24', 'agent_emp', 'Irene', 'Cuscinà', '2001-01-10', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-11'),
-('manuel.fabiano', 'manuel.fabiano@comune.messina.it', '$2y$10$OwvQ9KmgiCRUO0/jxD8OlOirT7TPt0iz3CxWTVEIyvpxGPMBJogW6', '2023-05-09 17:59:26', 'body_emp', 'Manuel', 'Fabiano', '2002-10-03', NULL, NULL, 'MESSINA', NULL, NULL, NULL),
-('marco.aloisi', 'marco.aloisi@comune.messina.it', '$2y$10$LkTS9d0GewpJn91PLlXVzusofxsaDU1Y8fN/88BV.T7rw..WaoRGy', '2023-05-11 22:27:31', 'body_emp', 'Marco', 'Aloisi', '2001-06-02', NULL, NULL, 'MESSINA', NULL, NULL, '2024-05-11'),
-('matteo.deluca', 'matteo.deluca@mycicero.it', '$2y$10$drvTsnlVKs2Jiv.JY4y7UO9ZxVvwsmXRyetZDH88N5XZgMSrIeRgK', '2023-05-09 23:09:59', 'sup_agent_emp', 'Matteo', 'De Luca', '2000-12-04', NULL, NULL, NULL, 'MYCICERO', NULL, NULL);
+INSERT INTO `Account` (`username`, `email`, `password`, `reg_date`, `type`, `name`, `surname`, `birth_date`, `phone`, `gender`, `Body_id`, `Agent_id`, `priv_email_employee`, `exp_emp_date`, `removed`) VALUES
+('alessandro.romeo', 'alessandro.romeo@easypark.it', '$2y$10$drvTsnlVKs2Jiv.JY4y7UO9ZxVvwsmXRyetZDH88N5XZgMSrIeRgK', '2023-05-09 20:36:47', 'sup_agent_emp', 'Alessandro', 'Romeo', '2000-12-06', '', 'M', NULL, 'EASYPARK', '', NULL, 0),
+('andrea.spadaro', 'andrea.spadaro@easypark.it', '$2y$10$.2hSO1MJ8ho4pDf/SU2LYuLHu9qn2zo/BdMs.D3zk3H5npaP5tFiy', '2023-05-11 22:30:49', 'agent_emp', 'Andrea', 'Spadaro', '2000-05-16', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-11', 0),
+('ariannacu', 'ariannacu@gmail.com', '$2y$10$BkgqjE3Idic4v560UwdduOAPeh8bIe9FLxXiYwGrg5kWRhLyZ4E8S', '2023-05-11 21:23:58', 'end_user', 'Arianna', 'Cuscinà', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+('davide.ciraolo', 'davide.ciraolo@comune.messina.it', '$2y$10$g8perYhsCg7tYfWPjd3yV.IJGXP1Er46n/5.qvHjTjel36qbOjSs2', '2023-05-12 08:42:09', 'body_emp', 'Davide', 'Ciraolo', '1995-01-01', NULL, NULL, 'MESSINA', NULL, NULL, '2024-05-12', 0),
+('giovanni.giovane', 'giovanni.giovane@easypark.it', '$2y$10$MDzRLbvS84cL1Nxabgaae.fmylWzW19pvGyMDEbN14jUQu1Q4kkGO', '2023-05-13 01:52:05', 'agent_emp', 'Giovanni', 'Giovane', '1998-02-12', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-13', 0),
+('giuseppe.buonasera', 'giuseppe.buonasera@comune.messina.it', '$2y$10$FK/4MPBA6Pa6iB.hepOfnuqsKikwpKg0fj36Wl1vVVtDp42y2i/Ym', '2023-05-02 17:19:47', 'sup_body_emp', 'Giuseppe', 'Buonasera', '2000-03-29', '3330560840', 'F', 'MESSINA', NULL, 'ciao@ciao.it', NULL, 0),
+('guido.vespa', 'guido.vespa@easypark.it', '$2y$10$TaoW9OirBhG.kbVdBfZR8u2P9Q9h5dAlUk4AuWhtNidMk4YE6trX2', '2023-05-13 01:49:09', 'agent_emp', 'Guido', 'Vespa', '1990-10-10', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-13', 0),
+('irene.cuscinà', 'irene.cuscinà@easypark.it', '$2y$10$whtVwwE2SY2iq/Qr2VX/X.x6nWhMOg3dcuR0xRdFihKM7mF9ittGm', '2023-05-11 16:21:24', 'agent_emp', 'Irene', 'Cuscinà', '2001-01-10', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-11', 1),
+('manuel.fabiano', 'manuel.fabiano@comune.messina.it', '$2y$10$OwvQ9KmgiCRUO0/jxD8OlOirT7TPt0iz3CxWTVEIyvpxGPMBJogW6', '2023-05-09 17:59:26', 'body_emp', 'Manuel', 'Fabiano', '2002-10-03', NULL, NULL, 'MESSINA', NULL, NULL, NULL, 0),
+('marco.aloisi', 'marco.aloisi@comune.messina.it', '$2y$10$LkTS9d0GewpJn91PLlXVzusofxsaDU1Y8fN/88BV.T7rw..WaoRGy', '2023-05-11 22:27:31', 'body_emp', 'Marco', 'Aloisi', '2001-06-02', NULL, NULL, 'MESSINA', NULL, NULL, '2024-05-11', 0),
+('matteo.deluca', 'matteo.deluca@mycicero.it', '$2y$10$drvTsnlVKs2Jiv.JY4y7UO9ZxVvwsmXRyetZDH88N5XZgMSrIeRgK', '2023-05-09 23:09:59', 'sup_agent_emp', 'Matteo', 'De Luca', '2000-12-04', NULL, NULL, NULL, 'MYCICERO', NULL, NULL, 0),
+('paolo.rossi', 'paolo.rossi@easypark.it', '$2y$10$aKnHTV9JA0lmF.M3XAKye.dTC6YlTNqMY5PrjFdKjcfr1q6hU2FNO', '2023-05-13 01:45:00', 'agent_emp', 'Paolo', 'Rossi', '2001-01-01', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-13', 0),
+('pino.aloisi', 'pino.aloisi@easypark.it', '$2y$10$9La/KKwVMDveJzdE8.VfPeSyxGftv9dYxeuMD9sZzh3l7L2OgS9U6', '2023-05-13 01:48:24', 'agent_emp', 'pino', 'Aloisi', '2002-02-02', NULL, NULL, NULL, 'EASYPARK', NULL, '2024-05-13', 1);
 
 -- --------------------------------------------------------
 
@@ -104,15 +109,90 @@ INSERT INTO `Body` (`city`, `balance`) VALUES
 
 CREATE TABLE `Operations_Log` (
   `id` int NOT NULL,
-  `action` enum('Modifica Abbonamento','Modifica Tariffa','Visualizzazione Zona','Risoluzione Ticket','Assegnazione posto','Rimozione posto','Aggiunta Impiegato','Rimozione Impiegato','Rimozione Abbonamento') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `action` enum('Modifica Abbonamento','Modifica Tariffa','Visualizzazione Zona','Risoluzione Ticket','Assegnazione posto','Rimozione posto','Aggiunta Impiegato','Rimozione Impiegato','Rimozione Abbonamento','Aggiunta Abbonamento') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `zone_id` enum('A','B','C','D','E') DEFAULT NULL,
   `slot_id` varchar(4) DEFAULT NULL,
   `sub_id` int DEFAULT NULL,
   `res_id` int DEFAULT NULL,
   `emp_id` varchar(50) DEFAULT NULL,
+  `tkt_id` int DEFAULT NULL,
   `user_id` varchar(50) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dump dei dati per la tabella `Operations_Log`
+--
+
+INSERT INTO `Operations_Log` (`id`, `action`, `zone_id`, `slot_id`, `sub_id`, `res_id`, `emp_id`, `tkt_id`, `user_id`, `date`) VALUES
+(1, 'Modifica Tariffa', NULL, 'B1', NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-12 12:16:09'),
+(2, 'Modifica Abbonamento', NULL, NULL, 1, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 00:10:18'),
+(3, 'Rimozione Abbonamento', NULL, NULL, 6, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 01:00:47'),
+(4, 'Rimozione Abbonamento', NULL, NULL, 1, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 01:01:50'),
+(5, 'Aggiunta Abbonamento', NULL, NULL, 3, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 01:12:50'),
+(6, 'Aggiunta Abbonamento', NULL, NULL, 9, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 01:22:11'),
+(7, 'Risoluzione Ticket', NULL, NULL, NULL, NULL, NULL, 1, 'alessandro.romeo', '2023-05-13 01:33:51'),
+(8, 'Aggiunta Impiegato', NULL, NULL, NULL, NULL, 'pino.aloisi', NULL, 'alessandro.romeo', '2023-05-13 01:48:28'),
+(9, 'Aggiunta Impiegato', NULL, NULL, NULL, NULL, 'guido.vespa', NULL, 'alessandro.romeo', '2023-05-13 01:49:10'),
+(10, 'Rimozione Impiegato', NULL, NULL, NULL, NULL, 'paolo.rossi', NULL, 'alessandro.romeo', '2023-05-13 01:50:22'),
+(11, 'Aggiunta Impiegato', NULL, NULL, NULL, NULL, 'giovanni.giovane', NULL, 'alessandro.romeo', '2023-05-13 01:52:06'),
+(12, 'Aggiunta Impiegato', NULL, NULL, NULL, NULL, 'paolo.rossi', NULL, 'alessandro.romeo', '2023-05-13 01:52:34'),
+(13, 'Modifica Tariffa', NULL, 'B1', NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 01:53:42'),
+(14, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 02:03:45'),
+(15, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 02:03:47'),
+(16, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 02:04:00'),
+(17, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 02:04:02'),
+(18, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 02:04:09'),
+(19, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 02:04:10'),
+(20, 'Visualizzazione Zona', 'A', NULL, NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 02:04:11'),
+(21, 'Visualizzazione Zona', 'C', NULL, NULL, NULL, NULL, NULL, 'alessandro.romeo', '2023-05-13 02:04:12'),
+(22, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:13:58'),
+(23, 'Visualizzazione Zona', 'A', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:13:59'),
+(24, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:16:44'),
+(25, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:16:46'),
+(27, 'Visualizzazione Zona', 'C', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:16:50'),
+(29, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:17:00'),
+(30, 'Visualizzazione Zona', 'C', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:17:02'),
+(32, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:18:02'),
+(34, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:19:05'),
+(35, 'Visualizzazione Zona', 'C', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:19:06'),
+(36, 'Assegnazione posto', NULL, 'C3', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:19:09'),
+(37, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:20:32'),
+(38, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:23:33'),
+(39, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:23:35'),
+(40, 'Assegnazione posto', NULL, 'B0', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:23:41'),
+(41, 'Visualizzazione Zona', 'A', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:23:55'),
+(42, 'Assegnazione posto', NULL, 'A0', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:23:58'),
+(43, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:28:02'),
+(44, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:28:03'),
+(45, 'Assegnazione posto', NULL, 'B0', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:28:07'),
+(46, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:29:11'),
+(47, 'Visualizzazione Zona', 'C', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:30:20'),
+(48, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:30:22'),
+(49, 'Assegnazione posto', NULL, 'B0', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:30:26'),
+(50, 'Visualizzazione Zona', 'A', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:30:28'),
+(51, 'Assegnazione posto', NULL, 'A0', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:30:32'),
+(52, 'Assegnazione posto', NULL, 'A0', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:30:36'),
+(53, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:34:21'),
+(54, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:34:23'),
+(55, 'Assegnazione posto', NULL, 'B0', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:35:09'),
+(56, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:35:11'),
+(57, 'Assegnazione posto', NULL, 'B0', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:36:55'),
+(58, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:36:57'),
+(59, 'Assegnazione posto', NULL, 'B0', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:37:01'),
+(60, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:37:12'),
+(61, 'Visualizzazione Zona', 'A', NULL, NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:38:11'),
+(62, 'Assegnazione posto', NULL, 'A2', NULL, NULL, NULL, NULL, 'giuseppe.buonasera', '2023-05-13 02:38:18'),
+(63, 'Rimozione Impiegato', NULL, NULL, NULL, NULL, 'marco.aloisi', NULL, 'giuseppe.buonasera', '2023-05-13 02:42:27'),
+(64, 'Aggiunta Impiegato', NULL, NULL, NULL, NULL, 'marco.aloisi', NULL, 'giuseppe.buonasera', '2023-05-13 02:43:16'),
+(65, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'manuel.fabiano', '2023-05-13 02:44:40'),
+(66, 'Visualizzazione Zona', 'C', NULL, NULL, NULL, NULL, NULL, 'manuel.fabiano', '2023-05-13 02:44:43'),
+(67, 'Visualizzazione Zona', 'A', NULL, NULL, NULL, NULL, NULL, 'manuel.fabiano', '2023-05-13 02:44:44'),
+(68, 'Visualizzazione Zona', 'B', NULL, NULL, NULL, NULL, NULL, 'manuel.fabiano', '2023-05-13 02:44:45'),
+(69, 'Visualizzazione Zona', 'C', NULL, NULL, NULL, NULL, NULL, 'manuel.fabiano', '2023-05-13 02:44:46'),
+(70, 'Visualizzazione Zona', 'D', NULL, NULL, NULL, NULL, NULL, 'manuel.fabiano', '2023-05-13 02:44:48'),
+(71, 'Visualizzazione Zona', 'E', NULL, NULL, NULL, NULL, NULL, 'manuel.fabiano', '2023-05-13 02:44:48'),
+(72, 'Visualizzazione Zona', 'D', NULL, NULL, NULL, NULL, NULL, 'manuel.fabiano', '2023-05-13 02:44:49');
 
 -- --------------------------------------------------------
 
@@ -249,7 +329,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `zone_id`, `id_body`, `id_agent`, `
 ('A197', 'Available', 'A', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
 ('A198', 'Available', 'A', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('A199', 'Available', 'A', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
-('A2', 'Available', 'A', 'MESSINA', 'MYCICERO', 0.50, 0.40, NULL, 1),
+('A2', 'Available', 'A', 'MESSINA', 'EASYPARK', 0.50, 0.40, NULL, 1),
 ('A20', 'Available', 'A', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('A21', 'Available', 'A', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('A22', 'Available', 'A', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
@@ -337,7 +417,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `zone_id`, `id_body`, `id_agent`, `
 ('A97', 'Available', 'A', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('A98', 'Available', 'A', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('A99', 'Available', 'A', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
-('B0', 'Available', 'B', 'MESSINA', 'MYCICERO', 0.50, 0.40, NULL, 0),
+('B0', 'Available', 'B', 'MESSINA', 'EASYPARK', 0.50, 0.40, NULL, 0),
 ('B1', 'Occupied', 'B', 'MESSINA', 'EASYPARK', 0.50, 0.40, NULL, 1),
 ('B10', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('B100', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
@@ -449,7 +529,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `zone_id`, `id_body`, `id_agent`, `
 ('B197', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('B198', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
 ('B199', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
-('B2', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
+('B2', 'Available', 'B', 'MESSINA', 'MYCICERO', 0.50, 0.40, NULL, 1),
 ('B20', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('B21', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('B22', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
@@ -460,7 +540,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `zone_id`, `id_body`, `id_agent`, `
 ('B27', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('B28', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('B29', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
-('B3', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
+('B3', 'Available', 'B', 'MESSINA', 'EASYPARK', 0.50, 0.40, NULL, 1),
 ('B30', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
 ('B31', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
 ('B32', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
@@ -537,8 +617,8 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `zone_id`, `id_body`, `id_agent`, `
 ('B97', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
 ('B98', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 1),
 ('B99', 'Available', 'B', 'MESSINA', NULL, 0.50, 0.40, NULL, 0),
-('C0', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 0),
-('C1', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 1),
+('C0', 'Available', 'C', 'MESSINA', 'MYCICERO', NULL, NULL, NULL, 0),
+('C1', 'Available', 'C', 'MESSINA', 'MYCICERO', NULL, NULL, NULL, 1),
 ('C10', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('C100', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 0),
 ('C101', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 1),
@@ -660,7 +740,7 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `zone_id`, `id_body`, `id_agent`, `
 ('C27', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('C28', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('C29', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 0),
-('C3', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 1),
+('C3', 'Available', 'C', 'MESSINA', 'MYCICERO', NULL, NULL, NULL, 1),
 ('C30', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('C31', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 1),
 ('C32', 'Available', 'C', 'MESSINA', NULL, NULL, NULL, NULL, 0),
@@ -919,9 +999,9 @@ INSERT INTO `Parking_Space` (`id`, `STATUS`, `zone_id`, `id_body`, `id_agent`, `
 ('D80', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 0),
 ('D81', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 1),
 ('D82', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 1),
-('D83', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 1),
-('D84', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 1);
+('D83', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 1);
 INSERT INTO `Parking_Space` (`id`, `STATUS`, `zone_id`, `id_body`, `id_agent`, `hourly_price`, `periodic_price`, `parking_ending_time`, `charging_station`) VALUES
+('D84', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 1),
 ('D85', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 0),
 ('D86', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 0),
 ('D87', 'Available', 'D', 'MESSINA', NULL, 0.55, 0.45, NULL, 0),
@@ -1191,17 +1271,22 @@ CREATE TABLE `Subscription` (
   `type` enum('Settimanale','Mensile','Trimestrale','Semestrale','Annuale') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `expiration_date` date DEFAULT NULL,
-  `id_agent` varchar(50) NOT NULL
+  `id_agent` varchar(50) NOT NULL,
+  `removed` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dump dei dati per la tabella `Subscription`
 --
 
-INSERT INTO `Subscription` (`id`, `title`, `type`, `price`, `expiration_date`, `id_agent`) VALUES
-(1, 'Weekly', 'Settimanale', 4.00, NULL, 'EASYPARK'),
-(3, 'Monthly', 'Settimanale', 15.00, NULL, 'EASYPARK'),
-(5, 'Yearly1', 'Annuale', 49.00, NULL, 'EASYPARK');
+INSERT INTO `Subscription` (`id`, `title`, `type`, `price`, `expiration_date`, `id_agent`, `removed`) VALUES
+(1, 'Weekly2', 'Settimanale', 4.00, NULL, 'EASYPARK', 1),
+(3, 'Monthly', 'Settimanale', 15.00, NULL, 'EASYPARK', 0),
+(5, 'Yearly1', 'Annuale', 49.00, NULL, 'EASYPARK', 1),
+(6, '6m', 'Semestrale', 60.00, NULL, 'EASYPARK', 1),
+(7, 'yearly', 'Annuale', 65.00, NULL, 'EASYPARK', 0),
+(8, 'sem', 'Semestrale', 45.00, NULL, 'EASYPARK', 0),
+(9, 'sect', 'Mensile', 16.00, NULL, 'EASYPARK', 0);
 
 -- --------------------------------------------------------
 
@@ -1225,7 +1310,7 @@ CREATE TABLE `Ticket` (
 --
 
 INSERT INTO `Ticket` (`id`, `title`, `body_text`, `answer`, `employee`, `id_user`, `status`, `date`) VALUES
-(1, 'prova', 'prova', 'CIao', NULL, 'ariannacu', 'Chiuso', '2023-05-11 21:25:18');
+(1, 'prova', 'prova', 'ciao', NULL, 'ariannacu', 'Chiuso', '2023-05-11 21:25:18');
 
 -- --------------------------------------------------------
 
@@ -1284,7 +1369,8 @@ ALTER TABLE `Operations_Log`
   ADD KEY `Operations_Log_rel3` (`sub_id`),
   ADD KEY `Operations_Log_rel4` (`res_id`),
   ADD KEY `Operations_Log_rel5` (`zone_id`),
-  ADD KEY `Operations_Log_rel6` (`emp_id`);
+  ADD KEY `Operations_Log_rel6` (`emp_id`),
+  ADD KEY `Operations_Log_rel7` (`tkt_id`);
 
 --
 -- Indici per le tabelle `Parking_Space`
@@ -1342,7 +1428,7 @@ ALTER TABLE `Zone`
 -- AUTO_INCREMENT per la tabella `Operations_Log`
 --
 ALTER TABLE `Operations_Log`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT per la tabella `Payment`
@@ -1360,7 +1446,7 @@ ALTER TABLE `Reservation`
 -- AUTO_INCREMENT per la tabella `Subscription`
 --
 ALTER TABLE `Subscription`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `Ticket`
@@ -1388,7 +1474,8 @@ ALTER TABLE `Operations_Log`
   ADD CONSTRAINT `Operations_Log_rel3` FOREIGN KEY (`sub_id`) REFERENCES `Subscription` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `Operations_Log_rel4` FOREIGN KEY (`res_id`) REFERENCES `Reservation` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `Operations_Log_rel5` FOREIGN KEY (`zone_id`) REFERENCES `Zone` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `Operations_Log_rel6` FOREIGN KEY (`emp_id`) REFERENCES `Account` (`username`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `Operations_Log_rel6` FOREIGN KEY (`emp_id`) REFERENCES `Account` (`username`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `Operations_Log_rel7` FOREIGN KEY (`tkt_id`) REFERENCES `Ticket` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Limiti per la tabella `Parking_Space`
@@ -1426,14 +1513,6 @@ ALTER TABLE `Subscription`
 ALTER TABLE `Ticket`
   ADD CONSTRAINT `Ticket_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `Account` (`username`),
   ADD CONSTRAINT `Ticket_ibfk_2` FOREIGN KEY (`employee`) REFERENCES `Account` (`username`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-DELIMITER $$
---
--- Eventi
---
-CREATE DEFINER=`aleromeo`@`%` EVENT `aggiorna_stato_parcheggi` ON SCHEDULE EVERY 1 MINUTE STARTS '2023-05-12 02:35:26' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE Parking_Space SET STATUS = 'Available' WHERE id = 'B0' AND NOW() > DATE_ADD('2023-05-12 04:35:26', INTERVAL 10 MINUTE) AND STATUS = 'Occupied'$$
-
-DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

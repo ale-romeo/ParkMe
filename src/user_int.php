@@ -95,8 +95,7 @@ if (isset($_SESSION["username"])) {
           </div>
           <div class="col-md-6">
             <div class="btn-cont">
-              <button class="btn btn-primary" id="park_now_btn" data-toggle="modal"
-                data-target="#parknow">Parcheggia</button>
+              <button class="btn btn-primary" id="park_now_btn" data-toggle="modal">Parcheggia</button>
             </div>
           </div>
         </div>

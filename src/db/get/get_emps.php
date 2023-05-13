@@ -14,6 +14,9 @@ $get_class = "SELECT type FROM Account WHERE username = '$emp'";
 $got_class = $conn->query($get_class);
 $class = ($got_class->fetch_assoc())['type'];
 
+$curr_date = date('Y-m-d');
+$exp_emp = "UPDATE Account SET removed = 1, exp_emp_date = NULL WHERE exp_emp_date < '$curr_date'";
+$rem_old = $conn->query($exp_emp);
 
 if (isset($_SESSION["id_body"])) {
     $bd_id = $conn->real_escape_string($_SESSION["id_body"]);

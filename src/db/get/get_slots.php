@@ -10,6 +10,10 @@ if (isset($_SESSION["username"])) {
     $user = $conn->real_escape_string($_SESSION["username"]);
 }
 
+$time = date('Y-m-d H:i:s', time());
+$update_slots = "UPDATE Parking_Space SET STATUS = 'Available', parking_ending_time = NULL WHERE parking_ending_time < '$time'";
+$uptodate = $conn->query($update_slots);
+
 $get_class = "SELECT * FROM Account WHERE username = '$user'";
 $got = $conn->query($get_class);
 $row_user = $got->fetch_assoc();

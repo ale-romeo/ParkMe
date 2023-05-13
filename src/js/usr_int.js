@@ -10,8 +10,8 @@ $(document).on("click", "#btn-pay", function () {
         type: "POST",
         url: "../../db/upload/parking.php",
         data: { posto: posto, tar: tar, durata: durata },
-        success: function (r) {
-            alert(r);
+        success: function () {
+            alert('Pagamento effettato con successo!');
             // Chiudi il modal e aggiorna la tabella dei posti
             $("#parknow").modal("hide");
             show_parks(zona);
@@ -26,37 +26,43 @@ $(document).ready(function () {
     $(document).on("click", "#park_now_btn", function (e) {
         e.preventDefault();
         
-        // Ottieni il posto selezionato
-        var posto = $("#park_slot_sel option:selected").val();
-    
-        var modalContent = '';
-            modalContent += '<div class="modal-header">';
-            modalContent += '<h5 class="modal-title" id="get-posto">Stai per iniziare la sosta nel posto ' + posto + '</h5>';
-            modalContent += '<button type="button" class="close" data-dismiss="modal">';
-            modalContent += '<span>&times;</span>';
-            modalContent += '</button>';
-            modalContent += '</div>';
-            modalContent += '<div class="modal-body">';
-            modalContent += '<form>';
-            modalContent += '<div class="form-group">';
-            modalContent += '<label for="sel_tar">Seleziona tariffa:</label><br>';
-            modalContent += '<select name="sel_tar" id="tar_sel" required>';
-            modalContent += '<option value="tar_or">Tariffa oraria</option>';
-            modalContent += '<option value="tar_per">Tariffa periodica</option>';
-            modalContent += '</select><br>';
-            modalContent += '<label for="time">Durata della sosta(min):</label><br>';
-            modalContent += '<input type="number" name="time" id="durata" required><br>';
-            modalContent += '</div>';
-            modalContent += '</form>';
-            modalContent += '</div>';
-            modalContent += '<div class="modal-footer">';
-            modalContent += '<button type="button" class="btn btn-primary" id="btn-pay">Paga</button>';
-            modalContent += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>';
-            modalContent += '</div>';
-    
-        // Inserisce il contenuto nel modal e mostra il modal
-        $('#parknow .modal-content').html(modalContent);
-        $('#parknow').modal('show');
+        if ($("#park_slot_sel option:selected").val() == undefined) {
+            alert('Seleziona un parcheggio valido');
+        } else if ($("#park_slot_sel option:selected").text().slice(-1) == 'O') {
+            alert('Questo parcheggio è già occupato');
+        } else if ($("#park_slot_sel option:selected").val() != "") {
+            // Ottieni il posto selezionato
+            var posto = $("#park_slot_sel option:selected").val();
+
+            var modalContent = '';
+                modalContent += '<div class="modal-header">';
+                modalContent += '<h5 class="modal-title" id="get-posto">Stai per iniziare la sosta nel posto ' + posto + '</h5>';
+                modalContent += '<button type="button" class="close" data-dismiss="modal">';
+                modalContent += '<span>&times;</span>';
+                modalContent += '</button>';
+                modalContent += '</div>';
+                modalContent += '<div class="modal-body">';
+                modalContent += '<form>';
+                modalContent += '<div class="form-group">';
+                modalContent += '<label for="sel_tar">Seleziona tariffa:</label><br>';
+                modalContent += '<select name="sel_tar" id="tar_sel">';
+                modalContent += '<option value="tar_or">Tariffa oraria</option>';
+                modalContent += '<option value="tar_per">Tariffa periodica</option>';
+                modalContent += '</select><br>';
+                modalContent += '<label for="time">Durata della sosta(min):</label><br>';
+                modalContent += '<input type="number" name="time" id="durata"><br>';
+                modalContent += '</div>';
+                modalContent += '</form>';
+                modalContent += '</div>';
+                modalContent += '<div class="modal-footer">';
+                modalContent += '<button type="button" class="btn btn-primary" id="btn-pay">Paga</button>';
+                modalContent += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>';
+                modalContent += '</div>';
+
+            // Inserisce il contenuto nel modal e mostra il modal
+            $('#parknow .modal-content').html(modalContent);
+            $('#parknow').modal('show');
+        }
     });
 });
 

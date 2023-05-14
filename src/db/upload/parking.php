@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Europe/Rome');
 include('../connection.php');
 
 $usr = "";
@@ -32,14 +33,14 @@ if ($res_usr_sub->num_rows > 0) {
 
 if ($tar_opt == 'tar_or') {
     $price = $row_slot['hourly_price'] - $reduction;
-    $amount = $price*$durata/60 + 0.17;
+    $amount = round(($price*$durata/60 + 0.17), 2);
 }
 if ($tar_opt == 'tar_per') {
     $price = $row_slot['periodic_price'] - $reduction;
-    $amount = $price*$durata/60 + 0.35;
+    $amount = round(($price*$durata/60 + 0.35), 2);
 }
 
-$pay = "INSERT INTO Payment (amount, user_id, park_id, agent_id) VALUES ('$amount', '$usr', '$slot', '$slot_agent')";
+$pay = "INSERT INTO Payment (service, status, amount, user_id, park_id, agent_id) VALUES ('Parcheggio', 1, '$amount', '$usr', '$slot', '$slot_agent')";
 $res_pay = $conn->query($pay) or die("Si è verificato un errore durante il pagamento: " . $conn->connect_error);
 
 $exp = date('Y-m-d H:i:s', strtotime("+ $durata minutes", time()));

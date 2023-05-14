@@ -10,10 +10,6 @@ if (isset($_SESSION["username"])) {
     $user = $conn->real_escape_string($_SESSION["username"]);
 }
 
-$time = date('Y-m-d H:i:s', time());
-$update_slots = "UPDATE Parking_Space SET STATUS = 'Available', parking_ending_time = NULL WHERE parking_ending_time < '$time'";
-$uptodate = $conn->query($update_slots);
-
 $get_class = "SELECT * FROM Account WHERE username = '$user'";
 $got = $conn->query($get_class);
 $row_user = $got->fetch_assoc();
@@ -129,6 +125,10 @@ if ($type == 'sup_body_emp') {
     }
     $table_html .= '</tbody></table>';
 } else if ($type == 'end_user') {
+    $time = date('Y-m-d H:i:s', time());
+    $ck_park = "SELECT * FROM Payment WHERE user_id = '$user' AND ";
+
+
     $table_html = '<select name="park_slot" id="park_slot_id">';
     while ($row = $result->fetch_assoc()) {
         $stato = $row['STATUS'];

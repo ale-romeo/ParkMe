@@ -15,11 +15,11 @@ if (isset($_SESSION["username"])) {
   <title>ParkMe - The easy way to park.</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script src="../../js/usr_int.js"></script>
+  <script src="js/usr_int.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../../css/usr_int.css">
-  <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/usr_int.css">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -48,7 +48,7 @@ if (isset($_SESSION["username"])) {
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="acc.php">
+          <a class="nav-link" href="end_usr_acc.php">
             <i class="fas fa-user" style="color: white;"></i>&nbsp&nbspProfilo
           </a>
         </li>
@@ -73,7 +73,7 @@ if (isset($_SESSION["username"])) {
         </strong>,<br>Clicca sulla mappa per
         visualizzare i posti auto vicini...
       </span>
-      <form action="" id="park-form">
+      <form id="park-form">
         <div class="row form-group">
           <div class="col-md-6">
             <label for="ins-zona">O inserisci la zona:</label>

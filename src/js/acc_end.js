@@ -57,7 +57,6 @@ function show_det() {
             if (data.gender == 'O') {
                 $('#gender').val('other');
             }
-            $('#priv_email').val(data.priv_email_employee);
         },
         error: function() {
             alert("Errore durante il caricamento dell'account.");
@@ -78,12 +77,11 @@ $(document).ready(function () {
         var phone = $("#phone").val();
         var bdate = $("#bdate").val();
         var gender = $("#gender option:selected").val();
-        var priv_email = $("#priv_email").val();
 
         $.ajax({
             type: 'POST',
             url: 'db/upload/up_acc.php',
-            data: { username: username, email: email, phone: phone, gender: gender, bdate: bdate, priv_email: priv_email },
+            data: { username: username, email: email, phone: phone, gender: gender, bdate: bdate },
             success: function (r) {
                 alert(r);
                 $("#emlErr").html("");

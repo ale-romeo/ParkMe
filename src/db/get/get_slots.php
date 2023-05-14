@@ -125,10 +125,6 @@ if ($type == 'sup_body_emp') {
     }
     $table_html .= '</tbody></table>';
 } else if ($type == 'end_user') {
-    $time = date('Y-m-d H:i:s', time());
-    $ck_park = "SELECT * FROM Payment WHERE user_id = '$user' AND ";
-
-
     $table_html = '<select name="park_slot" id="park_slot_id">';
     while ($row = $result->fetch_assoc()) {
         $stato = $row['STATUS'];

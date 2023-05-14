@@ -1,3 +1,22 @@
+$(document).on("click", "#btn-termina-sosta", function () {
+    // Ottieni il posto selezionato
+    var posto = $("#get-slot").text();
+
+    $.ajax({
+        type: "POST",
+        url: "db/upload/end_park.php",
+        data: { posto: posto },
+        success: function () {
+            alert('Sosta terminata');
+            update_parks();
+            show_parks('A');
+        },
+        error: function () {
+            alert('Si è verificato un errore durante l\'assegnazione del posto.');
+        }
+    });
+});
+
 $(document).on("click", "#btn-pay", function () {
     // Ottieni il posto selezionato
     var posto = $("#get-posto").text().replace("Stai per iniziare la sosta nel posto ", "");
@@ -32,6 +51,7 @@ $(document).on("click", "#btn-pay", function () {
                 $("#parknow").modal("hide");
                 update_parks();
                 show_parks(zona);
+                ck_park();
             },
             error: function () {
                 alert('Si è verificato un errore durante l\'assegnazione del posto.');
@@ -105,11 +125,55 @@ $(document).ready(function () {
 });
 
 function show_parks(zona) {
+    var usr;
+    $.ajax({
+        url: "db/get/get_username.php",
+        success: function (r) {
+            usr = r;
+        },
+        error: function () {
+            alert('Impossibile recuperare nome utente.');
+        }
+    });
+
     $.ajax({
         url: "db/get/get_slots.php",
         type: "GET",
         data: { zona: zona },
         success: function (data) {
+            var modalContent = '';
+                modalContent += '<div class="park-box-inner">';
+                modalContent += '<span class="wtd" id="up-text" style="font-weight: 400;">Ciao ';
+                modalContent += '<strong style="color: #376ba7;">'+ usr +'</strong>,<br>Clicca sulla mappa per visualizzare i posti auto vicini...</span>';
+                modalContent += '<form id="park-form">';
+                modalContent += '<div class="row form-group">';
+                modalContent += '<div class="col-md-6">';
+                modalContent += '<label for="ins-zona">O inserisci la zona:</label>';
+                modalContent += '</div>';
+                modalContent += '<div class="col-md-6">';
+                modalContent += '<input type="text" id="zona_input" name="ins-zona">';
+                modalContent += '</div>';
+                modalContent += '<div class="col-md-6">';
+                modalContent += '<label for="park_slot">Scegli il posto:</label>';
+                modalContent += '</div>';
+                modalContent += '<div class="col-md-6">';
+                modalContent += '<select name="park_slot" id="park_slot_sel"></select>';
+                modalContent += '</div>';
+                modalContent += '<div class="col-md-6">';
+                modalContent += '<div class="btn-cont">';
+                modalContent += '<button class="btn btn-primary" id="reserve_btn" data-toggle="modal" data-target="#reservation">Prenota</button>';
+                modalContent += '</div>';
+                modalContent += '</div>';
+                modalContent += '<div class="col-md-6">';
+                modalContent += '<div class="btn-cont">';
+                modalContent += '<button class="btn btn-primary" id="park_now_btn" data-toggle="modal">Parcheggia</button>';
+                modalContent += '</div>';
+                modalContent += '</div>';
+                modalContent += '</div>';
+                modalContent += '</form>';
+                modalContent += '</div>';
+            
+            $(".park-box-inner").html(modalContent);
             $("#park_slot_sel").html(data);
             $("#zona_input").val(zona);
         },
@@ -128,26 +192,33 @@ function update_parks() {
     });
 }
 
-$(document).ready(function () {
+function ck_park() {
     $.ajax({
         url: "db/get/get_park.php",
+        dataType: 'json',
         success: function (r) {
-            alert(r);
-            if (r != '"free"') {
+            if (r != 'free') {
                 var modalContent = '';
                     modalContent += '<div class="park-box-inner">';
-                    modalContent += '<span class="wtd" id="up-text" style="font-weight: 400;">Ciao';
-                    modalContent += '<strong style="color: #376ba7;"><?php echo $username ?></strong>,';
-                    modalContent += '<br>Attualmente stai sostando nel posto ' + r.id + '</span>';
+                    modalContent += '<span class="wtd" id="up-text" style="font-weight: 400;">Ciao ';
+                    modalContent += '<strong style="color: #376ba7;">'+ r[4] +'</strong>,';
+                    modalContent += '<br>Attualmente stai sostando nel posto <strong id="get-slot" style="color: #376ba7;">'+ r[0] +'</strong></span>';
                     modalContent += '<form id="parked-form">';
                     modalContent += '<div class="row form-parked-group">';
                     modalContent += '<div class="col-md-6">';
-                    modalContent += '<label for="rem_time">Tempo rimanente:</label>';
+                    modalContent += '<label for="time">La sosta scade alle:</label>';
                     modalContent += '</div>';
-                    modalContent += '<div class="col-md-6">';
-                    modalContent += '<input type="number" name="rem_time" id="durata_dd" placeholder="g" min="1" step="1">';
-                    modalContent += '<input type="number" name="rem_time" id="durata_hh" placeholder="o" min="1" max="23" step="1">';
-                    modalContent += '<input type="number" name="rem_time" id="durata_min" placeholder="m" min="1" max="59" step="1"><br>';
+                    modalContent += '<div class="col-md-3">';
+                    modalContent += '<input type="number" name="time" id="durata_hh" placeholder="o" min="1" max="23" step="1">';
+                    modalContent += '</div>';
+                    modalContent += '<div class="col-md-3">';
+                    modalContent += '<input type="number" name="time" id="durata_min" placeholder="m" min="1" max="59" step="1"><br>';
+                    modalContent += '</div>';
+                    modalContent += '<div class="col-md-3">';
+                    modalContent += '<label for="time">Del:</label>';
+                    modalContent += '</div>';
+                    modalContent += '<div class="col-md-3">';
+                    modalContent += '<input type="number" name="time" id="durata_dd" placeholder="g" min="1" step="1"><br>';
                     modalContent += '</div>';
                     modalContent += '<div class="col-md-12 btn-cont">';
                     modalContent += '<button type="button" class="btn btn-primary" id="btn-aggiorna-sosta" style="margin-right: 5px;">Aggiorna</button>';
@@ -157,21 +228,22 @@ $(document).ready(function () {
                     modalContent += '</div>';
 
                 // Inserisce il contenuto nel modal e mostra il modal
-                
+
                 $('.park-box-inner').html(modalContent);
-                $("#durata_min").val(r[3]);
+                $("#durata_min").val(r[1]);
                 $("#durata_hh").val(r[2]);
-                $("#durata_dd").val(r[1]);
+                $("#durata_dd").val(r[3]);
             }
         },
         error: function () {
             alert('Errore durante il caricamento dell\'istanza di parcheggio');
         }
     });
-});
+}
 
 $(document).ready(function () {
     update_parks();
+    ck_park();
 });
 
 function logout() {

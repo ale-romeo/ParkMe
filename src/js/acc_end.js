@@ -82,8 +82,7 @@ $(document).ready(function () {
             type: 'POST',
             url: 'db/upload/up_acc.php',
             data: { username: username, email: email, phone: phone, gender: gender, bdate: bdate },
-            success: function (r) {
-                alert(r);
+            success: function () {
                 $("#emlErr").html("");
                 $("#usrErr").html("");
                 show_det();

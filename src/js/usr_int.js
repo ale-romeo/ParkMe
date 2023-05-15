@@ -42,6 +42,8 @@ $(document).ready(function () {
         modalContent += '<input type="number" name="time" id="durata_dd" min="1" placeholder="g" step="1">';
         modalContent += '<input type="number" name="time" id="durata_hh" placeholder="o" min="1" max="23" step="1">';
         modalContent += '<input type="number" name="time" id="durata_min" placeholder="m" min="1" max="59" step="1"><br>';
+        modalContent += '<label for="plate">Targa:</label><br>';
+        modalContent += '<input type="text" name="plate" id="plate" placeholder="Targa" required><br>';
         modalContent += '</div>';
         modalContent += '</form>';
         modalContent += '</div>';

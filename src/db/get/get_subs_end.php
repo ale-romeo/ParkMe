@@ -14,15 +14,16 @@ $get_tkts = "SELECT Subscription.* FROM Subscription JOIN Subscription_Payment O
 $res = $conn->query($get_tkts) or die("Errore durante il caricamento dei tickets: ". $conn->connect_error);
 
 $table_html = '<table>';
-$table_html .= '<thead><tr><th>ID</th><th>Operatore</th><th>Titolo</th><th>Tipo</th><th>Riduzione</th><th>Prezzo</th><th> </th></tr></thead>';
+$table_html .= '<thead><tr><th>Operatore</th><th>Titolo</th><th>Tipo</th><th>Riduzione</th><th>Prezzo</th></tr></thead>';
 $table_html .= '<tbody>';
 while ($row = $res->fetch_assoc()) {
+    $id = $row['id'];
     $agent = $row['id_agent'];
     $title = $row['title'];
     $type = $row['type'];
     $red = $row['reduction'];
     $price = $row['price'];
-    $table_html .= "<tr><td>$title</td><td>$type</td><td>$red</td><td>$agent</td><td>$price</td></tr>";
+    $table_html .= "<tr><td>$agent</td><td>$title</td><td>$type</td><td>$red</td><td>$price</td></tr>";
 }
 
 $table_html .= '</tbody></table>';

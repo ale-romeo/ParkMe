@@ -8,7 +8,7 @@ $(document).on("click", ".acquista-abbonamento", function () {
             url: "db/upload/buy-sub.php",
             data: { sub_id: sub_id },
             success: function (r) {
-                alert("Abbonamento acquistato"+r);
+                alert("Abbonamento acquistato");
                 // Aggiorna la tabella degli abbonamenti
                 show_subs();
             },

@@ -20,24 +20,27 @@ $res_slot = $conn->query($get_slot_info);
 $row_slot = $res_slot->fetch_assoc();
 $slot_agent = $row_slot['id_agent'];
 
-$get_usr_sub = "SELECT Payment.sub_id, Payment.agent_id, Payment.date, Subscription.reduction FROM Payment JOIN Subscription ON Payment.sub_id = Subscription.id WHERE Payment.user_id = '$usr' AND Subscription.id_agent = '$slot_agent'";
+$time = date('Y-m-d H:i:s', time());
+
+$get_usr_sub = "SELECT Subscription.reduction FROM Payment JOIN Subscription ON Payment.sub_id = Subscription.id WHERE Payment.user_id = '$usr' AND Subscription.id_agent = '$slot_agent' AND Payment.exp_sub < '$time'";
 $res_usr_sub = $conn->query($get_usr_sub);
 if ($res_usr_sub->num_rows > 0) {
     while ($row_sub = $res_usr_sub->fetch_assoc()) {
-        if (time() - strtotime($row_sub['date']) < 604800) {
-            $reduction = $row_sub['reduction'];
-            $agent = $row_sub['agent_id'];
-        }
+        $reduction = $row_sub['reduction'];
     }
 }
 
 if ($tar_opt == 'tar_or') {
     $price = $row_slot['hourly_price'] - $reduction;
-    $amount = round(($price*$durata/60 + 0.17), 2);
+    $amount = round(($price * $durata / 60 + 0.17), 2);
+    $up_balance = "UPDATE Agent SET balance = balance + $amount WHERE NAME = '$slot_agent'";
+    $uptodate = $conn->query($up_balance);
 }
 if ($tar_opt == 'tar_per') {
     $price = $row_slot['periodic_price'] - $reduction;
-    $amount = round(($price*$durata/60 + 0.35), 2);
+    $amount = round(($price * $durata / 60 + 0.35), 2);
+    $up_balance = "UPDATE Agent SET balance = balance + $amount WHERE NAME = '$slot_agent'";
+    $uptodate = $conn->query($up_balance);
 }
 
 $pay = "INSERT INTO Payment (service, status, amount, user_id, park_id, agent_id) VALUES ('Parcheggio', 1, '$amount', '$usr', '$slot', '$slot_agent')";

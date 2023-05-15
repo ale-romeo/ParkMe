@@ -15,10 +15,10 @@ if (isset($_SESSION["username"])) {
   <title>ParkMe - The easy way to park.</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script src="js/usr_int.js"></script>
+  <script src="js/tkt_end.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/usr_int.css">
+  <link rel="stylesheet" type="text/css" href="css/tkt_end.css">
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -37,13 +37,13 @@ if (isset($_SESSION["username"])) {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color: white;">Parcheggia</a>
+          <a class="nav-link" href="user_int.php">Parcheggia</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="sub_pg.php">Abbonamenti</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="tkt_pg.php">Ticket</a>
+          <a class="nav-link" href="#" style="color: white;">Ticket</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -61,57 +61,31 @@ if (isset($_SESSION["username"])) {
     </div>
   </nav>
   <!-- Main Content -->
-  <div id="map"></div>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbNPf97Eygay20RttKTUPcgDjcbfh8CB8&callback=initMap&v=weekly"
-    defer></script>
-  <div class="park-box">
-    <div class="park-box-inner">
-      <span class="wtd" id="up-text" style="font-weight: 400;">Ciao
-        <strong style="color: #376ba7;">
-          <?php echo $username ?>
-        </strong>,<br>Clicca sulla mappa per
-        visualizzare i posti auto vicini...
-      </span>
-      <form id="park-form">
-        <div class="row form-group">
-          <div class="col-md-6">
-            <label for="ins-zona">O inserisci la zona:</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" id="zona_input" name="ins-zona">
-          </div>
-          <div class="col-md-6">
-            <label for="park_slot">Scegli il posto:</label>
-          </div>
-          <div class="col-md-6">
-            <select name="park_slot" id="park_slot_sel"></select>
-          </div>
-          <div class="col-md-6">
-            <div class="btn-cont">
-              <button class="btn btn-primary" id="reserve_btn" data-toggle="modal">Prenota</button>
+  <div class="d-flex flex-column justify-content-center align-items-center" style="height: 90vh;">
+        <div class="box">
+            <span class="wtd" id="up-text" style="font-weight: 600;">Visualizza Tickets</span>
+            <div id="table-wrapper" style="display: none;">
+                <table id="tabella-tickets">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
             </div>
-          </div>
-          <div class="col-md-6">
             <div class="btn-cont">
-              <button class="btn btn-primary" id="park_now_btn" data-toggle="modal">Parcheggia</button>
+              <button type="button" class="btn btn-primary" id="btn-tkt">Nuovo Ticket</button>
             </div>
-          </div>
         </div>
-      </form>
     </div>
-  </div>
-  <!-- Modal -->
-  <div class="modal fade" id="reservation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="tkt-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
     </div>
-  </div>
-  <div class="modal fade" id="parknow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content"></div>
+    <div class="modal fade" id="new-tkt-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
     </div>
-  </div>
 </body>
 
 </html>

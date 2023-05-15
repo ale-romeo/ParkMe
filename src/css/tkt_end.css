@@ -19,30 +19,14 @@ body {
     background-color: #376ba7;
 }
 
-#map {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.park-box {
+.box {
     margin: 0px auto;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     background: white;
     border-radius: 4px;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
-    padding: 10px;
-    position: fixed;
-    top: 50%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-}
-
-.park-box-inner {
-    padding: 20px;
+    padding: 30px;
 }
 
 .wtd {
@@ -51,6 +35,41 @@ body {
     line-height: 28px;
     color: #1a1f36;
     padding-bottom: 15px;
+}
+
+#table-wrapper {
+    height: auto;
+    max-height: 350px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table thead th {
+    background-color: #9690aa;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+table tbody td {
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid #6f57da;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #aca8be;
 }
 
 .btn-cont button {
@@ -72,66 +91,35 @@ body {
     text-align: right;
 }
 
-.modal label {
+.form-group label {
     font-weight: bold;
     margin-right: -10px;
 }
 
-.form-group label,
-.form-parked-group label {
-    font-weight: 600;
-    margin-right: -10px;
-}
-
 .form-group input[type="text"],
-.form-group select {
+.form-group textarea {
     border: none;
-    border-radius: 2px;
+    border-radius: 0;
     border-bottom: 1px solid #ddd;
-    padding: 5px;
+    padding: 8px 0;
     margin-bottom: 10px;
-    width: 100%;
 }
 
 .form-group input[type="text"]:focus,
-.form-group input[type="number"]:focus,
-.form-parked-group input[type="number"]:focus,
-.form-group select:focus,
-.modal input[type="datetime-local"]:focus {
+.form-group textarea:focus {
     outline: none;
     box-shadow: none;
-    border-color: #376ba7;
+    border-color: #aca8be;
 }
 
-.form-group select {
-    max-height: 100px;
-    overflow-y: auto;
+.modal {
+    width: auto;
 }
 
-.modal input[type="number"] {
-    border: none;
-    border-radius: 0;
-    border-bottom: 1px solid #ddd;
-    padding: 8px 0;
-    width: 50px;
-    margin-right: 5px;
+.form-group textarea {
+    width: 100%;
 }
 
-
-.modal input[type="datetime-local"] {
-    border: none;
-    border-radius: 0;
-    border-bottom: 1px solid #ddd;
-    padding: 8px 0;
-}
-
-.form-parked-group input[type="number"] {
-    border: none;
-    border-radius: 2px;
-    border-bottom: 1px solid #ddd;
-    padding: 5px;
-    margin-bottom: 10px;
-    width: 50px;
-    margin-right: 5px;
-    margin-left: 5px;
+.form-group input[type="text"] {
+    width: auto;
 }

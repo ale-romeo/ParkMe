@@ -20,10 +20,10 @@ if (isset($_SESSION["id_agent"])) {
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="../../js/ag_mng.js"></script>
+    <script src="../../js/ag_res.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/ag_mng.css">
+    <link rel="stylesheet" type="text/css" href="../../css/ag_logs.css">
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 </head>
 
@@ -43,16 +43,16 @@ if (isset($_SESSION["id_agent"])) {
                     <a class="nav-link" href="ag_s_dash.php">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white;">Impiegati</a>
+                    <a class="nav-link" href="ag_s_mng.php">Impiegati</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ag_s_res.php">Prenotazione</a>
+                    <a class="nav-link" href="#" style="color: white;">Prenotazione</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="ag_s_sub.php">Abbonamenti</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ag_s_logs.php">Logs</a>
+                    <a class="nav-link" href="ag_s_logs">Logs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="ag_s_tkt.php">Ticket</a>
@@ -78,53 +78,22 @@ if (isset($_SESSION["id_agent"])) {
         </div>
     </nav>
     <!-- Main Content -->
-    <div class="container-fluid">
-        <div class="row align-items-center justify-content-center" style="height: 90vh;">
-            <div class="col-6">
-                <div class="box-left">
-                    <div class="box-left-inner">
-                        <span class="wtd" id="up-text" style="font-weight: 400;">Ciao
-                            <strong style="color: #4f25d6;">
-                                <?php echo $username ?>
-                            </strong>,<br>Vuoi creare un nuovo account?
-                        </span>
-                        <form id="add-account">
-                            <div class="row form-group">
-                                <div class="col-md-4">
-                                    <label for="name">Nome</label>
-                                    <input type="text" name="name" id="nome" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="surname">Cognome</label>
-                                    <input type="text" name="surname" id="cognome" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="bdate">Data di nascita</label>
-                                    <input type="date" id="bdate" name="bdate" required>
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary">Aggiungi</button>
-                                </div>
-                            </div>
-                        </form>
+    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 90vh;">
+        <div class="box">
+            <span class="wtd" id="up-text" style="font-weight: 600;">Gestisci costo prenotazione: </span>
+            <form id="res_form">
+                <div class="row form-group">
+                    <div class="col-12">
+                        <label for="res_price">Costo prenotazione:</label>
+                        <input type="number" name="res_price" id="res_price" min="0.1" max="2" placeholder="Costo"
+                            step="0.01">
                     </div>
-                </div>
-            </div>
+                    <div class="col-12 btn-cont">
+                        <button type="submit" class="btn btn-primary">Cambia prezzo</button>
+                    </div>
 
-            <div class="col-6">
-                <div class="box-right">
-                    <div class="box-right-inner">
-                        <span class="padding-bottom--15 wtd" id="up-text" style="font-weight: 400;">Lista impiegati:
-                        </span>
-                        <div id="table-wrapper" style="display: none;">
-                            <table id="tabella-personale">
-                                <thead></thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

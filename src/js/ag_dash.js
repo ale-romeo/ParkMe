@@ -42,9 +42,9 @@ $(document).on("click", ".cambia-tariffa", function () {
                 modalContent += '<form>';
                 modalContent += '<div class="form-group">';
                 modalContent += '<label for="tariffa_oraria">Tariffa oraria(eur/h):</label><br>';
-                modalContent += '<input type="number" name="tariffa_oraria" id="tar_or"><br>';
+                modalContent += '<input type="number" name="tariffa_oraria" id="tar_or" min="0" step="0.1"><br>';
                 modalContent += '<label for="tariffa_periodica">Tariffa periodica(eur/d):</label><br>';
-                modalContent += '<input type="number" name="tariffa_periodica" id="tar_per">';
+                modalContent += '<input type="number" name="tariffa_periodica" id="tar_per" min="0" step="0.1">';
                 modalContent += '</div>';
                 modalContent += '</form>';
                 modalContent += '</div>';
@@ -104,9 +104,9 @@ $(document).ready(function () {
             modalContent += '<form>';
             modalContent += '<div class="form-group">';
             modalContent += '<label for="tariffa_oraria">Tariffa oraria(eur/h):</label><br>';
-            modalContent += '<input type="number" name="tariffa_oraria" id="tar_zone_or"><br>';
+            modalContent += '<input type="number" name="tariffa_oraria" id="tar_zone_or" min="0" step="0.1"><br>';
             modalContent += '<label for="tariffa_periodica">Tariffa periodica(eur/d):</label><br>';
-            modalContent += '<input type="number" name="tariffa_periodica" id="tar_zone_per">';
+            modalContent += '<input type="number" name="tariffa_periodica" id="tar_zone_per" min="0" step="0.1">';
             modalContent += '</div>';
             modalContent += '</form>';
             modalContent += '</div>';
@@ -122,6 +122,7 @@ $(document).ready(function () {
 });
 
 function show_parks(zona) {
+    update_parks();
     // Invia una richiesta AJAX per ottenere i parcheggi della zona dal database
     $.ajax({
         url: "../../db/get/get_slots.php",
@@ -167,6 +168,15 @@ function tar_log_single(posto) {
         data: { action: 'tar_edit', posto: posto },
         error: function() {
             alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}
+
+function update_parks() {
+    $.ajax({
+        url: "../../db/update/update_park.php",
+        error: function () {
+            alert('Errore durante l\'aggiornamento dei posti.');
         }
     });
 }

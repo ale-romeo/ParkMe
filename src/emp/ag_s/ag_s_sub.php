@@ -46,6 +46,9 @@ if (isset($_SESSION["id_agent"])) {
                     <a class="nav-link" href="ag_s_mng.php">Impiegati</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="ag_s_res.php">Prenotazione</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#" style="color: white;">Abbonamenti</a>
                 </li>
                 <li class="nav-item">

@@ -44,7 +44,7 @@ $(document).on("click", ".assegna-operatore", function () {
             modalContent += '<div class="form-group">';
             modalContent += '<label for="operatore">Seleziona l\'operatore:</label>';
             modalContent += '<select class="form-control" id="operatore">';
-            $.each(operatori, function (operatore) {
+            $.each(operatori, function (index, operatore) {
                 modalContent += '<option value="' + operatore + '">' + operatore + '</option>';
             });
             modalContent += '<option value="null"></option>';

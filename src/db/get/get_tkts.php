@@ -6,13 +6,17 @@ $usr = "";
 if(isset($_SESSION['username'])) {
     $usr = $conn->real_escape_string($_SESSION['username']);
 }
+$ag_id = "";
+if (isset($_SESSION["id_agent"])) {
+    $ag_id = $_SESSION["id_agent"];
+}
 
 $get_class = "SELECT * FROM Account WHERE username = '$usr'";
 $got = $conn->query($get_class);
 $row_user = $got->fetch_assoc();
 $type = $row_user['type'];
 
-$get_tkts = "SELECT * FROM Ticket ORDER BY id DESC";
+$get_tkts = "SELECT * FROM Ticket WHERE agent_id = '$ag_id' ORDER BY id DESC";
 $res = $conn->query($get_tkts) or die("Errore durante il caricamento dei tickets: ". $conn->connect_error);
 $show_text = '<a href="#" class="mostra-testo" data-toggle="modal" data-target="#show-text">Visualizza</a>';
 

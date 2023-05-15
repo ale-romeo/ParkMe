@@ -8,18 +8,39 @@ if (isset($_SESSION['id_agent'])) {
 
 $slot = "";
 $zone = "";
-$tar_or = $conn->real_escape_string($_POST['tar_or']);
-$tar_per = $conn->real_escape_string($_POST['tar_per']);
-
+$tar_or = "";
+$tar_per = "";
+if (isset($_POST['tar_or'])) {
+    $tar_or = $_POST['tar_or'];
+}
+if (isset($_POST['tar_per'])) {
+    $tar_per = $_POST['tar_per'];
+}
 if (isset($_POST['posto'])) {
     $slot = $_POST['posto'];
-    $assign = "UPDATE Parking_Space SET hourly_price = '$tar_or', periodic_price = '$tar_per' WHERE id = '$slot'";
-}
-else if (isset($_POST['zona'])) {
+    $sql = "UPDATE Parking_Space SET hourly_price = ?, periodic_price = ? WHERE id = ?";
+    if ($tar_or == "") {
+        $tar_or = NULL;
+    }
+    if ($tar_per == "") {
+        $tar_per = NULL;
+    }
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('dds', $tar_or, $tar_per, $slot);
+    $stmt->execute();
+    $stmt->close();
+} else if (isset($_POST['zona'])) {
     $zone = $_POST['zona'];
-    $assign = "UPDATE Parking_Space SET hourly_price = '$tar_or', periodic_price = '$tar_per' WHERE zone_id = '$zone' AND id_agent = '$ag'";
+    $sql = "UPDATE Parking_Space SET hourly_price = ?, periodic_price = ? WHERE zone_id = ?  AND id_agent = ?";
+    if ($tar_or == "") {
+        $tar_or = NULL;
+    }
+    if ($tar_per == "") {
+        $tar_per = NULL;
+    }
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('dds', $tar_or, $tar_per, $zone);
+    $stmt->execute();
+    $stmt->close();
 }
-
-$result = $conn->query($assign) or die("Si è verificato un errore durante l'assegnazione dell'operatore al posto $slot: " . $conn->connect_error);
-
 ?>

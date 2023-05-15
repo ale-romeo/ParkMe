@@ -16,7 +16,7 @@ body {
 .navbar {
     position: relative;
     z-index: 1;
-    background-color: #aca8be;
+    background-color: #376ba7;
 }
 
 .box {
@@ -50,7 +50,7 @@ table {
 }
 
 table thead th {
-    background-color: #9690aa;
+    background-color: #376ba7;
     font-weight: bold;
     text-align: center;
     padding: 10px;
@@ -61,7 +61,7 @@ table thead th {
 table tbody td {
     text-align: center;
     padding: 8px;
-    border-bottom: 1px solid #6f57da;
+    border-bottom: 1px solid #376ba7;
 }
 
 table tbody tr:last-child td {
@@ -69,44 +69,5 @@ table tbody tr:last-child td {
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #aca8be;
-}
-
-.form-group label {
-    font-weight: 600;
-    margin-right: 30px;
-}
-
-.form-group input[type="number"] {
-    border: none;
-    border-radius: 2px;
-    border-bottom: 1px solid #ddd;
-    padding: 5px;
-    margin-bottom: 10px;
-    width: 50%;
-}
-
-.form-group input[type="number"]:focus {
-    outline: none;
-    box-shadow: none;
-    border-color: #376ba7;
-}
-
-.btn-cont button {
-    background-color: #aca8be;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin-top: 5px;
-}
-
-.btn-cont button:hover {
-    background-color: #9690aa;
-    color: #fff;
-    transition: background-color 0.3s ease;
-}
-
-.btn-cont {
-    text-align: right;
+    background-color: #d7d5e4;
 }

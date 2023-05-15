@@ -1,4 +1,5 @@
 function show_parks(zona) {
+    update_parks();
     // Invia una richiesta AJAX per ottenere i parcheggi della zona dal database
     $.ajax({
         url: "../../db/get/get_slots.php",
@@ -33,6 +34,15 @@ function view_log(zona) {
         data: { action: 'view', zona: zona },
         error: function() {
             alert('Si è verficato un errore durante il salvataggio del log.');
+        }
+    });
+}
+
+function update_parks() {
+    $.ajax({
+        url: "../../db/update/update_park.php",
+        error: function () {
+            alert('Errore durante l\'aggiornamento dei posti.');
         }
     });
 }
@@ -147,7 +157,7 @@ function initMap() {
     // Aggiungi listener per zona A
     google.maps.event.addListener(zoneA, 'click', function () {
         var sel_zone = 'A';
-
+        
         show_parks(sel_zone);
         view_log(sel_zone);
     });

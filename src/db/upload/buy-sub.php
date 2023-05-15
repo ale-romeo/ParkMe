@@ -31,10 +31,11 @@ if ($type == 'Settimanale') {
     $exp = date('Y-m-d H:i:s', strtotime('+1 year'));
 }
 
-$buy = "INSERT INTO Payment (service, amount, user_id, sub_id, agent_id, exp_sub) VALUES ('Abbonamento', '$price', '$usr', '$sub_id', '$ag', '$exp')";
+$buy = "INSERT INTO Subscription_Payment (amount, user_id, sub_id, expiration) VALUES ('$price', '$usr', '$sub_id', '$exp')";
 $res = $conn->query($buy);
+echo $buy;
 
-$up_balance = "UPDATE Agent SET balance = balance + $amount WHERE NAME = '$ag'";
+$up_balance = "UPDATE Agent SET balance = balance + $price WHERE NAME = '$ag'";
 $uptodate = $conn->query($up_balance);
 
 ?>

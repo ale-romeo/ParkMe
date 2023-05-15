@@ -116,6 +116,8 @@ $(document).on("click", "#btn-pay", function () {
     // Ottieni il posto selezionato
     var posto = $("#get-posto-modal").text().replace("Stai per iniziare la sosta nel posto ", "");
     var tar = $("#tar_sel option:selected").val();
+    var targa = $("#plate").val();
+
     var minuti = $("#durata_min").val();
     if (minuti == "") {
         minuti = 0;
@@ -139,7 +141,7 @@ $(document).on("click", "#btn-pay", function () {
         $.ajax({
             type: "POST",
             url: "db/upload/parking.php",
-            data: { posto: posto, tar: tar, durata: durata },
+            data: { posto: posto, tar: tar, durata: durata, targa: targa },
             success: function (r) {
                 alert('Pagamento effettato con successo!' + r);
                 // Chiudi il modal e aggiorna la tabella dei posti
@@ -212,6 +214,8 @@ $(document).ready(function () {
             modalContent += '<input type="number" name="time" id="durata_dd" min="1" placeholder="g" step="1">';
             modalContent += '<input type="number" name="time" id="durata_hh" placeholder="o" min="1" max="23" step="1">';
             modalContent += '<input type="number" name="time" id="durata_min" placeholder="m" min="1" max="59" step="1"><br>';
+            modalContent += '<label for="plate">Targa:</label><br>';
+            modalContent += '<input type="text" name="plate" id="plate" placeholder="Targa" required><br>';
             modalContent += '</div>';
             modalContent += '</form>';
             modalContent += '</div>';

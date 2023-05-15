@@ -7,8 +7,8 @@ $(document).on("click", ".acquista-abbonamento", function () {
             type: "POST",
             url: "db/upload/buy-sub.php",
             data: { sub_id: sub_id },
-            success: function () {
-                alert("Abbonamento acquistato");
+            success: function (r) {
+                alert("Abbonamento acquistato"+r);
                 // Aggiorna la tabella degli abbonamenti
                 show_subs();
             },
@@ -24,11 +24,25 @@ function show_subs() {
         url: "db/get/get_subs_end.php",
         type: "POST",
         success: function (data) {
+            $("#tabella-usr-sub").html(data);
+
+            $("#table-wrapper2").show();
+
+            $("#table-wrapper2").scrollTop(0);
+        },
+        error: function () {
+            alert('Si è verificato un errore durante la visualizzazione dei logs.');
+        }
+    });
+    $.ajax({
+        url: "db/get/get_subs_disp.php",
+        type: "POST",
+        success: function (data) {
             $("#tabella-abbonamenti").html(data);
 
-            $("#table-wrapper").show();
+            $("#table-wrapper1").show();
 
-            $("#table-wrapper").scrollTop(0);
+            $("#table-wrapper1").scrollTop(0);
         },
         error: function () {
             alert('Si è verificato un errore durante la visualizzazione dei logs.');

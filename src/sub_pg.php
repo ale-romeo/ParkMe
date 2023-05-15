@@ -36,8 +36,8 @@ if (isset($_SESSION["username"])) {
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="usr_int.php">Parcheggia</a>
+      <li class="nav-item">
+          <a class="nav-link" href="user_int.php">Parcheggia</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" style="color: white;">Abbonamenti</a>
@@ -62,16 +62,25 @@ if (isset($_SESSION["username"])) {
   </nav>
   <!-- Main Content -->
   <div class="d-flex flex-column justify-content-center align-items-center" style="height: 90vh;">
-        <div class="box">
-            <span class="wtd" id="up-text" style="font-weight: 600;">Visualizza logs</span>
-            <div id="table-wrapper" style="display: none;">
-                <table id="tabella-abbonamenti">
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
+    <div class="box">
+      <span class="wtd" id="up-text" style="font-weight: 600;">Abbonamenti disponbibili</span>
+      <div id="table-wrapper1" style="display: none;">
+        <table id="tabella-abbonamenti">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
+    <div class="box bot">
+      <span class="wtd" id="up-text" style="font-weight: 600;">I tuoi abbonamenti</span>
+      <div id="table-wrapper2" style="display: none;">
+        <table id="tabella-usr-sub">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
   <!-- Modal -->
   <div class="modal fade" id="sub-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">

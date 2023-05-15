@@ -103,6 +103,7 @@ $(document).on("click", ".mostra-testo", function () {
             $('#tkt-modal .modal-content').html(modalContent);
             $('#modal_title_tkt').val(data[0]);
             $('#modal_text_tkt').val(data[1]);
+            $('#modal_ans_tkt').val(data[2]);
             $('#tkt-modal').modal('show');
         },
         error: function () {

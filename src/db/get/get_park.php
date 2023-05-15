@@ -7,7 +7,7 @@ if (isset($_SESSION['username'])) {
     $usr = $conn->real_escape_string($_SESSION['username']);
 }
 
-$get_park = "SELECT Parking_Space.id, Parking_Space.parking_ending_time, Payment.user_id FROM Parking_Space JOIN Payment ON Payment.park_id = Parking_Space.id WHERE Payment.user_id = '$usr' AND Payment.service = 'Parcheggio' AND Payment.status = 1";
+$get_park = "SELECT Parking_Space.id, Parking_Space.parking_ending_time, Parking_Payment.user_id FROM Parking_Space JOIN Parking_Payment ON Parking_Payment.park_id = Parking_Space.id WHERE Parking_Payment.user_id = '$usr' AND Parking_Payment.status = 1";
 $park_istance = $conn->query($get_park);
 
 $get_res = "SELECT Parking_Space.id, Reservation.ending_time, Reservation.id_user FROM Parking_Space JOIN Reservation ON Parking_Space.id = Reservation.id_parking WHERE Reservation.solved = 1 AND Reservation.id_user = '$usr' AND Parking_Space.STATUS = 'Reserved'";

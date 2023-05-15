@@ -129,16 +129,16 @@ if ($type == 'sup_body_emp') {
     while ($row = $result->fetch_assoc()) {
         $stato = $row['STATUS'];
         if ($stato == 'Available') {
-            $vis = 'L';
+            $vis = '🟢';
         }
         if ($stato == 'Out of order') {
-            $vis = 'Inagibile';
+            $vis = '⚫';
         }
         if ($stato == 'Occupied') {
-            $vis = 'O';
+            $vis = '🔴';
         }
         if ($stato == 'Reserved') {
-            $vis = 'R';
+            $vis = '🟠';
         }
         $table_html .= '<option value="'.$row['id'].'">'.$row['id'].' - '.$row['id_agent'].'&nbsp&nbsp&nbsp'.$vis.'</option>';
     }

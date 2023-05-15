@@ -29,6 +29,10 @@ body {
     padding: 30px;
 }
 
+.bot {
+    margin-top: 3%;
+}
+
 .wtd {
     display: block;
     font-size: 20px;
@@ -37,9 +41,9 @@ body {
     padding-bottom: 15px;
 }
 
-#table-wrapper {
+#table-wrapper1, #table-wrapper2 {
     height: auto;
-    max-height: 350px;
+    max-height: 250px;
     overflow: auto;
 }
 

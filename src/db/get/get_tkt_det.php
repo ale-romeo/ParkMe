@@ -7,7 +7,6 @@ $subs = "SELECT * FROM Ticket WHERE id = '$tkt_id'";
 $result = $conn->query($subs) or die("Query failed: " . $conn->connect_error);
 $row = $result->fetch_assoc();
 
-header('Content-Type: application/json');
-echo json_encode(array($row['title'], $row['body_text']));
+echo json_encode(array($row['title'], $row['body_text'], $row['answer']));
 $conn->close();
 ?>

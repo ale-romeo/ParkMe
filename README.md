@@ -1,19 +1,17 @@
 # ParkMe
-Benvenuti in ParkMe, il sistema all'avanguardia per la gestione efficiente di parcheggi multipli. Questo repository rappresenta una soluzione completa, sviluppata con passione e competenza utilizzando una varietà di tecnologie web di punta, tra cui PHP, HTML, CSS, JavaScript, MySQL e PHPMyAdmin.
+Welcome to ParkMe, the cutting-edge solution for efficient multi-parking management. This repository presents a comprehensive solution, developed with passion and expertise using a variety of leading web technologies including PHP, HTML, CSS, JavaScript, MySQL, and PHPMyAdmin.
 
-🅿️ Caratteristiche in Evidenza 🅿️
+🅿️ Key Features 🅿️
 
-Monitoraggio in Tempo Reale: Tieni il polso dei tuoi parcheggi. I gestori possono monitorare in tempo reale lo stato di occupazione di ciascun parcheggio, semplificando la pianificazione e l'ottimizzazione delle risorse.
+Real-time Monitoring: Keep your finger on the pulse of your parking lots. Managers can monitor the real-time occupancy status of each parking lot, simplifying resource planning and optimization.
 
-Prenotazioni Intuitive: Gli utenti possono prenotare posti auto in anticipo attraverso un'interfaccia utente intuitiva. Il sistema coordina l'assegnazione dei posti per una gestione fluida.
+Intuitive Reservations: Users can pre-book parking spots through an intuitive user interface. The system coordinates spot assignments for seamless management.
 
-Esperienza Mappa Interattiva: La mappa interattiva mostra la disposizione dei parcheggi con posti disponibili evidenziati. Gli utenti possono visualizzare facilmente i dettagli e prenotare il posto perfetto.
+Interactive Map Experience: The interactive map showcases parking layout with available spots highlighted. Users can easily view details and reserve the perfect spot.
 
-Notifiche in Tempo Reale: Rimani sempre informato con notifiche istantanee riguardo alle tue prenotazioni e agli aggiornamenti dei parcheggi.
+Rate Configuration: Personalize rates according to your needs. Rates are displayed during the reservation process.
 
-Configurazione delle Tariffe: Personalizza le tariffe in base alle tue esigenze. Le tariffe vengono mostrate durante il processo di prenotazione.
+Advanced Control Panel: Manage users, reservations, and more through a secure and user-friendly admin panel.
 
-Pannello di Controllo Avanzato: Gestisci utenti, prenotazioni e altro attraverso un pannello di amministrazione sicuro e user-friendly.
-
-💡 Perchè ParkMe? 💡
-Questo repository rappresenta un tesoro di conoscenze per chi vuole imparare o ispirarsi nell'implementazione di sistemi web complessi. La struttura chiara del codice e la documentazione dettagliata rendono facile l'apprendimento e l'espansione delle funzionalità di ParkMe.
+💡 Why ParkMe? 💡
+This repository serves as a treasure trove of knowledge for those looking to learn or draw inspiration from the implementation of complex web systems. Clear code structure and detailed documentation make learning and expanding ParkMe's functionalities a breeze.
